@@ -1,6 +1,6 @@
 /* Fonts */
 :root {
-  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  --font-default: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Poppins", sans-serif;
@@ -11,6 +11,8 @@
   --color-default: #222222;
   --color-primary: #5bc17f;
   --color-secondary: #f85a40;
+  --color-white: #fefefe;
+
 }
 
 /* Smooth scroll behavior */
@@ -61,6 +63,7 @@ h6 {
 .header {
   transition: all 0.5s;
   z-index: 997;
+  background-color: var(--color-white);
   height: 90px;
 }
 
@@ -70,7 +73,6 @@ h6 {
   right: 0;
   left: 0;
   height: 70px;
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header .logo img {
@@ -234,7 +236,7 @@ h6 {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1080px) {
   .mobile-nav-show,
   .mobile-nav-hide {
     display: none;
@@ -393,7 +395,7 @@ h6 {
   line-height: 1.5; 
 }
 
-.hero span {
+.hero > span {
   color: #5bc17f;
 }
 
@@ -410,21 +412,23 @@ h6 {
 
 .hero .btn-get-started {
   font-family: var(--font-primary);
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: bold;
+  font-size: 1.2em;
   letter-spacing: 1px;
   display: inline-block;
   padding: 14px 40px;
   border-radius: 50px;
   transition: 0.3s;
-  color: #5bc17f;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  background: var(--color-primary);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .hero .btn-get-started:hover {
-  border-color: rgba(91, 193, 127, 0.6);
+  color: var(--color-primary);
+  background: var(--color-white);
+  border: 1px solid var(--color-primary);
 }
 
 .hero .my-custom-icon {
@@ -434,9 +438,16 @@ h6 {
 .hero .btn-watch-video {
   font-size: 16px;
   transition: 0.5s;
+  padding: 14px 40px;
+  border-radius: 50px;
+  border: 1px solid var(--color-primary);
   margin-left: 25px;
   color: #5bc17f;
   font-weight: 600;
+}
+.hero .btn-watch-video:hover{
+  color: var(--color-white);
+  background-color: var(--color-primary);
 }
 
 .hero .btn-watch-video i {
@@ -448,7 +459,7 @@ h6 {
 }
 
 .hero .btn-watch-video:hover i {
-  color: #fff;
+  color: var(--color-white );
 }
 
 @media (max-width: 640px) {
@@ -635,4 +646,40 @@ h6 {
 
 .footer .credits a {
   color: #fff;
+}
+
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #fff;
+  border-color: var(--color-primary) transparent var(--color-primary) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
