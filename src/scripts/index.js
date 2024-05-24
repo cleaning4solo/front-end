@@ -6,6 +6,8 @@ import AOS from 'aos';
 import Swiper from 'swiper';
 import App from './views/app';
 
+import './components/dark-mode';
+
 AOS.init();
 const swiper = new Swiper('.swiper-container');
 
