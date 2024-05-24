@@ -5,8 +5,8 @@ import '../public/css/style.css';
 import AOS from 'aos';
 import Swiper from 'swiper';
 import App from './views/app';
-
 import './components/dark-mode';
+import navbarScroled from './components/navbar-scroled';
 
 AOS.init();
 const swiper = new Swiper('.swiper-container');
@@ -30,21 +30,9 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const selectHeader = document.querySelector('#header');
-  if (selectHeader) {
-    const headerOffset = selectHeader.offsetTop;
-    const nextElement = selectHeader.nextElementSibling;
-
-    const headerFixed = () => {
-      if ((headerOffset - window.scrollY) < 0) {
-        selectHeader.classList.add('sticked', 'py-4', 'shadow');
-        if (nextElement) nextElement.classList.add('sticked-header-offset');
-      } else {
-        selectHeader.classList.remove('sticked', 'shadow');
-        if (nextElement) nextElement.classList.remove('sticked-header-offset');
-      }
-    };
-    window.addEventListener('load', headerFixed);
-    document.addEventListener('scroll', headerFixed);
+  const storedMode = localStorage.getItem('darkMode');
+  if (storedMode === 'true') {
+    document.body.classList.add('dark-mode');
   }
+  navbarScroled();
 });
