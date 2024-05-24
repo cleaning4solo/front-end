@@ -40,7 +40,6 @@ class DarkModeToggle extends HTMLElement {
 }
 
 function getIcon(name) {
-  // Use SVG markup for the icons
   switch (name) {
     case 'moon':
       return `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
