@@ -10,7 +10,7 @@ const createHomePageComponent = () => `
         <a href="#" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-calculator"></i><span>Kalkulator Sampah</span></a>
       </div>
     </div>
-    <div class="col-lg-6 order-1 order-lg-2">
+    <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center">
       <img src="img/hero-img4.svg" class="img-fluid" alt="" />
     </div>
   </div>

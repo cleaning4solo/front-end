@@ -77,17 +77,12 @@ h6 {
 
 .header .logo img {
   max-height: 30px;
+  margin-bottom: 6px;
   margin-right: 10px;
 }
 
 .header .logo h1 {
-  font-size: 30px;
-  margin: 0;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  font-weight: bold;
-  color: #2E2E2E;
-  font-family: var(--font-primary);
+  color: var(--color-primary);
 }
 
 .sticked-header-offset {
@@ -638,52 +633,12 @@ h6 {
   line-height: 26px;
 }
 
-.footer .copyright {
-  text-align: center;
-}
-
 .footer .credits {
   padding-top: 4px;
-  text-align: center;
+  text-align: left;
   font-size: 13px;
 }
 
 .footer .credits a {
-  color: #fff;
+  color: var(--color-white);
 }
-
-
-/*--------------------------------------------------------------
-# Preloader
---------------------------------------------------------------*/
-/* #preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  overflow: hidden;
-  background: #fff;
-  transition: all 0.6s ease-out;
-} */
-
-/* #preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #fff;
-  border-color: var(--color-primary) transparent var(--color-primary) transparent;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: animate-preloader 1.5s linear infinite;
-}
-
-@keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-} */
