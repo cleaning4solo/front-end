@@ -11,7 +11,7 @@ const createHomePageComponent = () => `
       </div>
     </div>
     <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center">
-      <img src="img/hero-img4.svg" class="img-fluid" alt="" />
+      <img src="img/hero-img4.svg" class="img-fluid animation" alt="" />
     </div>
   </div>
 </div>

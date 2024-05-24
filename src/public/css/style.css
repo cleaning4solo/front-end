@@ -13,9 +13,11 @@
   --color-primary: #5bc17f;
   --color-secondary: #f85a40;
   --color-white: #fefefe;
-  --background-color: #ffffff;
+  --background-color: #fcfdff;
   --text-color: #2e2e2e;
-  --navbar-bg-color: #fff;
+  --text-pure-white: #fefefe;
+  --navbar-bg-color: #fefefe;
+  --footer-bg-color: #5bc17f;
 }
 
 /* Dark Mode */
@@ -27,6 +29,7 @@ body.dark-mode {
   --background-color: #111827;
   --text-color: #fefefe;
   --navbar-bg-color: #1F2937;
+  --footer-bg-color: #1F2937;
 }
 
 /* Smooth scroll behavior */
@@ -388,7 +391,20 @@ h6 {
   # Hero Section
   --------------------------------------------------------------*/
 #main-content {
-  min-height: 80vh;
+  min-height: 90vh;
+}
+.hero .animation {
+  animation: animated-updown 2s ease-in-out infinite alternate-reverse both;
+}
+
+@keyframes animated-updown {
+  0% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(-8px);
+  }
 }
 
 .hero {
@@ -559,9 +575,9 @@ h6 {
   --------------------------------------------------------------*/
 .footer {
   font-size: 14px;
-  background-color: var(--navbar-bg-color);
+  background-color: var(--footer-bg-color);
   padding: 50px 0;
-  color: var(--text-color);
+  color: var(--text-pure-white);
 }
 
 .footer .footer-info .logo {
@@ -578,7 +594,7 @@ h6 {
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: var(--text-color);
+  color: var(--text-pure-white);
   font-family: var(--font-primary);
 }
 
@@ -594,9 +610,9 @@ h6 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--text-pure-white);
   font-size: 16px;
-  color: var(--text-color);
+  color: var(--text-pure-white);
   margin-right: 10px;
   transition: 0.3s;
 }
@@ -641,7 +657,7 @@ h6 {
 }
 
 .footer .footer-links ul a {
-  color: var(--text-color);
+  color: var(--text-pure-white);
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
@@ -662,41 +678,5 @@ h6 {
 }
 
 .footer .credits a {
-  color: var(--text-color);
+  color: var(--text-pure-white);
 }
-
-
-/*--------------------------------------------------------------
-# Preloader
---------------------------------------------------------------*/
-/* #preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  overflow: hidden;
-  background: #fff;
-  transition: all 0.6s ease-out;
-} */
-
-/* #preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #fff;
-  border-color: var(--color-primary) transparent var(--color-primary) transparent;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: animate-preloader 1.5s linear infinite;
-}
-
-@keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-} */
