@@ -1,10 +1,9 @@
 import 'regenerator-runtime';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import AOS from 'aos';
-// import GLightbox from 'glightbox';
-import Swiper from 'swiper';
 import '../public/css/style.css';
+import AOS from 'aos';
+import Swiper from 'swiper';
 import App from './views/app';
 
 AOS.init();
@@ -20,6 +19,12 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+});
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    preloader.remove();
+  }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
