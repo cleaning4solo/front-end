@@ -19,41 +19,41 @@ const createHomePageComponent = () => `
 `;  
 
 const CreateCounterComponent = () => `
-<div class="container" data-aos="fade-up">
+<div class="container" data-aos="zoom-in">
   <h2 class="text-center fs-1 fw-bold">Our Impact</h2>
 
-  <div class="d-flex justify-content-center gap-5">
-      <div class="stats-item py-4 text-center d-flex flex-column gap-1 px-3">
-        <div class="d-flex">
-          <span data-purecounter-start="0" data-purecounter-end="12000" data-purecounter-duration="1" class="purecounter"></span>
-          <p class="fs-6">KG</p>
-        </div>
-        <p>Sampah Plastik</p>
+  <div class="row justify-content-center mb-5">
+    <div class="col-12 col-md-6 col-lg-2 py-4 text-center d-flex flex-column">
+      <div class="d-flex justify-content-center">
+        <span data-purecounter-start="0" data-purecounter-end="1223242" data-purecounter-duration="1" class="purecounter fs-2"></span>
+        <p class="fs-6">KG</p>
       </div>
+      <p>Sampah Plastik</p>
+    </div>
 
-      <div class="stats-item py-4 text-center d-flex flex-column gap-1 px-3">
-        <div class="d-flex">
-          <span data-purecounter-start="0" data-purecounter-end="23000" data-purecounter-duration="1" class="purecounter"></span>
-          <p class="fs-6">KG</p>
-        </div>
-        <p>Limbah</p>
+    <div class="col-12 col-md-6 col-lg-2 py-4 text-center d-flex flex-column">
+      <div class="d-flex justify-content-center">
+        <span data-purecounter-start="0" data-purecounter-end="23000" data-purecounter-duration="1" class="purecounter fs-2"></span>
+        <p class="fs-6">KG</p>
       </div>
+      <p>Limbah</p>
+    </div>
 
-      <div class="stats-item py-4 mb-5 text-center d-flex flex-column gap-1 px-3">
-        <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter"></span>
+    <div class="col-12 col-md-6 col-lg-2 py-4 text-center d-flex flex-column">
+        <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter fs-2"></span>
         <p>Desa Dibersihkan</p>
-      </div>
+    </div>
 
-      <div  class="stats-item py-4 text-center d-flex flex-column gap-1 px-3">
-        <div class="d-flex">
-          <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
-          <p class="fs-6">+</p>
-        </div>
-        <p>Event</p>
+    <div class="col-12 col-md-6 col-lg-2 py-4 text-center d-flex flex-column">
+      <div class="d-flex justify-content-center">
+        <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter fs-2"></span>
+        <p class="fs-6">+</p>
       </div>
+      <p>Event</p>
+    </div>
   </div>
-
 </div>
+
 `
 
 export { createHomePageComponent, CreateCounterComponent };
