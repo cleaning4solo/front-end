@@ -414,13 +414,12 @@ h6 {
 .hero {
   width: 100%;
   position: relative;
-  /* background: var(--color-primary); */
-  padding: 150px 0 190px 0;
+  padding: 150px 0 150px 0;
 }
 
-/* .img-fluid {
+.img-fluid {
   margin-left: 120px;
-} */
+}
 
 @media (min-width: 1365px) {
   .hero {
@@ -468,7 +467,7 @@ h6 {
 
 .hero .btn-get-started:hover {
   color: var(--color-primary);
-  background: var(--color-white);
+  background: var(--background-color);
   border: 1px solid var(--color-primary);
 }
 
@@ -683,4 +682,26 @@ h6 {
 
 .footer .credits a {
   color: var(--text-pure-white);
+}
+
+.stats-counter .stats-item i {
+  font-size: 44px;
+  line-height: 0;
+  margin-right: 15px;
+}
+
+.stats-counter .stats-item span {
+  font-size: 3rem;
+  letter-spacing: .1em;
+  display: block;
+  font-weight: 700;
+  color: var(--color-default);
+  line-height: 40px;
+}
+
+.stats-counter .stats-item p {
+  margin: 0;
+  color: var(--color-default);
+  font-size: 1em;
+  font-weight: bold;
 }
