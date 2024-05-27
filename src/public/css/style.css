@@ -46,6 +46,7 @@ body.dark-mode {
   color: var(--color-primary);
 }
 body {
+  overflow-x: hidden;
   font-family: var(--font-default);
   background-color: var(--background-color);
   color: var(--text-color);
@@ -400,17 +401,11 @@ h6 {
 .hero {
   width: 100%;
   position: relative;
-  padding: 150px 0 150px 0;
+  padding: 150px 0 20px 0;
 }
 
 .img-fluid {
-  margin-left: 120px;
-}
-
-@media (min-width: 1365px) {
-  .hero {
-    background-attachment: fixed;
-  }
+  margin-left: 0px;
 }
 
 .hero h1 {
@@ -421,12 +416,9 @@ h6 {
   line-height: 1.5;
 }
 
-.hero > span {
-  color: #5bc17f;
-}
 
 .hero .btn-watch-video i.bi-calculator {
-  color: #5bc17f;
+  color: var(--color-primary);
 }
 
 .hero p {
@@ -439,9 +431,8 @@ h6 {
 .hero .btn-get-started {
   font-family: var(--font-primary);
   font-weight: bold;
-  font-size: 1.2em;
-  letter-spacing: 1px;
-  display: inline-block;
+  font-size: 1em;
+  /* display: inline-block; */
   padding: 14px 40px;
   border-radius: 50px;
   transition: 0.3s;
@@ -690,4 +681,13 @@ h6 {
   color: var(--color-default);
   font-size: 1em;
   font-weight: bold;
+}
+
+.vission {
+  background: linear-gradient(to bottom, var(--background-color), var(--color-primary));
+}
+
+.stats-counter{
+  background: linear-gradient(to top, var(--background-color), var(--color-primary));
+  margin-top: -50px;
 }

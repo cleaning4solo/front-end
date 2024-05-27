@@ -10,7 +10,9 @@ import './components/dark-mode';
 import navbarScroled from './components/navbar-scroled';
 import './components/mobile-nav';
 
-AOS.init();
+AOS.init({
+  duration: 1000,
+});
 
 const swiper = new Swiper('.swiper-container');
 
