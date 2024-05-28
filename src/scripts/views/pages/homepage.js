@@ -5,7 +5,7 @@ const Homepage = {
   async render() {
     return `
       <section id="hero" class="hero"></section>
-      <section id="vission" class="vission"></section>
+      <section id="vission" class="vission my-lg-5 pt-lg-4"></section>
       <section id="stats-counter" class="stats-counter"></section>
       `;
   },

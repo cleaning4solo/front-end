@@ -468,7 +468,7 @@ h6 {
 }
 
 .hero .btn-watch-video i {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-primary);
   font-size: 32px;
   transition: 0.3s;
   line-height: 0;
@@ -480,13 +480,20 @@ h6 {
 }
 
 @media (max-width: 640px) {
-  .hero h2 {
+  .hero h1 {
     font-size: 36px;
   }
 
   .hero .btn-get-started,
   .hero .btn-watch-video {
-    font-size: 14px;
+    font-size: .8em;
+    width: 100%;
+    margin: 0px;
+  }
+  .button-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
   }
 }
 

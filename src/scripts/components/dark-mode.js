@@ -31,7 +31,6 @@ class DarkModeToggle extends HTMLElement {
                 width: 100%;
                 height: 100%;
                 color:var(--text-color);
-                margin-inline: 20px ;
             }
         `;
 

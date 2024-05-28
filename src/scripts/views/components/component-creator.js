@@ -5,9 +5,9 @@ const createHomePageComponent = () => `
     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
       <h1>Mari Jaga Solo Kita Bersama <span class="primary">sclean</span></h1>
       <p>Menjadi wadah generasi muda yang memiliki wawasan dan kepedulian terhadap kelestarian lingkungan di wilayah Karesidenan Surakarta.</p>
-      <div class="d-flex justify-content-center justify-content-lg-start">
-        <a href="#about" class="btn-get-started d-flex align-items-center">Tentang Kami</a>
-        <a href="#" class="btn-watch-video d-flex align-items-center"><i class="bi bi-calculator"></i><span>Kalkulator Sampah</span></a>
+      <div class="d-flex justify-content-center justify-content-lg-start button-wrapper">
+        <a href="#/about" class="btn-get-started d-flex align-items-center justify-content-center">Tentang Kami</a>
+        <a href="#" class="btn-watch-video d-flex align-items-center justify-content-center"><i class="bi bi-calculator"></i><span>Kalkulator Sampah</span></a>
       </div>
     </div>
     <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center">
@@ -15,7 +15,6 @@ const createHomePageComponent = () => `
     </div>
   </div>
 </div>
-
 `;
 
 const CreateCounterComponent = () => `

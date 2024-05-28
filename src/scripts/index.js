@@ -8,7 +8,7 @@ import Swiper from 'swiper';
 import App from './views/app';
 import './components/dark-mode';
 import navbarScroled from './components/navbar-scroled';
-import './components/mobile-nav';
+import navbarToggle from './components/mobile-nav';
 
 AOS.init({
   duration: 1000,
@@ -35,6 +35,7 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  navbarToggle();
   const storedMode = localStorage.getItem('darkMode');
   if (storedMode === 'true') {
     document.body.classList.add('dark-mode');
