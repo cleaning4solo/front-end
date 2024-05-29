@@ -42,9 +42,18 @@ body.dark-mode {
 /*--------------------------------------------------------------
   # General
   --------------------------------------------------------------*/
+.text-color{
+  color: var(--text-color);
+}
+
+.bg-color{
+  background-color: var(--navbar-bg-color);
+}
+
 .primary {
   color: var(--color-primary);
 }
+
 body {
   overflow-x: hidden;
   font-family: var(--font-default);
@@ -711,7 +720,14 @@ h6 {
   background: linear-gradient(to bottom, var(--background-color), var(--color-primary));
 }
 
-.stats-counter{
+#future-events{
   background: linear-gradient(to top, var(--background-color), var(--color-primary));
   margin-top: -50px;
+}
+
+.stretched-link{
+  text-decoration: none;
+}
+.stretched-link:hover {
+  color: var(--text-color);
 }
