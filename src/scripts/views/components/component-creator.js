@@ -188,6 +188,29 @@ const createCalculatorPageComponent = () => `
 </div>
 `;
 
+const createEventComponent = () => `
+<div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+
+<div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color">
+
+  <img src="./img/events.svg" alt="" class="img-fluid object-fit-cover ">
+
+<div class="d-flex justify-content-between my-2 px-3">
+  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>Paris, France</p>
+  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>24 may 2002</p>
+</div>
+<div class="px-3">
+  <h4>Lorem Ipsum</a></h4>
+  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+</div>
+<div class="d-flex align-item-center justify-content-end p-3">
+  <a href="#" class="m-2 fw-bold px-4 button btn btn-success rounded-pill">Join Volunteer</a>
+</div>
+</div>
+
+</div>
+`;
+
 export {
-  createHomePageComponent, CreateCounterComponent, createVissionMissionComponent, createCalculatorPageComponent,
+  createHomePageComponent, CreateCounterComponent, createVissionMissionComponent, createCalculatorPageComponent, createEventComponent,
 };
