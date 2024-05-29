@@ -11,11 +11,13 @@
 :root {
   --color-default: #222222;
   --color-primary: #5bc17f;
+  --color-primary-transparent: #5bc17f90;
   --color-secondary: #f85a40;
   --color-white: #fefefe;
   --background-color: #fcfdff;
   --background-color-transparent: #2e2e2e90;
-  --text-color: #2e2e2e;
+  --text-color: #18063C;
+  --text-darkblue: #18063C;
   --text-pure-white: #fefefe;
   --navbar-bg-color: #fefefe;
   --footer-bg-color: #5bc17f;
@@ -25,6 +27,7 @@
 body.dark-mode {
   --color-default: #fefefe;
   --color-primary: #5bc17f;
+  --color-primary-transparent: #fefefe90;
   --color-secondary: #f85a40;
   --color-white: #222222;
   --background-color: #111827;
@@ -42,8 +45,17 @@ body.dark-mode {
 /*--------------------------------------------------------------
   # General
   --------------------------------------------------------------*/
+.bg-color-transparent {
+  background-color: var(--color-primary-transparent);
+}
+.swiper-color {
+  background-color: var(--text-pure-white);
+}
 .text-color{
   color: var(--text-color);
+}
+.text-darkblue{
+  color: var(--text-darkblue);
 }
 
 .bg-color{
@@ -52,6 +64,10 @@ body.dark-mode {
 
 .primary {
   color: var(--color-primary);
+}
+
+.background-primary {
+  background-color: var(--color-primary);
 }
 
 body {
@@ -730,4 +746,33 @@ h6 {
 }
 .stretched-link:hover {
   color: var(--text-color);
+}
+
+.button-readmore {
+  outline: none;
+  color: var(--text-darkblue);
+  border: 2px solid var(--text-darkblue);
+  padding: 15px 50px;
+}
+.button-readmore:hover {
+  outline: none;
+  background-color: var(--text-darkblue);
+  color: var(--text-pure-white);
+}
+
+.partners .swiper {
+  padding: 10px 0;
+}
+
+.partners .swiper-wrapper {
+  height: auto;
+}
+
+.partners .swiper-slide img {
+  transition: 0.3s;
+  padding: 0 10px;
+}
+
+.partners .swiper-slide img:hover {
+  transform: scale(1.1);
 }
