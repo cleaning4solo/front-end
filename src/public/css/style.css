@@ -2,7 +2,7 @@
 :root {
   --font-default: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
-  --font-primary: "Montserrat", sans-serif;
+  --font-primary: "Poppins", sans-serif;
   --font-secondary: "Poppins", sans-serif;
 }
 
@@ -57,15 +57,12 @@ body.dark-mode {
 .text-darkblue{
   color: var(--text-darkblue);
 }
-
 .bg-color{
   background-color: var(--navbar-bg-color);
 }
-
 .primary {
   color: var(--color-primary);
 }
-
 .background-primary {
   background-color: var(--color-primary);
 }
