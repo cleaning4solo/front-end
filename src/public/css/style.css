@@ -680,3 +680,20 @@ h6 {
 .footer .credits a {
   color: var(--text-pure-white);
 }
+
+.aktivitas-terbaru {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 34px;
+}
+.ellipse {
+  width: 50px;
+  height: 50px;
+  background: #000000;
+  border-radius: 50%;
+  display: inline-block;
+}
+.text-light {
+  color: #404040;
+}
+
