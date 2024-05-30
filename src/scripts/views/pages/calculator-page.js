@@ -1,4 +1,4 @@
-import { createCalculatorPageComponent } from '../components/component-creator';
+import { createCalculatorPageComponent } from '../templates/template-creator';
 import { initializeEventListeners } from '../../components/calculator-func';
 
 const Calculator = {

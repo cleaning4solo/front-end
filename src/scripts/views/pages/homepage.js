@@ -1,5 +1,5 @@
 import PureCounter from '@srexi/purecounterjs';
-import { CreateCounterComponent, createHomePageComponent, createVissionMissionComponent } from '../components/component-creator';
+import { CreateCounterComponent, createHomePageComponent, createVissionMissionComponent } from '../templates/template-creator';
 
 const Homepage = {
   async render() {

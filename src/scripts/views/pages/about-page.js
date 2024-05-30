@@ -1,4 +1,4 @@
-import { createHomePageComponent } from '../components/component-creator';
+import { createHomePageComponent } from '../templates/template-creator';
 
 const About = {
   async render() {
