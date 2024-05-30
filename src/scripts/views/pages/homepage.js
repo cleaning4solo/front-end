@@ -4,7 +4,7 @@ import PureCounter from '@srexi/purecounterjs';
 import initSwiper from '../../components/swiper';
 import {
   CreateCounterComponent, createEventComponent, createHomePageComponent, createLatestPostComponent, createLocationComponent, createPartnerComponent, createVissionMissionComponent,
-} from '../components/component-creator';
+} from '../templates/template-creator';
 
 const Homepage = {
   async render() {

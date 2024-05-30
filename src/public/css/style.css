@@ -33,6 +33,7 @@ body.dark-mode {
   --background-color: #111827;
   --background-color-transparent: #fefefe90;
   --text-color: #fefefe;
+  --text-darkblue: #fefefe;
   --navbar-bg-color: #1f2937;
   --footer-bg-color: #1f2937;
 }
@@ -782,4 +783,20 @@ h6 {
 .breadcrumb-item a:hover,
 .breadcrumb-item+.breadcrumb-item::before{
   color: var(--text-color);
+}
+
+.card{
+  background-color: var(--navbar-bg-color);
+}
+
+.modal-header{
+  background-color: var(--navbar-bg-color);
+}
+
+.modal-body {
+  background-color: var(--background-color);
+}
+
+.table-calculator {
+  color:var(--text-color);
 }

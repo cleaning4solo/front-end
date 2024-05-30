@@ -13,17 +13,19 @@ function initializeEventListeners() {
 
       const newRow = `
           <tr>
-            <td class="text-center"><div class="ellipse"></div></td>
             <td class="text-center">${name}</td>
             <td class="text-center">${weight}</td>
             <td class="text-center">${type}</td>
-            <td class="text-center">${price}</td>
             <td class="text-center">${source}</td>
+            <td class="text-center">${price}</td>
             <td class="text-center">${emissions}</td>
           </tr>
         `;
 
       document.getElementById('waste-table').insertAdjacentHTML('beforeend', newRow);
+
+      // Reset the form
+      event.target.reset();
 
       $('#addWasteModal').modal('hide');
     }
@@ -39,7 +41,6 @@ function initializeEventListeners() {
 
       const newActivityRow = `
           <tr>
-            <td class="text-center"><div class="ellipse"></div></td>
             <td class="text-center">${activityName}</td>
             <td class="text-center">${totalJual}</td>
             <td class="text-center">${totalEmisi}</td>

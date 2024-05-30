@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-import { createBreadCrumbComponent, createHeaderBlogsComponent, createLatestPostComponent } from '../components/component-creator';
+import { createBreadCrumbComponent, createHeaderBlogsComponent, createLatestPostComponent } from '../templates/template-creator';
 
 const Blog = {
   async render() {

@@ -79,30 +79,22 @@ const createVissionMissionComponent = () => `
 
 const createCalculatorPageComponent = () => `
 <div class="container position-relative">
+<div class="row">
+<div class="col-sm-10">
 <h2 class="aktivitas-terbaru">Hitung</h2>
-<div class="container card p-3">
-<table class="table table-bordered">
+<div class="col-sm-12 card p-3">
+<table class="table-calculator">
 <thead>
 <tr>
-<th class="text-center">Icon</th>
 <th class="text-center">Nama</th>
 <th class="text-center">Berat</th>
 <th class="text-center">Jenis</th>
-<th class="text-center">Harga</th>
 <th class="text-center">Asal Limbah</th>
+<th class="text-center">Harga</th>
 <th class="text-center">Emisi Karbon</th>
 </tr>
 </thead>
 <tbody id="waste-table">
-<tr>
-<td class="text-center"><div class="ellipse"></div></td>
-<td class="text-center">Botol Plastik</td>
-<td class="text-center">4 kg</td>
-<td class="text-center">Plastik</td>
-<td class="text-center">5.000/Kg</td>
-<td class="text-center">Industri</td>
-<td class="text-center">1.9 kg CO₂ per kg</td>
-</tr>
 </tbody>
 </table>
 <div class="row">
@@ -116,11 +108,10 @@ const createCalculatorPageComponent = () => `
 </div>
 <div class="mt-5">
 <h2 class="aktivitas-terbaru">Aktivitas Terbaru</h2>
-<div class="container card mt-3 p-3">
-<table class="table table-bordered">
+<div class="col-sm-12 card mt-3 p-3">
+<table class="table-calculator">
 <thead>
 <tr>
-<th class="text-center">Icon</th>
 <th class="text-center">Aktivitas</th>
 <th class="text-center">Total Jual</th>
 <th class="text-center">Total Emisi Karbon</th>
@@ -129,7 +120,6 @@ const createCalculatorPageComponent = () => `
 </thead>
 <tbody id="activity-table">
 <tr>
-<td class="text-center"><div class="ellipse"></div></td>
 <td class="text-center">Aktivitas 1</td>
 <td class="text-center">Rp24.000</td>
 <td class="text-center">31.7 kg CO₂</td>
@@ -137,6 +127,11 @@ const createCalculatorPageComponent = () => `
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
+<div class="col-sm-2">
+
 </div>
 </div>
 
@@ -152,29 +147,29 @@ const createCalculatorPageComponent = () => `
 </div>
 <div class="modal-body">
 <form id="addWasteForm">
-<div class="form-group">
+<div class="form-group p-2">
 <label for="wasteName">Nama</label>
 <input type="text" class="form-control" id="wasteName" required>
 </div>
-<div class="form-group">
+<div class="form-group p-2">
 <label for="wasteWeight">Berat</label>
 <input type="text" class="form-control" id="wasteWeight" required>
 </div>
-<div class="form-group">
+<div class="form-group p-2">
 <label for="wasteType">Jenis</label>
 <input type="text" class="form-control" id="wasteType" required>
 </div>
-<div class="form-group">
-<label for="wastePrice">Harga</label>
-<input type="text" class="form-control" id="wastePrice" required>
-</div>
-<div class="form-group">
+<div class="form-group p-2">
 <label for="wasteSource">Asal Limbah</label>
 <input type="text" class="form-control" id="wasteSource" required>
 </div>
-<div class="form-group">
+<div class="form-group p-2">
+<label for="wastePrice">Harga</label>
+<input type="text" class="form-control" id="wastePrice" disabled>
+</div>
+<div class="form-group p-2">
 <label for="wasteEmissions">Emisi Karbon</label>
-<input type="text" class="form-control" id="wasteEmissions" required>
+<input type="text" class="form-control" id="wasteEmissions" disabled>
 </div>
 <br>
 <div>
