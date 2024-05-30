@@ -3,7 +3,7 @@
   --font-default: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
   --font-primary: "Poppins", sans-serif;
-  --font-secondary: "Poppins", sans-serif;
+  --font-secondary: "Montserrat", sans-serif;
 }
 
 /* Colors */
@@ -47,6 +47,9 @@ body.dark-mode {
   --------------------------------------------------------------*/
 .bg-color-transparent {
   background-color: var(--color-primary-transparent);
+}
+.tracking-wider { 
+  letter-spacing: 0.5em;
 }
 .swiper-color {
   background-color: var(--text-pure-white);
@@ -173,7 +176,7 @@ h6 {
     align-items: center;
     justify-content: space-between;
     padding: 0 3px;
-    font-family: var(--font-secondary);
+    font-family: var(--font-primary);
     font-size: 16px;
     font-weight: 600;
     color: var(--text-color);
@@ -772,4 +775,11 @@ h6 {
 
 .partners .swiper-slide img:hover {
   transform: scale(1.1);
+}
+
+.breadcrumb-item.active,
+.breadcrumb-item a,
+.breadcrumb-item a:hover,
+.breadcrumb-item+.breadcrumb-item::before{
+  color: var(--text-color);
 }

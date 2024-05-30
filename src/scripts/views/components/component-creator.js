@@ -216,8 +216,8 @@ const createLatestPostComponent = () => `
 <div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-primary">
   <img src="./img/post.svg" alt="" class="img-fluid object-fit-cover ">
 <div class="px-3">
-  <h4 class="fw-bold fs-2 py-2 text-darkblue">Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya.</h4>
-  <p>Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya........</p>
+  <h4 class="fw-bold fs-3 py-2 text-darkblue">Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya.</h4>
+  <p class="text-darkblue fs-6">Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia,........</p>
 </div>
 <div class="d-flex align-item-center justify-content-center p-3">
   <a href="#" class="m-2 fw-bold  button-readmore rounded-pill">Read More</a>
@@ -231,13 +231,13 @@ const createLocationComponent = () => `
   <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Our Location</h2>
   <div class="my-4 py-2" data-aos="fade-up">
     <iframe
-    class="rounded shadow p-1 background-color"
-    style="border:3px solid var(--text-color); width: 100%; height: 450px;"
-    loading="lazy"
-    allowfullscreen
-    referrerpolicy="no-referrer-when-downgrade"
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.828534020206!2d107.61540147756932!3d-6.895730942706618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a55a715555%3A0xb8bb411d2516aad6!2sDicoding%20Academy!5e0!3m2!1sid!2sid!4v1716968750724!5m2!1sid!2sid">
-  </iframe>
+      class="rounded shadow p-1 background-color"
+      style="border:3px solid var(--text-color); width: 100%; height: 450px;"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.828534020206!2d107.61540147756932!3d-6.895730942706618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a55a715555%3A0xb8bb411d2516aad6!2sDicoding%20Academy!5e0!3m2!1sid!2sid!4v1716968750724!5m2!1sid!2sid">
+    </iframe>
   </div>
 </div>
 `;
@@ -258,7 +258,24 @@ const createPartnerComponent = () => `
 </div>
 </div>
 `;
-
+const createHeaderBlogsComponent = () => `
+<div class="container position-relative">
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-6 text-center text-white">
+    <h2 class="fs-2 fw-bold text-uppercase my-3 tracking-wider">our Blogs</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima vel id aliquam, aspernatur voluptate culpa mollitia aperiam similique harum doloremque provident illo laboriosam aliquid doloribus dolor cum cupiditate maxime quo ad reprehenderit necessitatibus consequatur at, dicta consectetur. Cum ex veniam ullam alias harum sed nemo reiciendis. Fugiat dolor nemo, quas est mollitia aperiam cupiditate eligendi porro</p>
+  </div>
+</div>
+</div>
+`;
+const createBreadCrumbComponent = () => `
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item fw-bold"><a href="#/homepage">Home</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+</ol>
+</nav>
+`;
 export {
   createHomePageComponent,
   CreateCounterComponent,
@@ -268,4 +285,6 @@ export {
   createLatestPostComponent,
   createLocationComponent,
   createPartnerComponent,
+  createHeaderBlogsComponent,
+  createBreadCrumbComponent,
 };
