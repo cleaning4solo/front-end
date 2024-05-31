@@ -13,12 +13,14 @@ function initializeEventListeners() {
 
       const newRow = `
           <tr>
-            <td class="text-center">${name}</td>
-            <td class="text-center">${weight}</td>
-            <td class="text-center">${type}</td>
-            <td class="text-center">${source}</td>
-            <td class="text-center">${price}</td>
-            <td class="text-center">${emissions}</td>
+            <td class="text-center p-2">${name}</td>
+            <td class="text-center p-2">
+            <input type="text" value="${weight}">
+            </td>
+            <td class="text-center p-2">${type}</td>
+            <td class="text-center p-2">${source}</td>
+            <td class="text-center p-2">${price}</td>
+            <td class="text-center p-2">${emissions}</td>
           </tr>
         `;
 
@@ -41,10 +43,10 @@ function initializeEventListeners() {
 
       const newActivityRow = `
           <tr>
-            <td class="text-center">${activityName}</td>
-            <td class="text-center">${totalJual}</td>
-            <td class="text-center">${totalEmisi}</td>
-            <td class="text-center"><button class="btn btn-success btn-sm">Selengkapnya</button></td>
+            <td class="text-center p-2">${activityName}</td>
+            <td class="text-center p-2">${totalJual}</td>
+            <td class="text-center p-2">${totalEmisi}</td>
+            <td class="text-center p-2"><button class="btn btn-success btn-sm">Selengkapnya</button></td>
           </tr>
         `;
 

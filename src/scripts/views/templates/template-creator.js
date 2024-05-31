@@ -78,11 +78,11 @@ const createVissionMissionComponent = () => `
 `;
 
 const createCalculatorPageComponent = () => `
-<div class="container position-relative">
+<div class="container card custom-card1 p-5">
 <div class="row">
-<div class="col-sm-10">
+<div class="col-sm-8">
 <h2 class="aktivitas-terbaru">Hitung</h2>
-<div class="col-sm-12 card p-3">
+<div class="col-sm-12 card custom-card2 p-3">
 <table class="table-calculator">
 <thead>
 <tr>
@@ -108,7 +108,7 @@ const createCalculatorPageComponent = () => `
 </div>
 <div class="mt-5">
 <h2 class="aktivitas-terbaru">Aktivitas Terbaru</h2>
-<div class="col-sm-12 card mt-3 p-3">
+<div class="col-sm-12 card custom-card2 mt-3 p-3">
 <table class="table-calculator">
 <thead>
 <tr>
@@ -130,8 +130,8 @@ const createCalculatorPageComponent = () => `
 </div>
 </div>
 </div>
-<div class="col-sm-2">
-
+<div class="col-sm-4">
+<img src="img/calculatorman.png" alt="Vision Image" class="img-fluid">
 </div>
 </div>
 

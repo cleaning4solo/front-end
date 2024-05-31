@@ -21,6 +21,8 @@
   --text-pure-white: #fefefe;
   --navbar-bg-color: #fefefe;
   --footer-bg-color: #5bc17f;
+  --custom-card1: #A6DBB7;
+  --custom-card2:#5BC17F;
 }
 
 /* Dark Mode */
@@ -36,6 +38,8 @@ body.dark-mode {
   --text-darkblue: #fefefe;
   --navbar-bg-color: #1f2937;
   --footer-bg-color: #1f2937;
+  --custom-card1: #1f2937;
+  --custom-card2:#111827;
 }
 
 /* Smooth scroll behavior */
@@ -148,7 +152,7 @@ h6 {
 /*--------------------------------------------------------------
   # Desktop Navigation
   --------------------------------------------------------------*/
-@media (min-width: 1280px) {
+@media (min-width: 1200px) {
   .navbar {
     background-color: transparent;
     padding: 0;
@@ -278,7 +282,7 @@ h6 {
   }
 }
 
-@media (min-width: 1280px) and (max-width: 1600px) {
+@media (min-width: 1200px) and (max-width: 1600px) {
   .navbar .dropdown .dropdown ul {
     left: -90%;
   }
@@ -288,7 +292,7 @@ h6 {
   }
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 1200px) {
   .mobile-nav-show,
   .mobile-nav-hide {
     display: none;
@@ -298,7 +302,7 @@ h6 {
 /*--------------------------------------------------------------
   # Mobile Navigation
   --------------------------------------------------------------*/
-@media (max-width: 1279px) {
+@media (max-width: 1199px) {
   .navbar {
     position: fixed;
     top: 0;
@@ -698,6 +702,7 @@ h6 {
   font-weight: 700;
   font-size: 23px;
   line-height: 34px;
+  color: var(--text-color);
 }
 .ellipse {
   width: 50px;
@@ -785,16 +790,23 @@ h6 {
   color: var(--text-color);
 }
 
-.card{
-  background-color: var(--navbar-bg-color);
+.custom-card1{
+  background-color: var(--custom-card1);
+  border: none;
+}
+.custom-card2{
+  background-color: var(--custom-card2);
+  border: none;
 }
 
 .modal-header{
   background-color: var(--navbar-bg-color);
+  color: var(--text-color);
 }
 
 .modal-body {
   background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .table-calculator {
