@@ -812,3 +812,8 @@ h6 {
 .table-calculator {
   color:var(--text-color);
 }
+
+.bigger-img {
+  width: 500px;
+  height: 800px;
+}

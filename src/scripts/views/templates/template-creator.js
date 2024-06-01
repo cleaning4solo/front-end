@@ -95,6 +95,9 @@ const createCalculatorPageComponent = () => `
 </tr>
 </thead>
 <tbody id="waste-table">
+<td class="text-center no-data-message p-3">
+<h5>Tidak ada data</h5>
+</td>
 </tbody>
 </table>
 <div class="row">
@@ -119,12 +122,9 @@ const createCalculatorPageComponent = () => `
 </tr>
 </thead>
 <tbody id="activity-table">
-<tr>
-<td class="text-center">Aktivitas 1</td>
-<td class="text-center">Rp24.000</td>
-<td class="text-center">31.7 kg CO₂</td>
-<td class="text-center"><button class="btn btn-success btn-sm">Selengkapnya</button></td>
-</tr>
+<td class="text-center no-data-message p-3">
+<h5>Tidak ada data</h5>
+</td>
 </tbody>
 </table>
 </div>
