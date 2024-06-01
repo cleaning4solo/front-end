@@ -78,12 +78,17 @@ const createVissionMissionComponent = () => `
 `;
 
 const createCalculatorPageComponent = () => `
-<div class="container card custom-card1 p-5">
+<div class="container section-title aos-init aos-animate" data-aos="fade-up">
+<h1 class="calculator-title text-center">Kalkulator Sampah</h1>
+<p class="text-center">Kalkulator Penghitung Sampah menghitung potensi pendapatan dari penjualan sampah dan estimasi pengurangan emisi karbon dari daur ulang.<br> 
+Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
+</div>
+<div class="container card custom-card1 shadow p-5">
 <div class="row">
-<div class="col-sm-8">
+<div class="col-sm-12">
 <h2 class="aktivitas-terbaru">Hitung</h2>
 <div class="col-sm-12 card custom-card2 p-3">
-<table class="table-calculator">
+<table class="table-calculator table-responsive">
 <thead>
 <tr>
 <th class="text-center">Nama</th>
@@ -95,14 +100,14 @@ const createCalculatorPageComponent = () => `
 </tr>
 </thead>
 <tbody id="waste-table">
-<td class="text-center no-data-message p-3">
+<td colspan="6" class="text-center no-data-message p-3">
 <h5>Tidak ada data</h5>
 </td>
 </tbody>
 </table>
 <div class="row">
 <div class="col-6 text-center">
-<button class="btn btn-primary btn-large" data-toggle="modal" data-target="#addWasteModal">+</button>
+<button class="btn btn1 btn-large" data-toggle="modal" data-target="#addWasteModal">Tambah Data</button>
 </div>
 <div class="col-6 text-center">
 <button class="btn btn-success btn-large" id="submitWasteData">Submit</button>
@@ -122,16 +127,13 @@ const createCalculatorPageComponent = () => `
 </tr>
 </thead>
 <tbody id="activity-table">
-<td class="text-center no-data-message p-3">
+<td colspan="4" class="text-center no-data-message p-3">
 <h5>Tidak ada data</h5>
 </td>
 </tbody>
 </table>
 </div>
 </div>
-</div>
-<div class="col-sm-4">
-<img src="img/calculatorman.png" alt="Vision Image" class="img-fluid">
 </div>
 </div>
 

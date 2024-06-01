@@ -22,7 +22,7 @@
   --navbar-bg-color: #fefefe;
   --footer-bg-color: #5bc17f;
   --custom-card1: #A6DBB7;
-  --custom-card2:#5BC17F;
+  --custom-card2:#EFF9F1;
 }
 
 /* Dark Mode */
@@ -414,7 +414,7 @@ h6 {
 #main-content {
   min-height: 90vh;
 }
-.hero .animation {
+.animation {
   animation: animated-updown 2s ease-in-out infinite alternate-reverse both;
 }
 
@@ -824,6 +824,7 @@ h6 {
 .custom-card1{
   background-color: var(--custom-card1);
   border: none;
+  border-radius: 1rem;
 }
 .custom-card2{
   background-color: var(--custom-card2);
@@ -847,4 +848,18 @@ h6 {
 .bigger-img {
   width: 500px;
   height: 800px;
+}
+
+.calculator-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.btn1{
+  background-color: #5CC280;
+  color: white;
+}
+.btn1:hover{
+  background-color: #00be42;
+  color: white;
 }

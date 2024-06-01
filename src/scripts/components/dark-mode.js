@@ -27,11 +27,20 @@ class DarkModeToggle extends HTMLElement {
                 height: 40px;
             }
 
+            @media (max-width: 1199px) {
             .toggle-button svg {
                 width: 100%;
                 height: 100%;
                 color:var(--text-color);
                 padding: 10px 20px;
+              }
+            }
+            @media (min-width: 1200px) {
+              .toggle-button svg {
+                width: 100%;
+                height: 100%;
+                color:var(--text-color);
+              }
             }
         `;
 

@@ -116,7 +116,7 @@ function initializeEventListeners() {
       // Clear the waste table and insert "No data" message
       if (wasteTable) {
         wasteTable.innerHTML = `
-          <td class="text-center no-data-message p-3">
+          <td colspan="6" class="text-center no-data-message p-3">
             <h5>Tidak ada data</h5>
           </td>
         `;
