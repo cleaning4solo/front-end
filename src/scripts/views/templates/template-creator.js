@@ -208,14 +208,14 @@ const createEventComponent = () => `
 
 const createLatestPostComponent = () => `
 <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-<div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-primary">
+<div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-color">
   <img src="./img/post.svg" alt="" class="img-fluid object-fit-cover ">
 <div class="px-3">
-  <h4 class="fw-bold fs-3 py-2 text-darkblue">Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya.</h4>
-  <p class="text-darkblue fs-6">Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia,........</p>
+  <h4 class="fw-bold fs-3 py-2 text-color">Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya.</h4>
+  <p class="text-color fs-6">Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia,........</p>
 </div>
 <div class="d-flex align-item-center justify-content-center p-3">
-  <a href="#" class="m-2 fw-bold  button-readmore rounded-pill">Read More</a>
+  <a href="#/detail/1" class="m-2 fw-bold  button-readmore rounded-pill">Read More</a>
 </div>
 </div> 
 </div>
@@ -264,13 +264,14 @@ const createHeaderBlogsComponent = () => `
 </div>
 `;
 const createBreadCrumbComponent = () => `
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+<nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
 <ol class="breadcrumb">
   <li class="breadcrumb-item fw-bold"><a href="#/homepage">Home</a></li>
   <li class="breadcrumb-item active" aria-current="page">Blogs</li>
 </ol>
 </nav>
 `;
+
 export {
   createHomePageComponent,
   CreateCounterComponent,

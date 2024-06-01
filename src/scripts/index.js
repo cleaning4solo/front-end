@@ -8,6 +8,7 @@ import App from './views/app';
 import './components/dark-mode';
 import navbarScroled from './components/navbar-scroled';
 import navbarToggle from './components/mobile-nav';
+import createScrollUpButton from './components/scroll-up';
 
 AOS.init({
   duration: 1000,
@@ -19,10 +20,12 @@ const app = new App({
 
 window.addEventListener('hashchange', () => {
   app.renderPage();
+  createScrollUpButton();
 });
 
 window.addEventListener('load', () => {
   app.renderPage();
+  createScrollUpButton();
 });
 
 window.addEventListener('load', () => {
