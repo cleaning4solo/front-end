@@ -43,7 +43,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('dark-mode');
   }
 });
-
-// const glightbox = GLightbox({
-//   selector: ".glightbox",
-// });
