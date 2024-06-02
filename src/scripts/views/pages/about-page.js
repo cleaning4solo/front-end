@@ -1,14 +1,17 @@
-import { createHomePageComponent } from '../templates/template-creator';
+import { createAboutUsComponent } from "../templates/about-us";
+import { galleryIsotope } from "../../components/gallery";
 
 const About = {
   async render() {
     return `
       <section id="hero" class="hero">About Page</section>
-      `;
+    `;
   },
 
   async afterRender() {
-    // code here
+    const mainContainer = document.querySelector(".hero");
+    mainContainer.innerHTML = createAboutUsComponent();
+    galleryIsotope();
   },
 };
 
