@@ -1,4 +1,4 @@
-import {} from "../templates/template-creator";
+import {} from '../templates/template-creator';
 
 const DetailBlog = {
   async render() {
