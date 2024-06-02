@@ -1,4 +1,4 @@
-// import {} from "../components/mobile-nav";
+import {} from "../templates/template-creator";
 
 const DetailBlog = {
   async render() {
