@@ -86,17 +86,17 @@ Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
 <div class="container card custom-card1 shadow p-5">
 <div class="row">
 <div class="col-sm-12">
-<h2 class="aktivitas-terbaru">Hitung</h2>
+<h2 class="aktivitas-terbaru mb-3">Hitung</h2>
 <div class="col-sm-12 card custom-card2 p-3">
 <table class="table-calculator table-responsive">
 <thead>
 <tr>
-<th class="text-center">Nama</th>
-<th class="text-center">Berat</th>
 <th class="text-center">Jenis</th>
+<th class="text-center">Berat</th>
 <th class="text-center">Asal Limbah</th>
 <th class="text-center">Harga</th>
 <th class="text-center">Emisi Karbon</th>
+<th class="text-center">Aksi</th>
 </tr>
 </thead>
 <tbody id="waste-table">
@@ -150,16 +150,12 @@ Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
 <div class="modal-body">
 <form id="addWasteForm">
 <div class="form-group p-2">
-<label for="wasteName">Nama</label>
-<input type="text" class="form-control" id="wasteName" required>
+<label for="wasteType">Jenis</label>
+<input type="text" class="form-control" id="wasteType" required>
 </div>
 <div class="form-group p-2">
 <label for="wasteWeight">Berat</label>
 <input type="text" class="form-control" id="wasteWeight" required>
-</div>
-<div class="form-group p-2">
-<label for="wasteType">Jenis</label>
-<input type="text" class="form-control" id="wasteType" required>
 </div>
 <div class="form-group p-2">
 <label for="wasteSource">Asal Limbah</label>

@@ -9,9 +9,8 @@ function initializeEventListeners() {
       event.preventDefault();
 
       // Extract values from form inputs
-      const name = document.getElementById('wasteName').value;
-      const weight = document.getElementById('wasteWeight').value;
       const type = document.getElementById('wasteType').value;
+      const weight = document.getElementById('wasteWeight').value;
       const price = document.getElementById('wastePrice').value;
       const source = document.getElementById('wasteSource').value;
       const emissions = document.getElementById('wasteEmissions').value;
@@ -19,14 +18,16 @@ function initializeEventListeners() {
       // Construct a new row for the waste table
       const newRow = `
         <tr>
-          <td class="text-center p-2">${name}</td>
+          <td class="text-center p-2">${type}</td>
           <td class="text-center p-2">
             <input type="text" value="${weight}">
           </td>
-          <td class="text-center p-2">${type}</td>
           <td class="text-center p-2">${source}</td>
           <td class="text-center p-2">${price}</td>
           <td class="text-center p-2">${emissions}</td>
+          <td class="text-center p-2 removerow">
+            <button class="btn btn-danger">Remove</button>
+          </td>
         </tr>
       `;
 
@@ -50,6 +51,13 @@ function initializeEventListeners() {
 
       // Enable the submit button
       submitButton.disabled = false;
+    }
+  });
+
+  // Event delegation for remove row buttons
+  document.addEventListener('click', (event) => {
+    if (event.target && event.target.classList.contains('btn-danger')) {
+      removeRow(event.target);
     }
   });
 
@@ -94,9 +102,9 @@ function initializeEventListeners() {
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="bigModalLabel">Activity Details</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                  <span class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 1; right: 0; padding: 0.5rem; cursor: pointer;">
+                  <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+                  </span>
                 </div>
                 <div class="modal-body">
                   <!-- Content will go here -->
@@ -143,6 +151,24 @@ function initializeEventListeners() {
       // Here you can populate the modal with the details of the activity
     }
   });
+
+  // Define the removeRow function
+  function removeRow(button) {
+    // Get the row containing the button
+    const row = button.closest('tr');
+    // Remove the row from the table
+    row.parentNode.removeChild(row);
+
+    // Check if the waste table is empty
+    const wasteTable = document.getElementById('waste-table');
+    if (wasteTable && wasteTable.rows.length === 1) {
+      wasteTable.innerHTML = `
+        <td colspan="6" class="text-center no-data-message p-3">
+          <h5>Tidak ada data</h5>
+        </td>
+      `;
+    }
+  }
 }
 
 export { initializeEventListeners };

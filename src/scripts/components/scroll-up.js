@@ -3,7 +3,7 @@ import UrlParser from '../routes/url-parser';
 const createScrollUpButton = () => {
   const scrollUpButton = document.getElementById('scrollUpButton');
 
-  window.onscroll = function () {
+  window.onscroll = function scroll() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       scrollUpButton.classList.add('active');
     } else {
