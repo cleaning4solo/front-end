@@ -789,7 +789,7 @@ h6 {
   color: var(--text-color);
 }
 
-.scroll-top {
+/* .scroll-top {
   position: fixed;
   visibility: hidden;
   opacity: 0;
@@ -818,7 +818,7 @@ h6 {
   visibility: visible;
   opacity: 1;
   bottom: 15px;
-}
+} */
 
 .custom-card1 {
   background-color: var(--custom-card1);
@@ -1000,14 +1000,6 @@ h6 {
   font-size: 24px;
   color: #fff;
   line-height: 0;
-}
-
-.scroll-top:hover {
-  background: #ffffff;
-}
-
-.scroll-top i:hover {
-  color: #000000;
 }
 
 .scroll-top.active {
