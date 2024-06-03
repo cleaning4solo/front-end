@@ -204,18 +204,18 @@ const createEventComponent = () => `
 </div>
 `;
 
-const createLatestPostComponent = () => `
+const createLatestPostComponent = (blog) => `
 <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-<div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-color">
-  <img src="./img/post.svg" alt="" class="img-fluid object-fit-cover ">
-<div class="px-3">
-  <h4 class="fw-bold fs-3 py-2 text-color">Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya.</h4>
-  <p class="text-color fs-6">Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia,........</p>
-</div>
-<div class="d-flex align-item-center justify-content-center p-3">
-  <a href="#/detail/1" class="m-2 fw-bold  button-readmore rounded-pill">Read More</a>
-</div>
-</div> 
+  <div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-color">
+    <img src="${blog.image}" alt="" class="img-fluid object-fit-cover ">
+    <div class="px-3">
+      <h4 class="fw-bold fs-3 py-2 text-color">${blog.title}</h4>
+      <p class="text-color fs-6">${blog.description.length > 100 ? `${blog.description.slice(0, 100)}...` : blog.description}</p>
+    </div>
+    <div class="d-flex align-item-center justify-content-center p-3">
+      <a href="#/detail/1" class="m-2 fw-bold button-readmore rounded-pill">Read More</a>
+    </div>
+  </div> 
 </div>
 `;
 

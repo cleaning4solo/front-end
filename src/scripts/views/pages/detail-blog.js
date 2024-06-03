@@ -3,7 +3,7 @@ import {} from '../templates/template-creator';
 const DetailBlog = {
   async render() {
     return `
-      <section id="hero" class="hero">DetailBlog Page</section>
+      <section id="hero" class="hero">Detail Blog Page</section>
       `;
   },
 
