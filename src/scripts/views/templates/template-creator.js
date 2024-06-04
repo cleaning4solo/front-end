@@ -181,23 +181,23 @@ Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
 </div>
 `;
 
-const createEventComponent = () => `
+const createEventComponent = (events) => `
 <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
 
 <div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color">
 
-  <img src="./img/events.svg" alt="" class="img-fluid object-fit-cover ">
+  <img src="${events.image}" alt="${events.name}" class="img-fluid object-fit-cover ">
 
 <div class="d-flex justify-content-between my-2 px-3">
-  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>Paris, France</p>
-  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>24 may 2002</p>
+  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>${events.location}</p>
+  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>${events.date}</p>
 </div>
 <div class="px-3">
-  <h4>Lorem Ipsum</a></h4>
-  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+  <h4>${events.name}</a></h4>
+  <p>${events.description.length > 100 ? `${events.description.slice(0, 100)}...` : events.description}</p>
 </div>
-<div class="d-flex align-item-center justify-content-end p-3">
-  <a href="#" class="m-2 fw-bold px-4 button btn btn-success rounded-pill">Join Volunteer</a>
+<div class="mt-auto d-flex align-items-end justify-content-end p-3">
+<a href="#" class="m-2 fw-bold px-4 button btn btn-success rounded-pill">Join Volunteer</a>
 </div>
 </div>
 
@@ -213,7 +213,7 @@ const createLatestPostComponent = (blog) => `
       <p class="text-color fs-6">${blog.description.length > 100 ? `${blog.description.slice(0, 100)}...` : blog.description}</p>
     </div>
     <div class="d-flex align-item-center justify-content-center p-3">
-      <a href="#/detail/1" class="m-2 fw-bold button-readmore rounded-pill">Read More</a>
+      <a href="#/detail/${blog._id}" class="m-2 fw-bold button-readmore rounded-pill">Read More</a>
     </div>
   </div> 
 </div>
@@ -261,6 +261,24 @@ const createHeaderBlogsComponent = () => `
 </div>
 </div>
 `;
+
+const createHeaderBlogsDetailComponent = (blogs) => `
+<div class="container position-relative">
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-6 text-center text-white">
+    <h2 class="fs-2 fw-bold text-capitalize my-3">${blogs.title}</h2>
+  </div>
+</div>
+</div>
+`;
+const createBodyBlogDetailComponent = (blogs) => `
+<div class="img-container d-flex align-items-center justify-content-center">
+<img src="${blogs.image}" alt="" class="img-fluid rounded">
+</div>
+<div class="content-detail-blog mt-5 m-auto card bg-color text-color shadow p-3 rounded">
+<p class="fs-5 lh-lg ">${blogs.description}</p>
+</div>
+`;
 const createBreadCrumbComponent = () => `
 <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
 <ol class="breadcrumb">
@@ -281,4 +299,6 @@ export {
   createPartnerComponent,
   createHeaderBlogsComponent,
   createBreadCrumbComponent,
+  createBodyBlogDetailComponent,
+  createHeaderBlogsDetailComponent,
 };

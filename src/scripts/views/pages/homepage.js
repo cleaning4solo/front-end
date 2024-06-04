@@ -34,8 +34,10 @@ const Homepage = {
   },
 
   async afterRender() {
-    const data = await Cleaning4SoloAPI.blogAPI();
-    const { blogs } = data;
+    const blogData = await Cleaning4SoloAPI.blogAPI();
+    const eventData = await Cleaning4SoloAPI.eventAPI();
+    const { blogs } = blogData;
+    const { events } = eventData;
     const mainContainer = document.querySelector('.hero');
     const counterContainer = document.querySelector('.stats-counter');
     const vissionContainer = document.querySelector('.vission');
@@ -49,9 +51,7 @@ const Homepage = {
     vissionContainer.innerHTML = createVissionMissionComponent();
     locationContainer.innerHTML = createLocationComponent();
     partnersContainer.innerHTML = createPartnerComponent();
-    for (let i = 0; i < 3; i++) {
-      eventContainer.innerHTML += createEventComponent();
-    }
+
     if (blogs.length === 0) {
       latestPostContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada postingan</p>';
     } else {
@@ -60,6 +60,14 @@ const Homepage = {
       const latestBlogs = blogs.slice(0, 3);
       latestBlogs.forEach((post) => {
         latestPostContainer.innerHTML += createLatestPostComponent(post);
+      });
+    }
+
+    if (events.length === 0) {
+      eventContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada acara</p>';
+    } else {
+      events.forEach((event) => {
+        eventContainer.innerHTML += createEventComponent(event);
       });
     }
 

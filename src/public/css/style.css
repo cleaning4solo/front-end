@@ -1505,3 +1505,17 @@ h6 {
   font-size: 18px;
   margin: 0 2px;
 }
+
+
+/* detail blogs */
+.img-container{
+  margin-top: -15vh;
+}
+.img-container img{
+  min-width: 90%;
+  max-height: 70vh;
+  object-fit: cover;
+}
+.content-detail-blog p {
+  text-align: justify;
+}
