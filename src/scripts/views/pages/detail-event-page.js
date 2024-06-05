@@ -2,7 +2,7 @@ import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
 import UrlParser from '../../routes/url-parser';
 import { createDetailEventComponent } from '../templates/template-creator';
 
-const Events = {
+const EventDetail = {
   async render() {
     return `
     <section id="detail-event" class="detail-event"></section>
@@ -21,4 +21,4 @@ const Events = {
   },
 };
 
-export default Events;
+export default EventDetail;

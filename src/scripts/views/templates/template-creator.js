@@ -1,3 +1,5 @@
+import { formatDate, formatShortDate } from '../../components/date-formater';
+
 const createHomePageComponent = () => `
 
 <div class="container position-relative">
@@ -191,7 +193,7 @@ const createEventComponent = (events) => `
 
 <div class="d-flex justify-content-between my-2 px-3">
   <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>${events.location.length > 12 ? `${events.location.slice(0, 12)}...` : events.location}</p>
-  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>${events.date}</p>
+  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>${formatShortDate(events.date)}</p>
 </div>
 <div class="px-3">
   <h4>${events.name.length > 40 ? `${events.name.slice(0, 40)}...` : events.name}</a></h4>
@@ -256,39 +258,49 @@ const createPartnerComponent = () => `
 </div>
 </div>
 `;
-const createHeaderBlogsComponent = () => `
-<div class="container position-relative">
-<div class="row d-flex justify-content-center">
-  <div class="col-lg-6 text-center text-white">
-    <h2 class="fs-2 fw-bold text-uppercase my-3 tracking-wider">our Blogs</h2>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima vel id aliquam, aspernatur voluptate culpa mollitia aperiam similique harum doloremque provident illo laboriosam aliquid doloribus dolor cum cupiditate maxime quo ad reprehenderit necessitatibus consequatur at, dicta consectetur. Cum ex veniam ullam alias harum sed nemo reiciendis. Fugiat dolor nemo, quas est mollitia aperiam cupiditate eligendi porro</p>
+const createJumbotronComponent = (jumbotron) => `
+<div class="jumbotron d-flex align-items-center mb-5" style="background-image: url('${jumbotron.image}'); background-repeat: no-repeat; background-size: cover; min-height: 50vh;">
+  <div class="container position-relative">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-6 text-center text-white">
+        <h2 class="fs-2 fw-bold text-uppercase my-3 tracking-wider">${jumbotron.title}</h2>
+        <p>${jumbotron.description}</p>
+      </div>
+    </div>
   </div>
-</div>
 </div>
 `;
 
 const createHeaderBlogsDetailComponent = (blogs) => `
 <div class="container position-relative">
-<div class="row d-flex justify-content-center">
-  <div class="col-lg-6 text-center">
-    <h2 class="fs-2 fw-bold text-capitalize my-3 text-color">${blogs.title}</h2>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6 text-center">
+      <h2 class="fs-2 fw-bold text-capitalize my-3 text-color">${blogs.title}</h2>
+    </div>
   </div>
 </div>
-</div>
 `;
+
 const createBodyBlogDetailComponent = (blogs) => `
 <div class="img-container d-flex align-items-center justify-content-center">
-<img src="${blogs.image}" alt="" class="img-fluid rounded">
+  <img src="${blogs.image}" alt="${blogs.title}" class="img-fluid rounded">
 </div>
-<div class="content-detail-blog mt-5 m-auto card bg-color text-color shadow p-3 rounded">
-<p class="fs-5 lh-lg ">${blogs.description}</p>
+<div class="d-flex justify-content-center my-5 gap-3 font-color fs-6">
+<p class="mb-0"><span class="fw-bold">Created at:</span> ${formatShortDate(blogs.createdAt)}</p>
+<p class="mb-0">-</p>
+<p class="mb-0"><span class="fw-bold">Updated at:</span> ${formatShortDate(blogs.updatedAt)}</p>
+</div>
+<div class="content-detail-blog m-auto card bg-color text-color shadow p-3 rounded">
+  <p class="fs-5 lh-lg">${blogs.description}</p>
 </div>
 `;
-const createBreadCrumbComponent = () => `
+
+const createBreadCrumbComponent = (url) => `
+
 <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
 <ol class="breadcrumb">
   <li class="breadcrumb-item fw-bold"><a href="#/homepage">Home</a></li>
-  <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+  <li class="breadcrumb-item active" aria-current="page">${url}</li>
 </ol>
 </nav>
 `;
@@ -333,7 +345,7 @@ export {
   createLatestPostComponent,
   createLocationComponent,
   createPartnerComponent,
-  createHeaderBlogsComponent,
+  createJumbotronComponent,
   createBreadCrumbComponent,
   createBodyBlogDetailComponent,
   createHeaderBlogsDetailComponent,
