@@ -7,7 +7,7 @@ const createHomePageComponent = () => `
       <p>Menjadi wadah generasi muda yang memiliki wawasan dan kepedulian terhadap kelestarian lingkungan di wilayah Karesidenan Surakarta.</p>
       <div class="d-flex justify-content-center justify-content-lg-start button-wrapper">
         <a href="#/about" class="btn-get-started d-flex align-items-center justify-content-center">Tentang Kami</a>
-        <a href="#/calculator" class="btn-watch-video d-flex align-items-center justify-content-center"><i class="bi bi-calculator"></i><span>Kalkulator Sampah</span></a>
+        <a href="#/calculator" class="btn-calculator d-flex align-items-center justify-content-center"><i class="bi bi-calculator"></i><span>Kalkulator Sampah</span></a>
       </div>
     </div>
     <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center">
@@ -32,7 +32,7 @@ const CreateCounterComponent = () => `
 
     <div class="col-12 col-md-6 col-lg-2 py-1 text-center d-flex flex-column">
       <div class="d-flex justify-content-center">
-        <span data-purecounter-start="0" data-purecounter-end="23000" data-purecounter-duration="1" class="purecounter fs-2"></span>
+        <span data-purecounter-start="0" data-purecounter-end="90002323" data-purecounter-duration="1" class="purecounter fs-2"></span>
         <p class="fs-6">KG</p>
       </div>
       <p>Limbah</p>
@@ -185,19 +185,21 @@ const createEventComponent = (events) => `
 <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
 
 <div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color">
-
-  <img src="${events.image}" alt="${events.name}" class="img-fluid object-fit-cover ">
+<div class="image-height-wrapper">
+<img src="${events.image}" alt="${events.name}" class="img-fluid image-height">
+</div>
 
 <div class="d-flex justify-content-between my-2 px-3">
-  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>${events.location}</p>
+  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>${events.location.length > 12 ? `${events.location.slice(0, 12)}...` : events.location}</p>
   <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>${events.date}</p>
 </div>
 <div class="px-3">
-  <h4>${events.name}</a></h4>
-  <p>${events.description.length > 100 ? `${events.description.slice(0, 100)}...` : events.description}</p>
+  <h4>${events.name.length > 40 ? `${events.name.slice(0, 40)}...` : events.name}</a></h4>
+  <p>${events.description.length > 70 ? `${events.description.slice(0, 70)}...` : events.description}</p>
 </div>
-<div class="mt-auto d-flex align-items-end justify-content-end p-3">
-<a href="#" class="m-2 fw-bold px-4 button btn btn-success rounded-pill">Join Volunteer</a>
+<div class="mt-auto d-flex align-items-end justify-content-between p-3">
+  <a href="#/event/${events._id}" class="m-2 button btn btn-outline-green px-3 text-color rounded-pill fw-bold">Detail</a>
+  <a href="#" class="m-2 fw-bold button btn btn-green rounded-pill px-3">Join Volunteer</a>
 </div>
 </div>
 
@@ -206,17 +208,20 @@ const createEventComponent = (events) => `
 
 const createLatestPostComponent = (blog) => `
 <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-  <div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-color">
-    <img src="${blog.image}" alt="" class="img-fluid object-fit-cover ">
-    <div class="px-3">
+  <div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-color d-flex flex-column">
+    <div class="image-height-wrapper">
+     <img src="${blog.image}" alt="" class="img-fluid image-height">
+    </div>
+    <div class="px-3 flex-grow-1">
       <h4 class="fw-bold fs-3 py-2 text-color">${blog.title}</h4>
       <p class="text-color fs-6">${blog.description.length > 100 ? `${blog.description.slice(0, 100)}...` : blog.description}</p>
     </div>
-    <div class="d-flex align-item-center justify-content-center p-3">
+    <div class="mt-auto d-flex align-items-end justify-content-center p-3">
       <a href="#/detail/${blog._id}" class="m-2 fw-bold button-readmore rounded-pill">Read More</a>
     </div>
   </div> 
 </div>
+
 `;
 
 const createLocationComponent = () => `
@@ -265,8 +270,8 @@ const createHeaderBlogsComponent = () => `
 const createHeaderBlogsDetailComponent = (blogs) => `
 <div class="container position-relative">
 <div class="row d-flex justify-content-center">
-  <div class="col-lg-6 text-center text-white">
-    <h2 class="fs-2 fw-bold text-capitalize my-3">${blogs.title}</h2>
+  <div class="col-lg-6 text-center">
+    <h2 class="fs-2 fw-bold text-capitalize my-3 text-color">${blogs.title}</h2>
   </div>
 </div>
 </div>
@@ -288,6 +293,37 @@ const createBreadCrumbComponent = () => `
 </nav>
 `;
 
+const createDetailEventComponent = (events) => `
+<div class="container my-5" data-aos="fade-up">
+<div class="section-header">
+  <h2>${events.name}</h2>
+  <p class="text-color">${events.description}</p>
+  <div class="position-relative mt-4">
+    <img src="${events.image}" class="img-fluid rounded-4 custom-img-event" alt="${events.name}" />
+  </div>
+</div>
+<div class="row gy-4">
+  <div class="col-lg-8">
+    <iframe
+    class="rounded shadow p-1 background-color"
+    style="border:3px solid var(--text-color); width: 100%; height: 450px;"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="${events.mapUrl}">
+    </iframe>
+  </div>
+  <div class="col-lg-4">
+    <div class="content ps-0 ps-lg-5 gap-3">
+      <p class="d-flex fs-4 flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>${events.location}</p>
+      <p class="d-flex fs-4 flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>${events.date}</p>
+      <a href="#" class="my-3 fw-bold button btn btn-green rounded-pill p-3 px-5 w-100">Join Volunteer</a>
+    </div>
+  </div>
+</div>
+</div>
+`;
+
 export {
   createHomePageComponent,
   CreateCounterComponent,
@@ -301,4 +337,5 @@ export {
   createBreadCrumbComponent,
   createBodyBlogDetailComponent,
   createHeaderBlogsDetailComponent,
+  createDetailEventComponent,
 };

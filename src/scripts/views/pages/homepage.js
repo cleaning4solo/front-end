@@ -66,6 +66,7 @@ const Homepage = {
     if (events.length === 0) {
       eventContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada acara</p>';
     } else {
+      events.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       events.forEach((event) => {
         eventContainer.innerHTML += createEventComponent(event);
       });
