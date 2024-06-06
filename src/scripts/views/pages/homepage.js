@@ -52,6 +52,9 @@ const Homepage = {
     locationContainer.innerHTML = createLocationComponent();
     partnersContainer.innerHTML = createPartnerComponent();
 
+    latestPostContainer.innerHTML = '';
+    eventContainer.innerHTML = '';
+
     if (blogs.length === 0) {
       latestPostContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada postingan</p>';
     } else {

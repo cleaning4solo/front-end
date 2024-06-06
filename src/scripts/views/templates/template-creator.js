@@ -272,7 +272,7 @@ const createJumbotronComponent = (jumbotron) => `
 `;
 
 const createHeaderBlogsDetailComponent = (blogs) => `
-<div class="container position-relative">
+<div class="container position-relative" data-aos="fade-up">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6 text-center">
       <h2 class="fs-2 fw-bold text-capitalize my-3 text-color">${blogs.title}</h2>
@@ -282,7 +282,7 @@ const createHeaderBlogsDetailComponent = (blogs) => `
 `;
 
 const createBodyBlogDetailComponent = (blogs) => `
-<div class="img-container d-flex align-items-center justify-content-center">
+<div class="img-container d-flex align-items-center justify-content-center" data-aos="fade-up">
   <img src="${blogs.image}" alt="${blogs.title}" class="img-fluid rounded">
 </div>
 <div class="d-flex justify-content-center my-5 gap-3 font-color fs-6">
@@ -306,15 +306,15 @@ const createBreadCrumbComponent = (url) => `
 `;
 
 const createDetailEventComponent = (events) => `
-<div class="container my-5" data-aos="fade-up">
-<div class="section-header">
+<div class="container my-5">
+<div class="section-header" data-aos="fade-up">
   <h2>${events.name}</h2>
   <p class="text-color">${events.description}</p>
   <div class="position-relative mt-4">
     <img src="${events.image}" class="img-fluid rounded-4 custom-img-event" alt="${events.name}" />
   </div>
 </div>
-<div class="row gy-4">
+<div class="row gy-4" data-aos="fade-up">
   <div class="col-lg-8">
     <iframe
     class="rounded shadow p-1 background-color"

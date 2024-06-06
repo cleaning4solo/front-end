@@ -22,9 +22,12 @@ const createScrollUpButton = () => {
 
   scrollUpButton.addEventListener('click', (event) => {
     event.preventDefault();
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    window.location.hash = combinedUrl;
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    // Use history.replaceState to update the URL without reloading the page
+    history.replaceState(null, '', combinedUrl);
   });
 };
 

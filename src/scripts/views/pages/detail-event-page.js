@@ -15,9 +15,6 @@ const EventDetail = {
     const events = await Cleaning4SoloAPI.getDetailEvent(url.id);
     const eventContainer = document.querySelector('.detail-event');
     eventContainer.innerHTML = createDetailEventComponent(events.data);
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 0);
   },
 };
 
