@@ -43,6 +43,10 @@ const Blog = {
     const breadcrumbContainer = document.querySelector('.breadcrumb');
     const postContainer = document.querySelector('.posts-list');
 
+    jumbotronContainer.innerHTML = '';
+    breadcrumbContainer.innerHTML = '';
+    postContainer.innerHTML = '';
+
     jumbotronContainer.innerHTML = createJumbotronComponent(jumbotronData.blogsJumbotron);
     breadcrumbContainer.innerHTML = createBreadCrumbComponent(url);
 

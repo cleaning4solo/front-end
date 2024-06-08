@@ -19,11 +19,6 @@ const DetailBlog = {
 
     headerContainer.innerHTML = createHeaderBlogsDetailComponent(blogs.data);
     bodyContainer.innerHTML = createBodyBlogDetailComponent(blogs.data);
-
-    // Ensure scroll position is at the top after content is rendered
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 0);
   },
 };
 

@@ -38,6 +38,8 @@ const Homepage = {
     const eventData = await Cleaning4SoloAPI.eventAPI();
     const { blogs } = blogData;
     const { events } = eventData;
+    console.log(blogs);
+    console.log(events);
     const mainContainer = document.querySelector('.hero');
     const counterContainer = document.querySelector('.stats-counter');
     const vissionContainer = document.querySelector('.vission');
@@ -51,6 +53,9 @@ const Homepage = {
     vissionContainer.innerHTML = createVissionMissionComponent();
     locationContainer.innerHTML = createLocationComponent();
     partnersContainer.innerHTML = createPartnerComponent();
+
+    latestPostContainer.innerHTML = '';
+    eventContainer.innerHTML = '';
 
     if (blogs.length === 0) {
       latestPostContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada postingan</p>';

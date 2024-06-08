@@ -45,6 +45,10 @@ const Event = {
     const breadcrumbContainer = document.querySelector('.breadcrumb');
     const eventContainer = document.querySelector('.posts-list');
 
+    jumbotronContainer.innerHTML = '';
+    breadcrumbContainer.innerHTML = '';
+    eventContainer.innerHTML = '';
+
     jumbotronContainer.innerHTML = createJumbotronComponent(jumbotronData.eventJumbotron);
     breadcrumbContainer.innerHTML = createBreadCrumbComponent(url);
 

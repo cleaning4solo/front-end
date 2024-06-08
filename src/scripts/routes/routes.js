@@ -5,9 +5,11 @@ import Blog from '../views/pages/blogs-page';
 import DetailBlog from '../views/pages/detail-blog';
 import EventDetail from '../views/pages/detail-event-page';
 import Event from '../views/pages/event-page';
+import Login from '../views/pages/login-page';
 
 const routes = {
   '/': Homepage,
+  '/login': Login,
   '/homepage': Homepage,
   '/about': About,
   '/calculator': Calculator,

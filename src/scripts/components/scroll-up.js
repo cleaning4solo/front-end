@@ -3,13 +3,16 @@ import UrlParser from '../routes/url-parser';
 const createScrollUpButton = () => {
   const scrollUpButton = document.getElementById('scrollUpButton');
 
-  window.onscroll = function scroll() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  const handleScroll = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTop > 20) {
       scrollUpButton.classList.add('active');
     } else {
       scrollUpButton.classList.remove('active');
     }
   };
+
+  window.addEventListener('scroll', handleScroll);
 
   const currentUrlObject = UrlParser.parseActiveUrlWithoutCombiner();
   const resource = currentUrlObject.resource ? `/${currentUrlObject.resource}` : '/';
@@ -17,15 +20,19 @@ const createScrollUpButton = () => {
   const verb = currentUrlObject.verb ? `/${currentUrlObject.verb}` : '';
   const combinedUrl = `${resource}${id}${verb}`;
 
-  console.log(`Updating scroll button href to: ${combinedUrl}`);
+  console.log(`Updating scroll button href to: #${combinedUrl}`);
   scrollUpButton.setAttribute('href', `#${combinedUrl}`);
 
   scrollUpButton.addEventListener('click', (event) => {
     event.preventDefault();
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    window.location.hash = combinedUrl;
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    history.replaceState(null, '', `#${combinedUrl}`);
   });
+
+  handleScroll();
 };
 
 export default createScrollUpButton;

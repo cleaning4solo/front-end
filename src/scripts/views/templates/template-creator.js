@@ -272,7 +272,7 @@ const createJumbotronComponent = (jumbotron) => `
 `;
 
 const createHeaderBlogsDetailComponent = (blogs) => `
-<div class="container position-relative">
+<div class="container position-relative" data-aos="fade-up">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6 text-center">
       <h2 class="fs-2 fw-bold text-capitalize my-3 text-color">${blogs.title}</h2>
@@ -282,7 +282,7 @@ const createHeaderBlogsDetailComponent = (blogs) => `
 `;
 
 const createBodyBlogDetailComponent = (blogs) => `
-<div class="img-container d-flex align-items-center justify-content-center">
+<div class="img-container d-flex align-items-center justify-content-center" data-aos="fade-up">
   <img src="${blogs.image}" alt="${blogs.title}" class="img-fluid rounded">
 </div>
 <div class="d-flex justify-content-center my-5 gap-3 font-color fs-6">
@@ -306,15 +306,15 @@ const createBreadCrumbComponent = (url) => `
 `;
 
 const createDetailEventComponent = (events) => `
-<div class="container my-5" data-aos="fade-up">
-<div class="section-header">
+<div class="container my-5">
+<div class="section-header" data-aos="fade-up">
   <h2>${events.name}</h2>
   <p class="text-color">${events.description}</p>
   <div class="position-relative mt-4">
     <img src="${events.image}" class="img-fluid rounded-4 custom-img-event" alt="${events.name}" />
   </div>
 </div>
-<div class="row gy-4">
+<div class="row gy-4" data-aos="fade-up">
   <div class="col-lg-8">
     <iframe
     class="rounded shadow p-1 background-color"
@@ -336,6 +336,62 @@ const createDetailEventComponent = (events) => `
 </div>
 `;
 
+const loginFormTemplate = () => `
+<div class="login-container" id="login-container">
+<div class="form-container sign-in-container">
+    <form action="#" class="form">
+        <h1 class="title">Sign In</h1>
+        <div class="social-container">
+            <a href="#" class="icon"><i class='bx bxl-facebook'></i></a>
+            <a href="#" class="icon"><i class='bx bxl-google'></i></a>
+            <a href="#" class="icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="#" class="icon"><i class='bx bxl-github'></i></a>
+        </div>
+        <span class="description">or use your email for registration</span>
+        <input type="email" placeholder="Email" class="input-field" id="login-email-input" required/>
+        <input type="password" placeholder="Password" class="input-field" id="login-password-input" required/>
+        <p class="confirmation-text text-danger text-center"></p>
+        <button class="btn-login sign-in">Sign In</button>
+    </form>
+</div>
+  `;
+
+const signupFormTemplate = () => `
+<div class="form-container sign-up-container">
+<form action="#" class="form">
+    <h1 class="title">Create Account</h1>
+    <div class="social-container">
+        <a href="#" class="icon"><i class='bx bxl-facebook'></i></a>
+        <a href="#" class="icon"><i class='bx bxl-google'></i></a>
+        <a href="#" class="icon"><i class='bx bxl-linkedin'></i></a>
+        <a href="#" class="icon"><i class='bx bxl-github'></i></a>
+    </div>
+    <span class="description">or use your email for registration</span>
+    <input type="text" placeholder="Username" class="input-field" id="signin-username-input"/>
+    <input type="email" placeholder="Email" class="input-field" id="signin-email-input"/>
+    <input type="password" placeholder="Password" class="input-field" id="signin-password-input"/>
+    <button class="btn-login sign-up">Sign Up</button>
+</form>
+</div>
+  `;
+
+const overlayTemplate = () => `
+<div class="overlay-container">
+<div class="overlay">
+    <div class="overlay-panel overlay-left">
+        <h1 class="title">Welcome Back!</h1>
+        <p class="description">To keep connected with us please login with your personal info</p>
+        <button class="btn-login ghost" id="signIn-overlay">Sign In</button>
+    </div>
+    <div class="overlay-panel overlay-right">
+        <h1 class="title">Hello, Friend!</h1>
+        <p class="description">Enter your personal details and start journey with us</p>
+        <button class="btn-login ghost" id="signUp-overlay">Sign Up</button>
+    </div>
+</div>
+</div>
+  `;
+
 export {
   createHomePageComponent,
   CreateCounterComponent,
@@ -350,4 +406,7 @@ export {
   createBodyBlogDetailComponent,
   createHeaderBlogsDetailComponent,
   createDetailEventComponent,
+  loginFormTemplate,
+  signupFormTemplate,
+  overlayTemplate,
 };
