@@ -11,13 +11,20 @@ const createScrollUpButton = () => {
     }
   };
 
-  const currentUrl = UrlParser.parseActiveUrlWithCombiner();
-  scrollUpButton.setAttribute('href', `#${currentUrl}`);
+  const currentUrlObject = UrlParser.parseActiveUrlWithoutCombiner();
+  const resource = currentUrlObject.resource ? `/${currentUrlObject.resource}` : '/';
+  const id = currentUrlObject.id ? `/${currentUrlObject.id}` : '';
+  const verb = currentUrlObject.verb ? `/${currentUrlObject.verb}` : '';
+  const combinedUrl = `${resource}${id}${verb}`;
+
+  console.log(`Updating scroll button href to: ${combinedUrl}`);
+  scrollUpButton.setAttribute('href', `#${combinedUrl}`);
+
   scrollUpButton.addEventListener('click', (event) => {
     event.preventDefault();
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-    window.location.hash = currentUrl;
+    window.location.hash = combinedUrl;
   });
 };
 
