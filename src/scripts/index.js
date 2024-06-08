@@ -9,6 +9,7 @@ import './components/dark-mode';
 import navbarScroled from './components/navbar-scroled';
 import navbarToggle from './components/mobile-nav';
 import createScrollUpButton from './components/scroll-up';
+import updateLoginSection from './components/login';
 
 AOS.init({
   duration: 1000,
@@ -36,6 +37,7 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  updateLoginSection();
   navbarScroled();
   navbarToggle();
   const storedMode = localStorage.getItem('darkMode');

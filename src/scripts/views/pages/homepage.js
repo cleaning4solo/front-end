@@ -38,6 +38,8 @@ const Homepage = {
     const eventData = await Cleaning4SoloAPI.eventAPI();
     const { blogs } = blogData;
     const { events } = eventData;
+    console.log(blogs);
+    console.log(events);
     const mainContainer = document.querySelector('.hero');
     const counterContainer = document.querySelector('.stats-counter');
     const vissionContainer = document.querySelector('.vission');
