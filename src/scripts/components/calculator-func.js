@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 
 async function fetchWastes() {
   try {
-    const response = await fetch('/api/wastes');
+    const response = await fetch('/wastes');
     const result = await response.json();
     if (response.ok) {
       const { wastes } = result;
@@ -17,7 +17,7 @@ async function fetchWastes() {
 
 async function addWaste(waste) {
   try {
-    const response = await fetch('/api/wastes', {
+    const response = await fetch('/wastes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ async function addWaste(waste) {
 
 async function deleteWaste(id) {
   try {
-    const response = await fetch(`/api/wastes/${id}`, {
+    const response = await fetch(`/wastes/${id}`, {
       method: 'DELETE',
     });
     const result = await response.json();
@@ -96,7 +96,7 @@ function addWasteToTable(waste) {
 
 async function submitAllWastes() {
   try {
-    const response = await fetch('/api/wastes/submit', {
+    const response = await fetch('/wastes/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
