@@ -31,8 +31,6 @@ const Login = {
     const signInEmailInput = document.getElementById('signin-email-input');
     const signInPasswordInput = document.getElementById('signin-password-input');
 
-    const confirmationText = document.querySelector('.confirmation-text');
-
     if (header) header.style.display = 'none';
     if (footer) footer.style.display = 'none';
 
@@ -63,19 +61,17 @@ const Login = {
       event.preventDefault();
       try {
         const data = await Cleaning4SoloAPI.login(loginEmailInput.value, loginPasswordInput.value);
-        console.log(data);
         localStorage.setItem('token', data.token);
         updateLoginSection();
         showSuccessAlert(data.message);
         setTimeout(() => {
           window.location.hash = '#/homepage';
-        }, 1000);
+        }, 2000);
       } catch (err) {
         showErrorAlert(err.message);
       }
     });
 
-    // Menambahkan event listener untuk hashchange atau popstate
     window.addEventListener('hashchange', () => {
       if (window.location.hash !== '#/login') {
         if (header) header.style.display = '';

@@ -201,7 +201,8 @@ const createEventComponent = (events) => `
 </div>
 <div class="mt-auto d-flex align-items-end justify-content-between p-3">
   <a href="#/event/${events._id}" class="m-2 button btn btn-outline-green px-3 text-color rounded-pill fw-bold">Detail</a>
-  <a href="#" class="m-2 fw-bold button btn btn-green rounded-pill px-3">Join Volunteer</a>
+  <button class="btn-join-event m-2 fw-bold button btn btn-green rounded-pill px-3" data-event-id="${events._id}">Join Volunteer</button>
+  <button class="btn-delete-event m-2 fw-bold button btn btn-danger rounded-pill px-3" data-event-id="${events._id}" style="display:none;">Remove</button>
 </div>
 </div>
 
@@ -329,7 +330,6 @@ const createDetailEventComponent = (events) => `
     <div class="content ps-0 ps-lg-5 gap-3">
       <p class="d-flex fs-4 flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>${events.location}</p>
       <p class="d-flex fs-4 flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>${events.date}</p>
-      <a href="#" class="my-3 fw-bold button btn btn-green rounded-pill p-3 px-5 w-100">Join Volunteer</a>
     </div>
   </div>
 </div>
@@ -342,10 +342,10 @@ const loginFormTemplate = () => `
     <form action="#" class="form">
         <h1 class="title">Sign In</h1>
         <div class="social-container">
-            <a href="#" class="icon"><i class='bx bxl-facebook'></i></a>
-            <a href="#" class="icon"><i class='bx bxl-google'></i></a>
-            <a href="#" class="icon"><i class='bx bxl-linkedin'></i></a>
-            <a href="#" class="icon"><i class='bx bxl-github'></i></a>
+            <a href="#/homepage" class="icon"><i class='bx bxl-facebook'></i></a>
+            <a href="#/homepage" class="icon"><i class='bx bxl-google'></i></a>
+            <a href="#/homepage" class="icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="#/homepage" class="icon"><i class='bx bxl-github'></i></a>
         </div>
         <span class="description">or use your email for registration</span>
         <input type="email" placeholder="Email" class="input-field" id="login-email-input" required/>
