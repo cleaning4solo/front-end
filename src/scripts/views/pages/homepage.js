@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 import PureCounter from '@srexi/purecounterjs';
 import initSwiper from '../../components/swiper';
+
 import {
   CreateCounterComponent, createEventComponent, createHomePageComponent, createLatestPostComponent, createLocationComponent, createPartnerComponent, createVissionMissionComponent,
 } from '../templates/template-creator';

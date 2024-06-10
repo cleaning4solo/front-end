@@ -6,11 +6,11 @@ const navbarToggle = () => {
   document.querySelectorAll('.mobile-nav-toggle').forEach((el) => {
     el.addEventListener('click', (event) => {
       event.preventDefault();
-      mobileNavToogle();
+      mobileNavToggle();
     });
   });
 
-  function mobileNavToogle() {
+  function mobileNavToggle() {
     document.querySelector('body').classList.toggle('mobile-nav-active');
     mobileNavShow.classList.toggle('d-none');
     mobileNavHide.classList.toggle('d-none');
@@ -22,10 +22,10 @@ const navbarToggle = () => {
     el.addEventListener('click', (event) => {
       if (document.querySelector('.mobile-nav-active')) {
         event.preventDefault();
-        this.classList.toggle('active');
-        this.nextElementSibling.classList.toggle('dropdown-active');
+        event.currentTarget.classList.toggle('active');
+        event.currentTarget.nextElementSibling.classList.toggle('dropdown-active');
 
-        const dropDownIndicator = this.querySelector('.dropdown-indicator');
+        const dropDownIndicator = event.currentTarget.querySelector('.dropdown-indicator');
         dropDownIndicator.classList.toggle('bi-chevron-up');
         dropDownIndicator.classList.toggle('bi-chevron-down');
       }
