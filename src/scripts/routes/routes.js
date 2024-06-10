@@ -6,6 +6,7 @@ import DetailBlog from '../views/pages/detail-blog';
 import EventDetail from '../views/pages/detail-event-page';
 import Event from '../views/pages/event-page';
 import Login from '../views/pages/login-page';
+import VolunteerInfoPage from '../views/pages/volunteerInfoPage';
 
 const routes = {
   '/': Homepage,
@@ -17,6 +18,7 @@ const routes = {
   '/detail/:id': DetailBlog,
   '/event': Event,
   '/event/:id': EventDetail,
+  '/volunteer': VolunteerInfoPage,
 };
 
 export default routes;
