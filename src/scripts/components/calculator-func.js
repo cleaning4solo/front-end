@@ -1,23 +1,107 @@
 import Swal from 'sweetalert2';
 
+const BASE_URL = process.env.BASE_URL || 'http://localhost:9000';
+
 async function fetchWastes() {
   try {
-    const response = await fetch('/wastes');
-    const result = await response.json();
-    if (response.ok) {
-      const { wastes } = result;
-      updateWasteTable(wastes);
+    console.log('Fetching waste data...');
+    const response = await fetch(`${BASE_URL}/wastes`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    console.log('Fetched Data:', data); // Log the fetched data
+
+    if (data && data.length > 0) {
+      populateWasteTable(data);
     } else {
-      console.error('Failed to fetch wastes:', result.message);
+      displayNoDataMessage();
     }
   } catch (error) {
-    console.error('Error fetching wastes:', error);
+    console.error('Error fetching waste data:', error);
+    displayNoDataMessage();
   }
+}
+
+function populateWasteTable(wastes) {
+  const wasteTableBody = document.getElementById('waste-table');
+
+  // Clear the existing rows
+  wasteTableBody.innerHTML = '';
+
+  if (!wasteTableBody) {
+    displayNoDataMessage();
+    return;
+  }
+
+  if (wastes.length === 0) {
+    displayNoDataMessage();
+    return;
+  }
+
+  wastes.forEach((waste) => {
+    const row = document.createElement('tr');
+
+    // Create and append each cell
+    const jenisCell = document.createElement('td');
+    jenisCell.textContent = waste.jenis;
+    jenisCell.classList.add('text-center');
+    row.appendChild(jenisCell);
+
+    const beratCell = document.createElement('td');
+    beratCell.textContent = waste.berat;
+    beratCell.classList.add('text-center');
+    row.appendChild(beratCell);
+
+    const asalLimbahCell = document.createElement('td');
+    asalLimbahCell.textContent = waste.asalLimbah;
+    asalLimbahCell.classList.add('text-center');
+    row.appendChild(asalLimbahCell);
+
+    const hargaCell = document.createElement('td');
+    hargaCell.textContent = waste.harga;
+    hargaCell.classList.add('text-center');
+    row.appendChild(hargaCell);
+
+    const emisiKarbonCell = document.createElement('td');
+    emisiKarbonCell.textContent = waste.emisiKarbon;
+    emisiKarbonCell.classList.add('text-center');
+    row.appendChild(emisiKarbonCell);
+
+    // Add action cell
+    const actionCell = document.createElement('td');
+    actionCell.classList.add('text-center');
+    actionCell.innerHTML = '<button class="btn btn-danger">Delete</button>'; // Example action button
+    row.appendChild(actionCell);
+
+    // Append row to table body
+    wasteTableBody.appendChild(row);
+  });
+
+  // Add event listener to delete buttons
+  const deleteButtons = document.querySelectorAll('#waste-table .btn-danger');
+  deleteButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const row = button.closest('tr');
+      const wasteId = row.id.split('-')[2];
+      deleteWaste(wasteId);
+    });
+  });
+}
+
+function displayNoDataMessage() {
+  const wasteTableBody = document.getElementById('waste-table');
+  wasteTableBody.innerHTML = `
+      <td colspan="6" class="text-center no-data-message p-3">
+          <h5>Tidak ada data</h5>
+      </td>`;
 }
 
 async function addWaste(waste) {
   try {
-    const response = await fetch('/wastes', {
+    const response = await fetch(`${BASE_URL}/wastes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +122,12 @@ async function addWaste(waste) {
 
 async function deleteWaste(id) {
   try {
-    const response = await fetch(`/wastes/${id}`, {
+    if (!id) {
+      console.error('Invalid waste ID:', id);
+      return; // Exit function if ID is invalid
+    }
+
+    const response = await fetch(`${BASE_URL}/wastes/${id}`, {
       method: 'DELETE',
     });
     const result = await response.json();
@@ -58,7 +147,11 @@ async function deleteWaste(id) {
 
 function updateWasteTable(wastes) {
   const wasteTable = document.getElementById('waste-table');
-  wasteTable.innerHTML = wastes.length
+  if (!wasteTable) {
+    console.error('Waste table element not found');
+    return;
+  }
+  wasteTable.innerHTML = Array.isArray(wastes) && wastes.length > 0
     ? wastes.map((waste) => `
       <tr id="waste-row-${waste._id}">
         <td class="text-center p-2">${waste.jenis}</td>
@@ -96,7 +189,7 @@ function addWasteToTable(waste) {
 
 async function submitAllWastes() {
   try {
-    const response = await fetch('/wastes/submit', {
+    const response = await fetch(`${BASE_URL}/wastes/submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -139,15 +232,17 @@ function initializeEventListeners() {
     if (event.target && event.target.id === 'addWasteForm') {
       event.preventDefault();
       const wasteType = document.getElementById('wasteType').value;
-      const wasteWeight = document.getElementById('wasteWeight').value;
+      const wasteWeight = parseInt(document.getElementById('wasteWeight').value, 10);
       const wasteSource = document.getElementById('wasteSource').value;
+      const wastePrice = parseInt(document.getElementById('wastePrice').value, 10);
+      const wasteEmissions = parseInt(document.getElementById('wasteEmissions').value, 10);
 
       const newWaste = {
         jenis: wasteType,
         berat: wasteWeight,
         asalLimbah: wasteSource,
-        harga: 0, // Assuming initial price is 0, or you can calculate based on your logic
-        emisiKarbon: 0, // Assuming initial emissions are 0, or you can calculate based on your logic
+        harga: wastePrice,
+        emisiKarbon: wasteEmissions,
         status: 'drafted',
       };
 

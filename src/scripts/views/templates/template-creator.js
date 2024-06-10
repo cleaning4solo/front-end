@@ -101,7 +101,7 @@ Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
 <th class="text-center">Aksi</th>
 </tr>
 </thead>
-<tbody id="waste-table">
+<tbody class ="waste-table" id="waste-table">
 <td colspan="6" class="text-center no-data-message p-3">
 <h5>Tidak ada data</h5>
 </td>
@@ -165,11 +165,11 @@ Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
 </div>
 <div class="form-group p-2">
 <label for="wastePrice">Harga</label>
-<input type="text" class="form-control" id="wastePrice" disabled>
+<input type="text" class="form-control" id="wastePrice" required>
 </div>
 <div class="form-group p-2">
 <label for="wasteEmissions">Emisi Karbon</label>
-<input type="text" class="form-control" id="wasteEmissions" disabled>
+<input type="text" class="form-control" id="wasteEmissions" required>
 </div>
 <br>
 <div>

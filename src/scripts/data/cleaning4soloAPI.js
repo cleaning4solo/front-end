@@ -1,7 +1,7 @@
-const baseUrl = 'http://localhost:9000';
 class Cleaning4SoloAPI {
   static async eventAPI() {
     const response = await fetch(`${process.env.BASE_URL}/events`);
+    console.log(`base url : ${process.env.BASE_URL}`);
     const responseJson = await response.json();
     return responseJson;
   }

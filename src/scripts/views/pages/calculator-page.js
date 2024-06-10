@@ -11,7 +11,10 @@ const Calculator = {
   async afterRender() {
     const mainContainer = document.querySelector('.hero');
     mainContainer.innerHTML = createCalculatorPageComponent();
-    initializeEventListeners();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeEventListeners();
+    });
   },
 };
 
