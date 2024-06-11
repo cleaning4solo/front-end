@@ -1,5 +1,5 @@
 import { createCalculatorPageComponent } from '../templates/template-creator';
-import { initializeEventListeners } from '../../components/calculator-func';
+import { initializeEventListeners } from '../../components/wasteCalculator';
 
 const Calculator = {
   async render() {
@@ -11,6 +11,8 @@ const Calculator = {
   async afterRender() {
     const mainContainer = document.querySelector('.hero');
     mainContainer.innerHTML = createCalculatorPageComponent();
+
+    // Initialize event listeners after rendering
     initializeEventListeners();
   },
 };

@@ -9,8 +9,20 @@ class App {
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url] || routes['/'];
-    this._content.innerHTML = await page.render();
-    await page.afterRender();
+    let renderedContent;
+
+    if (typeof page === 'function') {
+      renderedContent = await page();
+    } else {
+      renderedContent = page;
+    }
+
+    if (renderedContent && typeof renderedContent.render === 'function') {
+      this._content.innerHTML = await renderedContent.render();
+      await renderedContent.afterRender();
+    } else {
+      this._content.innerHTML = renderedContent;
+    }
   }
 }
 

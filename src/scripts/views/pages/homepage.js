@@ -2,9 +2,11 @@
 /* eslint-disable no-undef */
 import PureCounter from '@srexi/purecounterjs';
 import initSwiper from '../../components/swiper';
+
 import {
   CreateCounterComponent, createEventComponent, createHomePageComponent, createLatestPostComponent, createLocationComponent, createPartnerComponent, createVissionMissionComponent,
 } from '../templates/template-creator';
+import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
 
 const Homepage = {
   async render() {
@@ -33,6 +35,12 @@ const Homepage = {
   },
 
   async afterRender() {
+    const blogData = await Cleaning4SoloAPI.blogAPI();
+    const eventData = await Cleaning4SoloAPI.eventAPI();
+    const { blogs } = blogData;
+    const { events } = eventData;
+    console.log(blogs);
+    console.log(events);
     const mainContainer = document.querySelector('.hero');
     const counterContainer = document.querySelector('.stats-counter');
     const vissionContainer = document.querySelector('.vission');
@@ -46,11 +54,28 @@ const Homepage = {
     vissionContainer.innerHTML = createVissionMissionComponent();
     locationContainer.innerHTML = createLocationComponent();
     partnersContainer.innerHTML = createPartnerComponent();
-    for (let i = 0; i < 3; i++) {
-      eventContainer.innerHTML += createEventComponent();
+
+    latestPostContainer.innerHTML = '';
+    eventContainer.innerHTML = '';
+
+    if (blogs.length === 0) {
+      latestPostContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada postingan</p>';
+    } else {
+      blogs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+      const latestBlogs = blogs.slice(0, 3);
+      latestBlogs.forEach((post) => {
+        latestPostContainer.innerHTML += createLatestPostComponent(post);
+      });
     }
-    for (let i = 0; i < 3; i++) {
-      latestPostContainer.innerHTML += createLatestPostComponent();
+
+    if (events.length === 0) {
+      eventContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada acara</p>';
+    } else {
+      events.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      events.forEach((event) => {
+        eventContainer.innerHTML += createEventComponent(event);
+      });
     }
 
     initSwiper();

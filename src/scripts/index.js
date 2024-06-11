@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import 'regenerator-runtime';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -9,6 +10,8 @@ import './components/dark-mode';
 import navbarScroled from './components/navbar-scroled';
 import navbarToggle from './components/mobile-nav';
 import createScrollUpButton from './components/scroll-up';
+import updateLoginSection from './components/login';
+import { setupJoinEventListeners, deleteItemVolunteer } from './components/volunteer-func';
 
 AOS.init({
   duration: 1000,
@@ -36,6 +39,19 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('btn-join-event')) {
+      const eventId = event.target.getAttribute('data-event-id');
+      setupJoinEventListeners(eventId);
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('btn-delete-event')) {
+      const eventId = event.target.getAttribute('data-event-id');
+      deleteItemVolunteer(eventId);
+    }
+  });
+  updateLoginSection();
   navbarScroled();
   navbarToggle();
   const storedMode = localStorage.getItem('darkMode');
@@ -43,7 +59,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('dark-mode');
   }
 });
-
-// const glightbox = GLightbox({
-//   selector: ".glightbox",
-// });

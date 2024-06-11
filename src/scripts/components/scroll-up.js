@@ -3,22 +3,35 @@ import UrlParser from '../routes/url-parser';
 const createScrollUpButton = () => {
   const scrollUpButton = document.getElementById('scrollUpButton');
 
-  window.onscroll = function () {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  const handleScroll = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTop > 20) {
       scrollUpButton.classList.add('active');
     } else {
       scrollUpButton.classList.remove('active');
     }
   };
 
-  const currentUrl = UrlParser.parseActiveUrlWithCombiner();
-  scrollUpButton.setAttribute('href', `#${currentUrl}`);
+  window.addEventListener('scroll', handleScroll);
+
+  const currentUrlObject = UrlParser.parseActiveUrlWithoutCombiner();
+  const resource = currentUrlObject.resource ? `/${currentUrlObject.resource}` : '/';
+  const id = currentUrlObject.id ? `/${currentUrlObject.id}` : '';
+  const verb = currentUrlObject.verb ? `/${currentUrlObject.verb}` : '';
+  const combinedUrl = `${resource}${id}${verb}`;
+
+  scrollUpButton.setAttribute('href', `#${combinedUrl}`);
+
   scrollUpButton.addEventListener('click', (event) => {
     event.preventDefault();
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    window.location.hash = currentUrl;
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    history.replaceState(null, '', `#${combinedUrl}`);
   });
+
+  handleScroll();
 };
 
 export default createScrollUpButton;
