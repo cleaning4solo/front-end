@@ -249,4 +249,6 @@ const createGalleryComponent = () => `
 </section>
 `;
 
-export { createAboutUsComponent, createStatsCounterComponent, createTeamComponent, createGalleryComponent };
+export {
+  createAboutUsComponent, createStatsCounterComponent, createTeamComponent, createGalleryComponent,
+};
