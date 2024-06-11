@@ -81,105 +81,137 @@ const createVissionMissionComponent = () => `
 
 const createCalculatorPageComponent = () => `
 <div class="container section-title aos-init aos-animate" data-aos="fade-up">
-<h1 class="calculator-title text-center">Kalkulator Sampah</h1>
-<p class="text-center">Kalkulator Penghitung Sampah menghitung potensi pendapatan dari penjualan sampah dan estimasi pengurangan emisi karbon dari daur ulang.<br> 
-Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
+  <h1 class="calculator-title text-center">Kalkulator Sampah</h1>
+  <p class="text-center">Kalkulator Penghitung Sampah menghitung potensi pendapatan dari penjualan sampah dan estimasi pengurangan emisi karbon dari daur ulang.<br> 
+  Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
 </div>
 <div class="container card custom-card1 shadow p-5">
-<div class="row">
-<div class="col-sm-12">
-<h2 class="aktivitas-terbaru mb-3">Hitung</h2>
-<div class="col-sm-12 card custom-card2 p-3">
-<table class="table-calculator table-responsive">
-<thead>
-<tr>
-<th class="text-center">Jenis</th>
-<th class="text-center">Berat</th>
-<th class="text-center">Asal Limbah</th>
-<th class="text-center">Harga</th>
-<th class="text-center">Emisi Karbon</th>
-<th class="text-center">Aksi</th>
-</tr>
-</thead>
-<tbody class ="waste-table" id="waste-table">
-<td colspan="6" class="text-center no-data-message p-3">
-<h5>Tidak ada data</h5>
-</td>
-</tbody>
-</table>
-<div class="row">
-<div class="col-6 text-center">
-<button class="btn btn1 btn-large" data-toggle="modal" data-target="#addWasteModal">Tambah Data</button>
-</div>
-<div class="col-6 text-center">
-<button class="btn btn-success btn-large" id="submitWasteData">Submit</button>
-</div>
-</div>
-</div>
-<div class="mt-5">
-<h2 class="aktivitas-terbaru">Aktivitas Terbaru</h2>
-<div class="col-sm-12 card custom-card2 mt-3 p-3">
-<table class="table-calculator">
-<thead>
-<tr>
-<th class="text-center">Aktivitas</th>
-<th class="text-center">Total Jual</th>
-<th class="text-center">Total Emisi Karbon</th>
-<th class="text-center">Rincian Aktivitas</th>
-</tr>
-</thead>
-<tbody id="activity-table">
-<td colspan="4" class="text-center no-data-message p-3">
-<h5>Tidak ada data</h5>
-</td>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="aktivitas-terbaru mb-3">Hitung</h2>
+      <div class="col-sm-12 card custom-card2 p-3">
+        <table class="table-calculator table-responsive">
+          <thead>
+            <tr>
+              <th class="text-center">Jenis</th>
+              <th class="text-center">Berat</th>
+              <th class="text-center">Asal Limbah</th>
+              <th class="text-center">Harga</th>
+              <th class="text-center">Emisi Karbon</th>
+              <th class="text-center">Aksi</th>
+            </tr>
+          </thead>
+          <tbody class="waste-table" id="waste-table">
+            <td colspan="6" class="text-center no-data-message p-3">
+              <h5>Tidak ada data</h5>
+            </td>
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col-6 text-center">
+            <button class="btn btn1 btn-large" data-toggle="modal" data-target="#addActivityModal">Tambah Aktivitas</button>
+          </div>
+          <div class="col-6 text-center">
+            <button class="btn btn1 btn-large" data-toggle="modal" data-target="#addWasteModal">Tambah Data Limbah</button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
+        <h2 class="aktivitas-terbaru">Aktivitas Terbaru</h2>
+        <div class="col-sm-12 card custom-card2 mt-3 p-3">
+          <table class="table-calculator">
+            <thead>
+              <tr>
+                <th class="text-center">Aktivitas</th>
+                <th class="text-center">Total Jual</th>
+                <th class="text-center">Total Emisi Karbon</th>
+                <th class="text-center">Rincian Aktivitas</th>
+              </tr>
+            </thead>
+            <tbody id="activity-table">
+              <td colspan="4" class="text-center no-data-message p-3">
+                <h5>Tidak ada data</h5>
+              </td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- Modal for adding new waste data -->
-<div class="modal fade" id="addWasteModal" tabindex="-1" role="dialog" aria-labelledby="addWasteModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="addWasteModalLabel">Add New Waste Data</h5>
-<span class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 1; right: 0; padding: 0.5rem; cursor: pointer;">
-<span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
-</span>
-</div>
-<div class="modal-body">
-<form id="addWasteForm">
-<div class="form-group p-2">
-<label for="wasteType">Jenis</label>
-<input type="text" class="form-control" id="wasteType" required>
-</div>
-<div class="form-group p-2">
-<label for="wasteWeight">Berat</label>
-<input type="text" class="form-control" id="wasteWeight" required>
-</div>
-<div class="form-group p-2">
-<label for="wasteSource">Asal Limbah</label>
-<input type="text" class="form-control" id="wasteSource" required>
-</div>
-<div class="form-group p-2">
-<label for="wastePrice">Harga</label>
-<input type="text" class="form-control" id="wastePrice" required>
-</div>
-<div class="form-group p-2">
-<label for="wasteEmissions">Emisi Karbon</label>
-<input type="text" class="form-control" id="wasteEmissions" required>
-</div>
-<br>
-<div>
-<button type="submit" class="btn btn-primary">Add</button>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
+  <!-- Modal for adding new activity -->
+  <div class="modal fade" id="addActivityModal" tabindex="-1" role="dialog" aria-labelledby="addActivityModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addActivityModalLabel">Add New Activity</h5>
+          <span class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 1; right: 0; padding: 0.5rem; cursor: pointer;">
+            <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+          </span>
+        </div>
+        <div class="modal-body">
+          <form id="addActivityForm">
+            <div class="form-group p-2">
+              <label for="activityName">Nama Aktivitas</label>
+              <input type="text" class="form-control" id="activityName" required>
+            </div>
+            <div id="activityErrorMessage" class="text-danger"></div>
+            <br>
+            <div>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for adding new waste data -->
+  <div class="modal fade" id="addWasteModal" tabindex="-1" role="dialog" aria-labelledby="addWasteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addWasteModalLabel">Add New Waste Data</h5>
+          <span class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 1; right: 0; padding: 0.5rem; cursor: pointer;">
+            <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+          </span>
+        </div>
+        <div class="modal-body">
+          <form id="addWasteForm">
+            <div class="form-group p-2">
+              <label for="activitySelect">Pilih Aktivitas</label>
+              <select class="form-control" id="activitySelect" required></select>
+            </div>
+            <div class="form-group p-2">
+              <label for="wasteType">Jenis</label>
+              <input type="text" class="form-control" id="wasteType" required>
+            </div>
+            <div class="form-group p-2">
+              <label for="wasteWeight">Berat</label>
+              <input type="text" class="form-control" id="wasteWeight" required>
+            </div>
+            <div class="form-group p-2">
+              <label for="wasteSource">Asal Limbah</label>
+              <input type="text" class="form-control" id="wasteSource" required>
+            </div>
+            <div class="form-group p-2">
+              <label for="wastePrice">Harga</label>
+              <input type="text" class="form-control" id="wastePrice" required>
+            </div>
+            <div class="form-group p-2">
+              <label for="wasteEmissions">Emisi Karbon</label>
+              <input type="text" class="form-control" id="wasteEmissions" required>
+            </div>
+            <div id="wasteErrorMessage" class="text-danger"></div>
+            <br>
+            <div>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
