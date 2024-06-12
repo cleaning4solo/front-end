@@ -7,6 +7,9 @@ import EventDetail from '../views/pages/detail-event-page';
 import Event from '../views/pages/event-page';
 import Login from '../views/pages/login-page';
 import VolunteerInfoPage from '../views/pages/volunteerInfoPage';
+import Admin from '../views/admin-pages/admin';
+import { getUserRoleFromToken } from '../components/decodeUserID';
+import { showErrorAlert } from '../components/allertMessage';
 
 const routes = {
   '/': Homepage,
@@ -19,6 +22,15 @@ const routes = {
   '/event': Event,
   '/event/:id': EventDetail,
   '/volunteer': VolunteerInfoPage,
+  '/admin': () => {
+    const role = getUserRoleFromToken();
+    if (role === 'master') {
+      return Admin;
+    }
+    showErrorAlert('Anda tidak terdaftar sebagai Admin');
+    window.location.hash = '#/homepage';
+    return null;
+  },
 };
 
 export default routes;

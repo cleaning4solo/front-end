@@ -17,5 +17,21 @@ function getUserIDFromToken() {
   }
 }
 
+function getUserRoleFromToken() {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.log('No token found in localStorage.');
+    return null;
+  }
+
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.role;
+  } catch (error) {
+    console.error('Failed to decode token:', error);
+    return null;
+  }
+}
+
 // Export fungsi getUserIDFromToken
-export { getUserIDFromToken };
+export { getUserIDFromToken, getUserRoleFromToken };
