@@ -5,7 +5,7 @@ const createHomePageComponent = () => `
 <div class="container position-relative">
   <div class="row gy-5">
     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-      <h1>Mari Jaga Solo Kita Bersama <span class="primary">Cleaning4Solo</span></h1>
+      <h1>Mari Jaga <span class="primary">Solo</span> Kita Bersama <span class="primary">Cleaning4Solo</span></h1>
       <p>Menjadi wadah generasi muda yang memiliki wawasan dan kepedulian terhadap kelestarian lingkungan di wilayah Karesidenan Surakarta.</p>
       <div class="d-flex justify-content-center justify-content-lg-start button-wrapper">
         <a href="#/about" class="btn-get-started d-flex align-items-center justify-content-center">Tentang Kami</a>

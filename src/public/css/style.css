@@ -463,17 +463,25 @@ h6 {
   }
 }
 
+/* about us */
 .hero {
   width: 100%;
   position: relative;
   padding: 40px 0 20px 0;
 }
 
+.hero1 {
+  width: 100%;
+  position: relative;
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
 .img-fluid {
   margin-left: 0px;
 }
 
-.hero h1 {
+.hero1 h1 {
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -481,18 +489,18 @@ h6 {
   line-height: 1.5;
 }
 
-.hero .btn-calculator i.bi-calculator {
+.hero1 .btn-calculator i.bi-calculator {
   color: var(--color-primary);
 }
 
-.hero p {
+.hero1 p {
   color: var(--text-color);
   font-weight: 400;
   margin-bottom: 35px;
   line-height: 1.9;
 }
 
-.hero .btn-get-started {
+.hero1 .btn-get-started {
   font-family: var(--font-primary);
   font-weight: bold;
   font-size: 1em;
@@ -506,17 +514,17 @@ h6 {
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.hero .btn-get-started:hover {
+.hero1 .btn-get-started:hover {
   color: var(--color-primary);
   background: var(--background-color);
   border: 1px solid var(--color-primary);
 }
 
-.hero .my-custom-icon {
+.hero1 .my-custom-icon {
   color: #5bc17f;
 }
 
-.hero .btn-calculator {
+.hero1 .btn-calculator {
   font-size: 16px;
   transition: 0.5s;
   padding: 14px 40px;
@@ -526,12 +534,12 @@ h6 {
   color: var(--color-primary);
   font-weight: 600;
 }
-.hero .btn-calculator:hover {
+.hero1 .btn-calculator:hover {
   color: var(--color-white);
   background-color: var(--color-primary);
 }
 
-.hero .btn-calculator i {
+.hero1 .btn-calculator i {
   color: var(--color-primary);
   font-size: 32px;
   transition: 0.3s;
@@ -539,17 +547,17 @@ h6 {
   margin-right: 8px;
 }
 
-.hero .btn-calculator:hover i {
+.hero1 .btn-calculator:hover i {
   color: var(--color-white);
 }
 
 @media (max-width: 640px) {
-  .hero h1 {
+  .hero1 h1 {
     font-size: 36px;
   }
 
-  .hero .btn-get-started,
-  .hero .btn-calculator {
+  .hero1 .btn-get-started,
+  .hero1 .btn-calculator {
     font-size: 0.8em;
     width: 100%;
     margin: 0px;
@@ -561,12 +569,12 @@ h6 {
   }
 }
 
-.hero .icon-boxes {
+.hero1 .icon-boxes {
   padding-bottom: 60px;
 }
 
 @media (min-width: 1200px) {
-  .hero .icon-boxes:before {
+  .hero1 .icon-boxes:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -577,7 +585,7 @@ h6 {
   }
 }
 
-.hero .icon-box {
+.hero1 .icon-box {
   padding: 60px 30px;
   position: relative;
   overflow: hidden;
@@ -591,18 +599,18 @@ h6 {
   text-align: center;
 }
 
-.hero .icon-box .title {
+.hero1 .icon-box .title {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 24px;
 }
 
-.hero .icon-box .title a {
+.hero1 .icon-box .title a {
   color: #fff;
   transition: 0.3s;
 }
 
-.hero .icon-box .icon {
+.hero1 .icon-box .icon {
   margin-bottom: 20px;
   padding-top: 10px;
   display: inline-block;
@@ -612,12 +620,12 @@ h6 {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.hero .icon-box:hover {
+.hero1 .icon-box:hover {
   background: #009786;
 }
 
-.hero .icon-box:hover .title a,
-.hero .icon-box:hover .icon {
+.hero1 .icon-box:hover .title a,
+.hero1 .icon-box:hover .icon {
   color: #fff;
 }
 
@@ -954,7 +962,7 @@ section {
 }
 
 .col-lg-6 p {
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   text-align: justify;
 }
 

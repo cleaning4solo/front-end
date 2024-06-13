@@ -11,7 +11,7 @@ import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
 const Homepage = {
   async render() {
     return `
-      <section id="hero" class="hero"></section>
+      <section id="hero1" class="hero1"></section>
       <section id="vission" class="vission my-lg-5 pt-lg-4"></section>
       <section id="future-events" class="py-3 future-events">
         <div class="container">
@@ -41,7 +41,7 @@ const Homepage = {
     const { events } = eventData;
     console.log(blogs);
     console.log(events);
-    const mainContainer = document.querySelector('.hero');
+    const mainContainer = document.querySelector('.hero1');
     const counterContainer = document.querySelector('.stats-counter');
     const vissionContainer = document.querySelector('.vission');
     const eventContainer = document.querySelector('.event-item');
