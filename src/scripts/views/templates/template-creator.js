@@ -89,9 +89,11 @@ const createVissionMissionComponent = () => `
 
 const createCalculatorPageComponent = () => `
 <div class="container section-title aos-init aos-animate" data-aos="fade-up">
-  <h1 class="calculator-title text-center">Kalkulator Sampah</h1>
-  <p class="text-center">Kalkulator Penghitung Sampah menghitung potensi pendapatan dari penjualan sampah dan estimasi pengurangan emisi karbon dari daur ulang.<br> 
-  Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
+  <div class="section-header"> 
+    <h2>Kalkulator Sampah</h2>
+    <p>Kalkulator Penghitung Sampah menghitung potensi pendapatan dari penjualan sampah dan estimasi pengurangan emisi karbon dari daur ulang.<br> 
+    Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
+  </div>
 </div>
 <div class="container card custom-card1 shadow p-5">
   <div class="row">
