@@ -67,7 +67,7 @@ const Login = {
         setTimeout(() => {
           console.log(data.data.role);
           if (data.data.role === 'master') {
-            window.location.hash = '#/admin';
+            window.location.href = '/admin.html';
           } else {
             window.location.hash = '#/homepage';
           }

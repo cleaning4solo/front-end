@@ -1,4 +1,3 @@
-/* eslint-disable import/named */
 import 'regenerator-runtime';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';

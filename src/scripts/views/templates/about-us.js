@@ -1,5 +1,4 @@
 const createAboutUsComponent = () => `
-<section id="about" class="about">
   <div class="container" data-aos="fade-up">
     <div class="section-header">
       <h2>Tentang Kami</h2>
@@ -23,11 +22,10 @@ const createAboutUsComponent = () => `
       </div>
     </div>
   </div>
-</section>
 `;
 
 const createStatsCounterComponent = () => `
-<section id="stats-counter" class="stats-counter sections-bg">
+
   <div class="container" data-aos="fade-up">
     <div class="row gy-4 align-items-center">
       <div class="col-lg-6">
@@ -49,12 +47,10 @@ const createStatsCounterComponent = () => `
       </div>
     </div>
   </div>
-</section>
 `;
 
 const createTeamComponent = () => `
-<section id="team" class="team">
-  <div class="container" data-aos="fade-up">
+  <div class="container py-5" data-aos="fade-up">
     <div class="section-header">
       <h2>Tim Kami</h2>
       <p>Berikut ini merupakan anggota tim Komunitas Solo Bersih</p>
@@ -114,12 +110,11 @@ const createTeamComponent = () => `
       </div>
     </div>
   </div>
-</section>
 `;
 
 const createGalleryComponent = () => `
-<section id="gallery" class="gallery sections-bg">
-  <div class="container" data-aos="fade-up">
+
+  <div class="container py-5" data-aos="fade-up">
     <div class="section-header">
       <h2>Gallery</h2>
       <p>Berikut ini merupakan dokumentasi Komunitas Solo Bersih</p>
@@ -246,7 +241,7 @@ const createGalleryComponent = () => `
       </div>
     </div>
   </div>
-</section>
+
 `;
 
 export {
