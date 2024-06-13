@@ -10,10 +10,10 @@
 /* Default (Light Mode) */
 :root {
   --color-default: #222222;
-  --color-primary: #5CC180;
-  --color-primary-transparent: #5CC18090;
+  --color-primary: #5cc180;
+  --color-primary-transparent: #5cc18090;
   --color-secondary: #f85a40;
-  --color-third:#2a6620;
+  --color-third: #2a6620;
   --color-white: #fefefe;
   --background-color: #fcfdff;
   --background-color-transparent: #2e2e2e90;
@@ -21,18 +21,18 @@
   --text-darkblue: #18063c;
   --text-pure-white: #fefefe;
   --navbar-bg-color: #fefefe;
-  --footer-bg-color: #5CC180;
+  --footer-bg-color: #5cc180;
   --custom-card1: #a6dbb7;
-  --custom-card2: #5CC180;
+  --custom-card2: #5cc180;
 }
 
 /* Dark Mode */
 body.dark-mode {
   --color-default: #fefefe;
-  --color-primary: #5CC180;
+  --color-primary: #5cc180;
   --color-primary-transparent: #fefefe90;
   --color-secondary: #f85a40;
-  --color-third:#203366;
+  --color-third: #203366;
   --color-white: #222222;
   --background-color: #111827;
   --background-color-transparent: #fefefe90;
@@ -77,37 +77,37 @@ body.dark-mode {
   background-color: var(--background-color);
 }
 
-.btn-green{
+.btn-green {
   background-color: var(--color-primary);
   color: var(--text-pure-white);
   border: 2px solid var(--color-primary);
 }
-.btn-outline-green{
+.btn-outline-green {
   background-color: var(--navbar-bg-color);
   color: var(--text-color);
   border: 2px solid var(--color-primary);
 }
-.btn-green:hover{
+.btn-green:hover {
   background-color: var(--navbar-bg-color);
   color: var(--text-color);
   border: 2px solid var(--color-primary);
 }
-.btn-outline-green:hover{
+.btn-outline-green:hover {
   background-color: var(--color-primary);
   color: var(--text-pure-white);
   border: 2px solid var(--color-primary);
 }
-.image-height-wrapper{
+.image-height-wrapper {
   min-height: 45% !important;
   max-height: 45% !important;
   overflow: hidden;
 }
-.image-height{
+.image-height {
   min-height: 100% !important;
   object-fit: cover;
   transition: 0.3s;
 }
-.image-height:hover{
+.image-height:hover {
   transform: scale(1.1);
 }
 
@@ -466,7 +466,7 @@ h6 {
 .hero {
   width: 100%;
   position: relative;
-  padding: 150px 0 20px 0;
+  padding: 40px 0 20px 0;
 }
 
 .img-fluid {
@@ -884,23 +884,23 @@ h6 {
   height: 800px;
 }
 
-.btn1{
-  background-color: #A6DAB7;
+.btn1 {
+  background-color: #a6dab7;
   color: black;
 }
-.btn1:hover{
+.btn1:hover {
   background-color: #6aea95;
 }
 
 /*--------------------------------------------------------------
 # Sections & Section Header
 --------------------------------------------------------------*/
-/* section {
-  padding: 60px 0;
+section {
+  padding: 30px 0;
   overflow: hidden;
   scroll-margin-top: 70px;
   overflow: clip;
-} */
+}
 
 .sections-bg {
   background-color: rgba(92, 193, 128, 0.1);
@@ -937,9 +937,9 @@ h6 {
   /* color: #6f6f6f; */
 }
 .custom-img-event {
-   max-height: 40vh;
-   min-width: 100%;
-   object-fit: cover;
+  max-height: 40vh;
+  min-width: 100%;
+  object-fit: cover;
 }
 
 .custom-img-up {
@@ -1546,12 +1546,11 @@ h6 {
   margin: 0 2px;
 }
 
-
 /* detail blogs */
-.img-container{
+.img-container {
   margin-top: -15vh;
 }
-.img-container img{
+.img-container img {
   min-width: 90%;
   max-height: 70vh;
   object-fit: cover;
