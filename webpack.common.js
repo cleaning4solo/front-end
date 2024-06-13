@@ -9,6 +9,7 @@ dotenv.config();
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
+    admin: path.resolve(__dirname, 'src/scripts/admin.js'), // Entry point for admin page
   },
   output: {
     filename: '[name].bundle.js',
@@ -37,6 +38,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/templates/index.html'),
+      chunks: ['app'], // Only include the app.js bundle
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'admin.html',
+      template: path.resolve(__dirname, 'src/templates/admin.html'),
+      chunks: ['admin'], // Only include the admin.js bundle
     }),
     new CopyWebpackPlugin({
       patterns: [
