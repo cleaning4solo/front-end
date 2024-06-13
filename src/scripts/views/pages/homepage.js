@@ -15,16 +15,20 @@ const Homepage = {
       <section id="vission" class="vission my-lg-5 pt-lg-4"></section>
       <section id="future-events" class="py-3 future-events">
         <div class="container">
-          <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Our Events</h2>
+          <div class="section-events"> 
+            <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Event</h2>
+            <p>Ini adalah events yang pernah kami adakan.</p>
+          </div>
           <div class="row gy-4 event-item justify-content-center pb-5 my-4">
           </div>
         </div>
       </section>
       <section id="stats-counter" class="stats-counter"></section>
 
-      <section id="latest-post" class="py-3 latest-post">
-      <div class="container">
-        <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Latest Post</h2>
+      <section id="latest-post" class="py-3late latest-post">
+      <div class="section-header">
+        <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Postingan</h2>
+        <p>Ini adalah postingan yang pernah baru kami unggah.</p>
         <div class="row gy-4 latest-post-container justify-content-center pb-5 my-4"></div>
       </div>
     </section>
