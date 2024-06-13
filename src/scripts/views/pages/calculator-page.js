@@ -12,7 +12,6 @@ const Calculator = {
     const mainContainer = document.querySelector('.hero');
     mainContainer.innerHTML = createCalculatorPageComponent();
 
-    // Initialize event listeners after rendering
     initializeEventListeners();
   },
 };

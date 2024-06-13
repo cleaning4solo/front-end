@@ -12,5 +12,11 @@ module.exports = merge(common, {
       overlay: false,
     },
     compress: true,
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/$/, to: '/index.html' },
+        { from: /^\/admin/, to: '/admin.html' },
+      ],
+    },
   },
 });

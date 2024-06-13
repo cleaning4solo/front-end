@@ -1,14 +1,32 @@
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
+import adminRoutes from '../routes/adminroutes';
+import { getUserRoleFromToken } from '../components/decodeUserID';
+import { showErrorAlert, showSuccessAlert } from '../components/allertMessage';
 
 class App {
-  constructor({ content }) {
+  constructor({ content, isAdmin }) {
     this._content = content;
+    this._isAdmin = isAdmin;
   }
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = routes[url] || routes['/'];
+
+    let selectedRoutes;
+    if (this._isAdmin) {
+      const role = await getUserRoleFromToken();
+      if (role !== 'master') {
+        showErrorAlert('Anda tidak terdaftar sebagai Admin');
+        window.location.hash = '#/homepage';
+        return;
+      }
+      selectedRoutes = adminRoutes;
+    } else {
+      selectedRoutes = routes;
+    }
+
+    const page = selectedRoutes[url] || selectedRoutes['/'];
     let renderedContent;
 
     if (typeof page === 'function') {

@@ -34,7 +34,7 @@ function renderAdminPanel(userSection) {
   userSection.innerHTML = `<li class="dropdown">
     <a href="#"><img src="img/icon-user.png" alt="" class="img-fluid" style="width: 60px;"><i class="dropdown-indicator"></i></a>
     <ul>
-      <li><a href="#/admin">Admin Panel</a></li>
+      <li><a href="/admin.html">Admin Panel</a></li>
       <li class="d-flex justify-content-center"><button onclick="logout()" class="button btn btn-danger rounded-pill w-75 py-2 my-2">Logout</button></li>
     </ul>
   </li>`;
