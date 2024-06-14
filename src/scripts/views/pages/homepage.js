@@ -17,7 +17,7 @@ const Homepage = {
         <div class="container">
           <div class="section-events"> 
             <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Event</h2>
-            <p>Ini adalah events yang pernah kami adakan.</p>
+            <p class="section-header">Ini adalah events yang pernah kami adakan.</p>
           </div>
           <div class="row gy-4 event-item justify-content-center pb-5 my-4">
           </div>

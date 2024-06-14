@@ -220,7 +220,7 @@ h6 {
     font-family: var(--font-primary);
     font-size: 16px;
     font-weight: 600;
-    color: var(--text-color);
+    /* color: var(--text-color); */
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
@@ -1035,7 +1035,13 @@ section {
 }
 
 .section-header p {
-  /* color: #6f6f6f; */
+  color: #6f6f6f;
+  line-height: 30px;
+}
+
+.section-events p {
+  color: #6f6f6f;
+  line-height: 30px;
 }
 
 .py-3late {
@@ -1064,6 +1070,8 @@ section {
 .col-lg-6 p {
   margin-bottom: 35px;
   text-align: justify;
+  line-height: 30px;
+  /* color: #6f6f6f; */
 }
 
 .paragraph {
