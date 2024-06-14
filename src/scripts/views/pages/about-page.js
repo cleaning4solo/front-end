@@ -10,17 +10,18 @@ const About = {
   async render() {
     return `
       <section id="hero" class="hero"></section>
-      <section id="counter" class="counter"></section>
+      <section id="stats-counter" class="stats-counter sections-bg"></section>
       <section id="team" class="team"></section>
-      <section id="gallery" class="gallery"></section>
+      <section id="gallery" class="gallery sections-bg">
     `;
   },
 
+  // cek
   async afterRender() {
     const teamContainer = document.querySelector('.team');
     teamContainer.innerHTML = createTeamComponent();
 
-    const counterContainer = document.querySelector('.counter');
+    const counterContainer = document.querySelector('.stats-counter');
     counterContainer.innerHTML = createStatsCounterComponent();
 
     const mainContainer = document.querySelector('.hero');

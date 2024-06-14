@@ -65,7 +65,12 @@ const Login = {
         updateLoginSection();
         showSuccessAlert(data.message);
         setTimeout(() => {
-          window.location.hash = '#/homepage';
+          console.log(data.data.role);
+          if (data.data.role === 'master') {
+            window.location.href = '/admin.html';
+          } else {
+            window.location.hash = '#/homepage';
+          }
         }, 2000);
       } catch (err) {
         showErrorAlert(err.message);

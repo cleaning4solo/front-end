@@ -5,7 +5,7 @@ const createHomePageComponent = () => `
 <div class="container position-relative">
   <div class="row gy-5">
     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-      <h1>Mari Jaga Solo Kita Bersama <span class="primary">Cleaning4Solo</span></h1>
+      <h1>Mari Jaga <span class="primary">Solo</span> Kita Bersama <span class="primary">Cleaning4Solo</span></h1>
       <p>Menjadi wadah generasi muda yang memiliki wawasan dan kepedulian terhadap kelestarian lingkungan di wilayah Karesidenan Surakarta.</p>
       <div class="d-flex justify-content-center justify-content-lg-start button-wrapper">
         <a href="#/about" class="btn-get-started d-flex align-items-center justify-content-center">Tentang Kami</a>
@@ -20,39 +20,43 @@ const createHomePageComponent = () => `
 `;
 
 const CreateCounterComponent = () => `
-<div class="container" data-aos="zoom-in">
-  <h2 class="text-center fs-1 fw-bold">Our Impact</h2>
+<div class="section-header" data-aos="zoom-in">
+  <h2 class="text-center fs-1 fw-bold">Kontribusi</h2>
+  <p class="des-impact">Ini adalah kontribusi yang pernah kami lakukan terhadap Kota Solo Raya.</p>
 
-  <div class="row justify-content-center mb-5">
+  <div class="kategori-impact"> 
+    <div class="row justify-content-center mb-5">
     <div class="col-12 col-md-6 col-lg-2 py-1 text-center d-flex flex-column">
       <div class="d-flex justify-content-center">
-        <span data-purecounter-start="0" data-purecounter-end="1223242" data-purecounter-duration="1" class="purecounter fs-2"></span>
-        <p class="fs-6">KG</p>
+        <span data-purecounter-start="0" data-purecounter-end="9983" data-purecounter-duration="1" class="purecounter "></span>
+        <p class="fs-4">KG</p>
       </div>
-      <p>Sampah Plastik</p>
+      <p class="deskripsi-impact">Sampah Plastik</p>
     </div>
 
     <div class="col-12 col-md-6 col-lg-2 py-1 text-center d-flex flex-column">
       <div class="d-flex justify-content-center">
-        <span data-purecounter-start="0" data-purecounter-end="90002323" data-purecounter-duration="1" class="purecounter fs-2"></span>
-        <p class="fs-6">KG</p>
+        <span data-purecounter-start="0" data-purecounter-end="9932" data-purecounter-duration="1" class="purecounter "></span>
+        <p class="fs-4">KG</p>
       </div>
-      <p>Limbah</p>
+      <p class="deskripsi-impact">Limbah</p>
     </div>
 
     <div class="col-12 col-md-6 col-lg-2 py-1 text-center d-flex flex-column">
-        <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter fs-2"></span>
-        <p>Desa Dibersihkan</p>
+        <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter "></span>
+        <p class="deskripsi-impact">Desa Dibersihkan</p>
     </div>
 
     <div class="col-12 col-md-6 col-lg-2 py-1 text-center d-flex flex-column">
       <div class="d-flex justify-content-center">
-        <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter fs-2"></span>
-        <p class="fs-6">+</p>
+        <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter "></span>
+        <p class="fs-4">+</p>
       </div>
-      <p>Event</p>
+      <p class="deskripsi-impact">Event</p>
+    </div>
     </div>
   </div>
+  
 </div>
 `;
 
@@ -60,17 +64,21 @@ const createVissionMissionComponent = () => `
 <div class="container overflow-x-hidden">
 <div class="row align-items-center my-5 py-4">
   <div class="col-lg-6 mb-4 mb-lg-0 d-flex justify-content-center align-items-center" data-aos="fade-right">
-    <img src="img/vission.svg" alt="Vision Image" class="img-fluid">
+    <img src="img/vission.svg" alt="Vission Image" class="img-fluid">
   </div>
   <div class="col-lg-6 px-5" data-aos="fade-left">
-    <h2 class="fw-bold mb-4">Vision</h2>
-    <p>Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya. Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya.</p>
+    <div class="section-visi"> 
+      <h2 class="fw-bold mb-4">Visi</h2>
+      <p>Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya. Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya.</p>
+    </div>
   </div>
 </div>
 <div class="row align-items-center my-5 py-4">
   <div class="col-lg-6 px-5 order-2 order-lg-1" data-aos="fade-right">
-    <h2 class="fw-bold mb-4">Mission</h2>
+  <div class="section-visi"> 
+    <h2 class="fw-bold mb-4">Misi</h2>
     <p>Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya. Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya.</p>
+  </div> 
   </div>
   <div class="col-lg-6 mb-4 mb-lg-0 order-1 order-lg-2 d-flex justify-content-center align-items-center" data-aos="fade-left">
     <img src="img/mission.svg" alt="Mission Image" class="img-fluid">
@@ -81,9 +89,11 @@ const createVissionMissionComponent = () => `
 
 const createCalculatorPageComponent = () => `
 <div class="container section-title aos-init aos-animate" data-aos="fade-up">
-  <h1 class="calculator-title text-center">Kalkulator Sampah</h1>
-  <p class="text-center">Kalkulator Penghitung Sampah menghitung potensi pendapatan dari penjualan sampah dan estimasi pengurangan emisi karbon dari daur ulang.<br> 
-  Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
+  <div class="section-header"> 
+    <h2>Kalkulator Sampah</h2>
+    <p>Kalkulator Penghitung Sampah menghitung potensi pendapatan dari penjualan sampah dan estimasi pengurangan emisi karbon dari daur ulang.<br> 
+    Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
+  </div>
 </div>
 <div class="container card custom-card1 shadow p-5 mb-5">
   <div class="row">
@@ -263,17 +273,20 @@ const createLatestPostComponent = (blog) => `
 `;
 
 const createLocationComponent = () => `
-<div class="container">
-  <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Our Location</h2>
-  <div class="my-4 py-2" data-aos="fade-up">
-    <iframe
-      class="rounded shadow p-1 background-color"
-      style="border:3px solid var(--text-color); width: 100%; height: 450px;"
-      loading="lazy"
-      allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.828534020206!2d107.61540147756932!3d-6.895730942706618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a55a715555%3A0xb8bb411d2516aad6!2sDicoding%20Academy!5e0!3m2!1sid!2sid!4v1716968750724!5m2!1sid!2sid">
-    </iframe>
+<div class="section-header">
+  <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Lokasi</h2>
+  <p>Ini adalah tempat kami berkumpul saat ada pembahasan tertentu.</p>
+  <div class="container"> 
+    <div class="my-4 py-2" data-aos="fade-up">
+      <iframe
+        class="rounded shadow p-1 background-color"
+        style="border:3px solid var(--text-color); width: 100%; height: 450px;"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.828534020206!2d107.61540147756932!3d-6.895730942706618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a55a715555%3A0xb8bb411d2516aad6!2sDicoding%20Academy!5e0!3m2!1sid!2sid!4v1716968750724!5m2!1sid!2sid">
+      </iframe>
+    </div>
   </div>
 </div>
 `;

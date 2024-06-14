@@ -20,7 +20,6 @@ const createScrollUpButton = () => {
   const verb = currentUrlObject.verb ? `/${currentUrlObject.verb}` : '';
   const combinedUrl = `${resource}${id}${verb}`;
 
-  console.log(`Updating scroll button href to: #${combinedUrl}`);
   scrollUpButton.setAttribute('href', `#${combinedUrl}`);
 
   scrollUpButton.addEventListener('click', (event) => {
