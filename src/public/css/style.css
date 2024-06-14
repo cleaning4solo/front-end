@@ -1559,3 +1559,7 @@ h6 {
 .content-detail-blog p {
   text-align: justify;
 }
+.btn-xxl {
+  width: 30%;
+  height: auto;
+}

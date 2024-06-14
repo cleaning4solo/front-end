@@ -25,9 +25,6 @@ function initializeEventListeners() {
           <td class="text-center p-2">${source}</td>
           <td class="text-center p-2">${price}</td>
           <td class="text-center p-2">${emissions}</td>
-          <td class="text-center p-2 removerow">
-            <button class="btn btn-danger">Remove</button>
-          </td>
         </tr>
       `;
 
