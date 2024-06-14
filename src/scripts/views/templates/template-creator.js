@@ -95,7 +95,7 @@ const createCalculatorPageComponent = () => `
     Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
   </div>
 </div>
-<div class="container card custom-card1 shadow p-5">
+<div class="container card custom-card1 shadow p-5 mb-5">
   <div class="row">
     <div class="col-sm-12">
       <h2 class="aktivitas-terbaru mb-3">Hitung</h2>
@@ -118,14 +118,17 @@ const createCalculatorPageComponent = () => `
           </tbody>
         </table>
         <div class="row">
-          <div class="col-6 text-center">
-            <button class="btn btn1 btn-large" data-toggle="modal" data-target="#addActivityModal">Tambah Aktivitas</button>
-          </div>
-          <div class="col-6 text-center">
-            <button class="btn btn1 btn-large" data-toggle="modal" data-target="#addWasteModal">Tambah Data Limbah</button>
-          </div>
+        <div class="col-6 text-center">
+          <button class="btn btn1 btn-large" data-toggle="modal" data-target="#addActivityModal">Tambah Aktivitas</button>
         </div>
-      </div>
+        <div class="col-6 text-center">
+          <button class="btn btn1 btn-large" data-toggle="modal" data-target="#addWasteModal">Tambah Data Limbah</button>
+        </div>
+        <div class="col-12 text-center mt-3">
+          <button id="submitSelesai" class="btn btn1 btn-xxl">Selesaikan Aktivitas</button>
+        </div>
+      </div>    
+      </div>  
       <div class="mt-5">
         <h2 class="aktivitas-terbaru">Aktivitas Terbaru</h2>
         <div class="col-sm-12 card custom-card2 mt-3 p-3">
