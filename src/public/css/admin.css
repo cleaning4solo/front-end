@@ -18,11 +18,13 @@ li {
 	--poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
 
+	--color-primary: #5cc180;
 	--light: #F9F9F9;
 	--blue: #3C91E6;
 	--light-blue: #CFE8FF;
 	--grey: #eee;
 	--dark-grey: #AAAAAA;
+	--text-color: #18063c;
 	--dark: #342E37;
 	--red: #DB504A;
 	--yellow: #FFCE26;
@@ -38,6 +40,7 @@ html {
 body.dark {
 	--light: #0C0C1E;
 	--grey: #060714;
+	--text-color: #fefefe;
 	--dark: #FBFBFB;
 }
 
@@ -46,8 +49,9 @@ body {
 	overflow-x: hidden;
 }
 
-
-
+.color-text{
+	color: var(--dark);
+}
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
@@ -56,7 +60,7 @@ body {
 	width: 280px;
 	height: 100%;
 	background: var(--light);
-	z-index: 2000;
+	z-index: 9999;
 	font-family: var(--lato);
 	transition: .3s ease;
 	overflow-x: hidden;
@@ -68,7 +72,7 @@ body {
 	margin-right: 10px;
 }
 
-#sidebar::--webkit-scrollbar {
+#sidebar::state(webkit-scrollbar) {
 	display: none;
 }
 #sidebar.hide {
@@ -147,7 +151,7 @@ body {
 	color: #5CC180;
 }
 #sidebar.hide .side-menu li a {
-	width: calc(48px - (4px * 2));
+	width: calc(48px - 8px);
 	transition: width .3s ease;
 }
 #sidebar .side-menu li a.logout {
@@ -178,9 +182,6 @@ body {
 	width: calc(100% - 60px);
 	left: 60px;
 }
-
-
-
 
 /* NAVBAR */
 #content nav {
@@ -286,10 +287,6 @@ body {
 	left: calc(100% - (25px - 4px) - 2px);
 }
 /* NAVBAR */
-
-
-
-
 
 /* MAIN */
 #content main {
@@ -467,22 +464,16 @@ body {
 #content main .table-data .order table tr td .status.completed {
 	background: #5CC180;
 }
-#content main .table-data .order table tr td .status.process {
-	background: var(--yellow);
-}
-#content main .table-data .order table tr td .status.pending {
-	background: var(--orange);
-}
 
 
 #content main .table-data .todo {
 	flex-grow: 1;
 	flex-basis: 300px;
 }
-#content main .table-data .todo .todo-list {
+#content main .table-data .todo .event-list {
 	width: 100%;
 }
-#content main .table-data .todo .todo-list li {
+#content main .table-data .todo .event-list li {
 	width: 100%;
 	margin-bottom: 16px;
 	background: var(--grey);
@@ -490,19 +481,13 @@ body {
 	padding: 14px 20px;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: start;
 }
-#content main .table-data .todo .todo-list li .bx {
+#content main .table-data .todo .event-list li .bx {
 	cursor: pointer;
 }
-#content main .table-data .todo .todo-list li.completed {
+#content main .table-data .todo .event-list li.completed {
 	border-left: 10px solid #5CC180;
-}
-#content main .table-data .todo .todo-list li.not-completed {
-	border-left: 10px solid var(--orange);
-}
-#content main .table-data .todo .todo-list li:last-child {
-	margin-bottom: 0;
 }
 /* MAIN */
 /* CONTENT */
@@ -574,7 +559,7 @@ body {
 	#content main .table-data .order table {
 		min-width: 420px;
 	}
-	#content main .table-data .todo .todo-list {
+	#content main .table-data .todo .event-list {
 		min-width: 420px;
 	}
 }

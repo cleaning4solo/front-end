@@ -18,6 +18,7 @@ AOS.init({
 
 const app = new App({
   content: document.querySelector('#main-content'),
+  isAdmin: false,
 });
 
 window.addEventListener('hashchange', () => {

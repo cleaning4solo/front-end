@@ -1,7 +1,6 @@
 class Cleaning4SoloAPI {
   static async eventAPI() {
     const response = await fetch(`${process.env.BASE_URL}/events`);
-    console.log(`base url : ${process.env.BASE_URL}`);
     const responseJson = await response.json();
     return responseJson;
   }
@@ -145,6 +144,90 @@ class Cleaning4SoloAPI {
       return await response.json();
     } catch (error) {
       console.error('Error during deleting event:', error.message);
+      throw error;
+    }
+  }
+
+  static async getUser() {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('Token is not available. Please log in again.');
+      }
+      const response = await fetch(`${process.env.BASE_URL}/users`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Fetch error! status: ${response.status}`);
+      }
+      const responseJson = await response.json();
+      return responseJson;
+    } catch (error) {
+      return undefined;
+    }
+  }
+
+  static async deleteUserId(userId) {
+    try {
+      const response = await fetch(`${process.env.BASE_URL}/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Gagal menghapus user');
+      }
+      return await response.json(); // Sesuaikan ini sesuai dengan respons server Anda
+    } catch (error) {
+      console.error('Error during deleting user:', error.message);
+      throw error;
+    }
+  }
+
+  static async createBlog(title, image, content) {
+    try {
+      const response = await fetch(`${process.env.BASE_URL}/blogs`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ title, image, content }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create blog');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error during blog creation:', error.message);
+      throw error;
+    }
+  }
+
+  static async deleteBlogId(blogId) {
+    try {
+      const response = await fetch(`${process.env.BASE_URL}/blogs/${blogId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete blog');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error deleting blog:', error.message);
       throw error;
     }
   }

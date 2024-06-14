@@ -249,7 +249,7 @@ const createLatestPostComponent = (blog) => `
     </div>
     <div class="px-3 flex-grow-1">
       <h4 class="fw-bold fs-3 py-2 text-color">${blog.title}</h4>
-      <p class="text-color fs-6">${blog.description.length > 100 ? `${blog.description.slice(0, 100)}...` : blog.description}</p>
+      <p class="text-color fs-6">${blog.content.length > 100 ? `${blog.content.slice(0, 100)}...` : blog.content}</p>
     </div>
     <div class="mt-auto d-flex align-items-end justify-content-center p-3">
       <a href="#/detail/${blog._id}" class="m-2 fw-bold button-readmore rounded-pill">Read More</a>
@@ -324,7 +324,7 @@ const createBodyBlogDetailComponent = (blogs) => `
 <p class="mb-0"><span class="fw-bold">Updated at:</span> ${formatShortDate(blogs.updatedAt)}</p>
 </div>
 <div class="content-detail-blog m-auto card bg-color text-color shadow p-3 rounded">
-  <p class="fs-5 lh-lg">${blogs.description}</p>
+  <p class="fs-5 lh-lg">${blogs.content}</p>
 </div>
 `;
 
