@@ -1,7 +1,8 @@
+/* eslint-disable func-names */
 import 'regenerator-runtime';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../public/css/admin.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../public/css/admin.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import App from './views/app';
@@ -83,11 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const switchMode = document.getElementById('switch-mode');
 
+  const isAdminDarkMode = localStorage.getItem('admin-darkmode') === 'true';
+
+  if (isAdminDarkMode) {
+    document.body.classList.add('dark');
+    switchMode.checked = true;
+  } else {
+    document.body.classList.remove('dark');
+    switchMode.checked = false;
+  }
+
   switchMode.addEventListener('change', function () {
     if (this.checked) {
       document.body.classList.add('dark');
+      localStorage.setItem('admin-darkmode', 'true');
     } else {
       document.body.classList.remove('dark');
+      localStorage.setItem('admin-darkmode', 'false');
     }
   });
 
