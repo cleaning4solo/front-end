@@ -1379,7 +1379,7 @@ section {
 .gallery .gallery-wrap {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  height: 100%;
+  max-height: 250px;
   overflow: hidden;
 }
 
@@ -1387,7 +1387,8 @@ section {
   transition: 0.3s;
   position: relative;
   z-index: 1;
-  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
 .gallery .gallery-wrap .gallery-info {
@@ -1409,10 +1410,6 @@ section {
   transition: 0.3s;
 }
 
-.gallery .gallery-wrap .gallery-info h4 a:hover {
-  color: var(--color-primary);
-}
-
 .gallery .gallery-wrap .gallery-info p {
   color: #6c757d;
   font-size: 14px;
@@ -1422,173 +1419,6 @@ section {
 
 .gallery .gallery-wrap:hover img {
   transform: scale(1.1);
-}
-
-/*--------------------------------------------------------------
-# gallery Details Section
---------------------------------------------------------------*/
-.gallery-details .gallery-details-slider img {
-  width: 100%;
-}
-
-.gallery-details .gallery-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.7);
-  opacity: 1;
-}
-
-.gallery-details .gallery-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--color-primary);
-}
-
-.gallery-details .swiper-button-prev,
-.gallery-details .swiper-button-next {
-  width: 48px;
-  height: 48px;
-}
-
-.gallery-details .swiper-button-prev:after,
-.gallery-details .swiper-button-next:after {
-  color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(0, 0, 0, 0.2);
-  font-size: 24px;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-
-.gallery-details .swiper-button-prev:hover:after,
-.gallery-details .swiper-button-next:hover:after {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-@media (max-width: 575px) {
-  .gallery-details .swiper-button-prev,
-  .gallery-details .swiper-button-next {
-    display: none;
-  }
-}
-
-.gallery-details .gallery-info h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  position: relative;
-}
-
-.gallery-details .gallery-info h3:after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: var(--color-primary);
-  left: 0;
-  bottom: 0;
-}
-
-.gallery-details .gallery-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.gallery-details .gallery-info ul li {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 15px;
-  font-size: 16px;
-}
-
-.gallery-details .gallery-info ul strong {
-  text-transform: uppercase;
-  font-weight: 400;
-  color: #9c9c9c;
-  font-size: 12px;
-}
-
-.gallery-details .gallery-info .btn-visit {
-  padding: 8px 40px;
-  background: var(--color-primary);
-  color: #fff;
-  border-radius: 50px;
-  transition: 0.3s;
-}
-
-.gallery-details .gallery-info .btn-visit:hover {
-  background: #009d8b;
-}
-
-.gallery-details .gallery-description h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.gallery-details .gallery-description p {
-  padding: 0;
-}
-
-.gallery-details .gallery-description .testimonial-item {
-  padding: 30px 30px 0 30px;
-  position: relative;
-  background: white;
-  height: 100%;
-  margin-bottom: 50px;
-}
-
-.gallery-details .gallery-description .testimonial-item .testimonial-img {
-  width: 90px;
-  border-radius: 50px;
-  border: 6px solid #fff;
-  float: left;
-  margin: 0 10px 0 0;
-}
-
-.gallery-details .gallery-description .testimonial-item h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 15px 0 5px 0;
-  padding-top: 20px;
-}
-
-.gallery-details .gallery-description .testimonial-item h4 {
-  font-size: 14px;
-  color: #6c757d;
-  margin: 0;
-}
-
-.gallery-details .gallery-description .testimonial-item .quote-icon-left,
-.gallery-details .gallery-description .testimonial-item .quote-icon-right {
-  color: #009d8b;
-  font-size: 26px;
-  line-height: 0;
-}
-
-.gallery-details .gallery-description .testimonial-item .quote-icon-left {
-  display: inline-block;
-  left: -5px;
-  position: relative;
-}
-
-.gallery-details .gallery-description .testimonial-item .quote-icon-right {
-  display: inline-block;
-  right: -5px;
-  position: relative;
-  top: 10px;
-  transform: scale(-1, -1);
-}
-
-.gallery-details .gallery-description .testimonial-item p {
-  font-style: italic;
-  margin: 0 0 15px 0 0 0;
-  padding: 0;
 }
 
 /*--------------------------------------------------------------

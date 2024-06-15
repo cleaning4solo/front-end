@@ -1,38 +1,44 @@
-function galleryIsotope() {
-  const gallerynIsotope = document.querySelector('.gallery-isotope');
+/* eslint-disable no-undef */
+/* eslint-disable func-names */
+import Isotope from 'isotope-layout';
+import imagesLoaded from 'imagesloaded';
 
-  if (gallerynIsotope) {
-    const galleryFilter = gallerynIsotope.getAttribute('data-gallery-filter') ? gallerynIsotope.getAttribute('data-gallery-filter') : '*';
-    const galleryLayout = gallerynIsotope.getAttribute('data-gallery-layout') ? gallerynIsotope.getAttribute('data-gallery-layout') : 'masonry';
-    const gallerySort = gallerynIsotope.getAttribute('data-gallery-sort') ? gallerynIsotope.getAttribute('data-gallery-sort') : 'original-order';
+function initializeGalleryIsotope() {
+  document.querySelectorAll('.gallery-isotope').forEach((isotopeItem) => {
+    const layout = isotopeItem.getAttribute('data-gallery-layout') ?? 'masonry';
+    const filter = isotopeItem.getAttribute('data-gallery-filter') ?? '*';
+    const sort = isotopeItem.getAttribute('data-gallery-sort') ?? 'original-order';
+    const container = isotopeItem.querySelector('.gallery-container');
+    if (!container) {
+      console.error('.gallery-container element not found');
+      return;
+    }
 
-    window.addEventListener('load', () => {
-      const galleryIsotope = new Isotope(document.querySelector('.gallery-container'), {
+    let initIsotope;
+    imagesLoaded(container, () => {
+      initIsotope = new Isotope(container, {
         itemSelector: '.gallery-item',
-        layoutMode: galleryLayout,
-        filter: galleryFilter,
-        sortBy: gallerySort,
+        layoutMode: layout,
+        filter,
+        sortBy: sort,
       });
 
-      const menuFilters = document.querySelectorAll('.gallery-isotope .gallery-flters li');
-      menuFilters.forEach((el) => {
-        el.addEventListener(
-          'click',
-          function () {
-            document.querySelector('.gallery-isotope .gallery-flters .filter-active').classList.remove('filter-active');
-            this.classList.add('filter-active');
-            galleryIsotope.arrange({
-              filter: this.getAttribute('data-filter'),
-            });
-            if (typeof aos_init === 'function') {
-              aos_init();
-            }
-          },
-          false,
-        );
+      const filters = isotopeItem.querySelectorAll('.gallery-flters li');
+
+      filters.forEach((filterElement) => {
+        filterElement.addEventListener('click', function () {
+          const activeFilter = isotopeItem.querySelector('.gallery-flters .filter-active');
+          if (activeFilter) {
+            activeFilter.classList.remove('filter-active');
+          }
+          this.classList.add('filter-active');
+          initIsotope.arrange({
+            filter: this.getAttribute('data-filter'),
+          });
+        });
       });
     });
-  }
+  });
 }
 
-export { galleryIsotope };
+export { initializeGalleryIsotope };

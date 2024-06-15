@@ -45,11 +45,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const menuBar = document.querySelector('#content nav .bx.bx-menu');
+  const menuBar = document.querySelector('.sidebar-controller');
   const sidebar = document.getElementById('sidebar');
+
+  const sidebarState = localStorage.getItem('sidebarState');
+
+  if (sidebarState === 'hide') {
+    sidebar.classList.add('hide');
+    menuBar.classList.replace('bxs-chevron-left', 'bxs-chevron-right');
+  } else {
+    sidebar.classList.remove('hide');
+    menuBar.classList.replace('bxs-chevron-right', 'bxs-chevron-left');
+  }
 
   menuBar.addEventListener('click', () => {
     sidebar.classList.toggle('hide');
+
+    if (sidebar.classList.contains('hide')) {
+      menuBar.classList.replace('bxs-chevron-left', 'bxs-chevron-right');
+      localStorage.setItem('sidebarState', 'hide');
+    } else {
+      menuBar.classList.replace('bxs-chevron-right', 'bxs-chevron-left');
+      localStorage.setItem('sidebarState', 'show');
+    }
   });
 
   const searchButton = document.querySelector('#content nav form .form-input button');

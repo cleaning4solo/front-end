@@ -211,6 +211,13 @@ body {
 #content nav .bx.bx-menu {
   cursor: pointer;
   color: var(--dark);
+#content nav .bx.sidebar-controller {
+	position: relative;
+	top: 50vh;
+	left: -20px;
+	font-size: 1.2em;
+	cursor: pointer;
+	color: var(--dark);
 }
 #content nav .nav-link {
   font-size: 16px;
