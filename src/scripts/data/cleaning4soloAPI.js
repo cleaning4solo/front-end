@@ -11,6 +11,12 @@ class Cleaning4SoloAPI {
     return responseJson;
   }
 
+  static async getAllGalleries() {
+    const response = await fetch(`${process.env.BASE_URL}/galleries`);
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   static async getDetailBlog(id) {
     try {
       const response = await fetch(`${process.env.BASE_URL}/blogs/${id}`);

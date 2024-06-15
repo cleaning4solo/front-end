@@ -18,4 +18,13 @@ const showErrorAlert = (message) => {
   });
 };
 
-export { showSuccessAlert, showErrorAlert };
+const showWarningAlert = (message) => {
+  Swal.fire({
+    icon: 'warning',
+    title: message,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+export { showSuccessAlert, showErrorAlert, showWarningAlert };
