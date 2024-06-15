@@ -192,7 +192,7 @@ const createCalculatorPageComponent = () => `
         <div class="modal-body">
           <form id="addWasteForm">
             <div class="form-group p-2">
-              <label for="activitySelect">Pilih Aktivitas</label>
+              <label for="activitySelect">Aktivitas</label>
               <select class="form-control" id="activitySelect" required></select>
             </div>
             <div class="form-group p-2">

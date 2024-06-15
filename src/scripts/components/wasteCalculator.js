@@ -1,17 +1,40 @@
 import Swal from 'sweetalert2';
+import { getUserIDFromToken } from './decodeUserID';
+import { showSuccessAlert, showErrorAlert } from './allertMessage';
+
+const token = localStorage.getItem('token');
 
 async function addActivity(aktivitas, totalJual, totalEmisiKarbon) {
+  if (!token) {
+    showErrorAlert('You need to be logged in to join an event.');
+    return;
+  }
+
+  const userId = getUserIDFromToken(token);
+  if (!userId) {
+    showErrorAlert('Invalid token. Please log in again.');
+    return;
+  }
+
   try {
     const response = await fetch(`${process.env.BASE_URL}/activities`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`, // Include the token here
       },
-      body: JSON.stringify({ aktivitas, totalJual, totalEmisiKarbon }),
+      body: JSON.stringify({
+        aktivitas, totalJual, totalEmisiKarbon, userId,
+      }),
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const data = await response.json();
     console.log('Activity added to server:', data);
-    document.dispatchEvent(new CustomEvent('activityAdded', { detail: data }));
+    document.dispatchEvent(new CustomEvent('activityAdded', { detail: { success: true, data } }));
 
     // Show success notification
     Swal.fire({
@@ -20,8 +43,6 @@ async function addActivity(aktivitas, totalJual, totalEmisiKarbon) {
       text: 'Aktivitas telah berhasil ditambahkan ke server.',
       confirmButtonText: 'OK',
     });
-
-    return true;
   } catch (error) {
     console.error('Error adding activity to server:', error);
 
@@ -33,16 +54,27 @@ async function addActivity(aktivitas, totalJual, totalEmisiKarbon) {
       confirmButtonText: 'OK',
     });
 
-    return false;
+    document.dispatchEvent(new CustomEvent('activityAdded', { detail: { success: false, error: error.message } }));
   }
 }
 
 async function addWasteToActivity(activityId, jenis, berat, asalLimbah, harga, emisiKarbon) {
+  if (!token) {
+    showErrorAlert('You need to be logged in to join an event.');
+    return;
+  }
+
+  const userId = getUserIDFromToken(token);
+  if (!userId) {
+    showErrorAlert('Invalid token. Please log in again.');
+    return;
+  }
   try {
     const response = await fetch(`${process.env.BASE_URL}/activities/${activityId}/waste`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`, // Include the token here
       },
       body: JSON.stringify({
         jenis,
@@ -51,6 +83,7 @@ async function addWasteToActivity(activityId, jenis, berat, asalLimbah, harga, e
         harga,
         emisiKarbon,
         activityId,
+        userId,
       }),
     });
     const data = await response.json();
@@ -64,8 +97,6 @@ async function addWasteToActivity(activityId, jenis, berat, asalLimbah, harga, e
       text: 'Limbah telah berhasil ditambahkan ke server.',
       confirmButtonText: 'OK',
     });
-
-    return true;
   } catch (error) {
     console.error('Error adding waste to server:', error);
 
@@ -76,8 +107,6 @@ async function addWasteToActivity(activityId, jenis, berat, asalLimbah, harga, e
       text: 'Terjadi kesalahan saat menambahkan data limbah.',
       confirmButtonText: 'OK',
     });
-
-    return false;
   }
 }
 
@@ -92,20 +121,24 @@ function setupActivityFormSubmission() {
   const activityNameInput = document.querySelector('#activityName');
   const errorMessage = document.querySelector('#activityErrorMessage');
 
-  form.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
     if (form.checkValidity()) {
       const aktivitas = activityNameInput.value;
-      const isSuccess = await addActivity(aktivitas);
-      if (isSuccess) {
-        form.reset();
-        $('#addActivityModal').modal('hide');
-        loadActivities();
-      } else {
-        errorMessage.textContent = 'Terjadi kesalahan saat menambahkan aktivitas.';
-      }
+      addActivity(aktivitas);
     } else {
       errorMessage.textContent = 'Harap isi semua bidang dengan benar.';
+    }
+  });
+
+  document.addEventListener('activityAdded', (event) => {
+    const { success, error } = event.detail;
+    if (success) {
+      form.reset();
+      $('#addActivityModal').modal('hide');
+      loadActivities();
+    } else {
+      errorMessage.textContent = `Terjadi kesalahan saat menambahkan aktivitas: ${error}`;
     }
   });
 }
@@ -133,20 +166,22 @@ function setupWasteFormSubmission() {
       const source = sourceInput.value;
       const price = priceInput.value;
       const emissions = emissionsInput.value;
-      const isSuccess = await addWasteToActivity(activityId, type, weight, source, price, emissions);
-      if (isSuccess) {
+
+      try {
+        await addWasteToActivity(activityId, type, weight, source, price, emissions);
         form.reset();
+        errorMessage.textContent = ''; // Clear any previous error messages
         fetchAndDisplayWastes(activityId);
         $('#addWasteModal').modal('hide');
-      } else {
+      } catch (error) {
         errorMessage.textContent = 'Terjadi kesalahan saat menambahkan data limbah.';
+        console.error('Error adding waste:', error);
       }
     } else {
       errorMessage.textContent = 'Harap isi semua bidang dengan benar.';
     }
   });
 
-  // Event listener to fetch and display wastes when an activity is selected
   activitySelect.addEventListener('change', (event) => {
     const activityId = event.target.value;
     if (activityId) {
@@ -154,10 +189,8 @@ function setupWasteFormSubmission() {
     }
   });
 
-  // Fetch and display wastes when the modal is shown, based on the currently selected activity
   $('#addWasteModal').on('shown.bs.modal', () => {
-    // Clear previous selection or reset dropdown state if needed
-    activitySelect.value = ''; // This ensures no default option is selected
+    activitySelect.value = ''; // Clear previous selection
     const activityId = activitySelect.value;
     if (activityId) {
       fetchAndDisplayWastes(activityId);
@@ -176,25 +209,25 @@ async function fetchAndDisplayWastes(activityId) {
 }
 
 // Helper function to get wastes by activity ID
-function getWastesByActivityId(activityId) {
-  return fetch(`${process.env.BASE_URL}/activities/wastes/byActivity/${activityId}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      console.error('Error fetching wastes by activity ID:', error);
-
-      // Show error notification
-      Swal.fire({
-        icon: 'error',
-        title: 'Kesalahan',
-        text: 'Terjadi kesalahan saat mengambil data limbah.',
-        confirmButtonText: 'OK',
-      });
+async function getWastesByActivityId(activityId) {
+  try {
+    if (!token) {
+      throw new Error('Token is not available. Please log in again.');
+    }
+    const response = await fetch(`${process.env.BASE_URL}/activities/wastes/byActivity/${activityId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
     });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    return undefined;
+  }
 }
 
 // Function to append wastes to the table
@@ -252,7 +285,20 @@ function appendWastesToTable(wasteIds) {
 
 async function loadActivities() {
   try {
-    const response = await fetch(`${process.env.BASE_URL}/activities`);
+    if (!token) {
+      throw new Error('Token is not available. Please log in again.');
+    }
+    const userId = getUserIDFromToken(token);
+    if (!userId) {
+      showErrorAlert('Invalid token. Please log in again.');
+      return;
+    }
+    const response = await fetch(`${process.env.BASE_URL}/activities`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -261,9 +307,17 @@ async function loadActivities() {
     // Filter activities with status 'draft'
     const draftActivities = activities.filter((activity) => activity.statusAktivitas === 'draft');
 
-    // Populate activity select dropdown
+    // Separate activities that match the userId
+    const userActivities = draftActivities.filter((activity) => activity.userId === userId);
+    const otherActivities = draftActivities.filter((activity) => activity.userId !== userId);
+
+    // Concatenate user activities at the top
+    const sortedActivities = [...userActivities, ...otherActivities];
+
+    // Populate activity select dropdown with an initial empty option
     const activitySelect = document.querySelector('#activitySelect');
-    activitySelect.innerHTML = draftActivities.map((activity) => `<option value="${activity._id}">${activity.aktivitas}</option>`).join('');
+    activitySelect.innerHTML = '<option value="" disabled selected>Pilih Aktivitas</option>';
+    activitySelect.innerHTML += sortedActivities.map((activity) => `<option value="${activity._id}">${activity.aktivitas}</option>`).join('');
   } catch (error) {
     console.error('Error loading activities:', error);
 

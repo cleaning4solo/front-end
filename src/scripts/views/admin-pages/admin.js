@@ -1,4 +1,4 @@
-import { createSidebarComponent, createContentComponent } from "../templates/template-admin";
+import { createSidebarComponent, createContentComponent } from '../templates/template-admin';
 
 const Admin = {
   async render() {
@@ -9,18 +9,16 @@ const Admin = {
     `;
   },
 
-    // <section id="hero" class="hero">INI ADALAH ADMIN PAGE</section>
+  // <section id="hero" class="hero">INI ADALAH ADMIN PAGE</section>
   // eslint-disable-next-line no-empty-function
   async afterRender() {
-    const sidebarContainer = document.querySelector(".sidebar");
+    const sidebarContainer = document.querySelector('.sidebar');
     sidebarContainer.innerHTML = createSidebarComponent();
 
-    const contentContainer = document.querySelector(".content");
+    const contentContainer = document.querySelector('.content');
     contentContainer.innerHTML = createContentComponent();
-
   },
-  
+
 };
 
 export default Admin;
-
