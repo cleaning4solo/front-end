@@ -32,7 +32,7 @@ const createSidebarComponent = () => `
     <li>
       <a href="#">
         <i class='bx bx-user-circle' ></i>
-        <span class="text">Admin</span>
+        <span class="text">Trash Category</span>
       </a>
     </li>
   </ul>
@@ -93,7 +93,7 @@ const createContentComponent = () => `
         <i class='bx bxs-group' ></i>
         <span class="text">
           <h3>3</h3>
-          <p>Admin</p>
+          <p>Trash Category</p>
         </span>
       </li>
       <li>

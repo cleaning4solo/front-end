@@ -814,13 +814,13 @@ h6 {
 
 .button-readmore {
   outline: none;
-  color: var(--text-color);
-  border: 2px solid var(--text-color);
+  color: #5bc17f;
+  border: 2px solid #5bc17f;
   padding: 15px 50px;
 }
 .button-readmore:hover {
   outline: none;
-  background-color: var(--text-color);
+  background-color: #5bc17f;
   color: var(--background-color);
 }
 
@@ -926,7 +926,7 @@ section {
   overflow: clip;
 }
 
-.text-center{
+.text-center {
   padding-bottom: 30px;
 }
 
@@ -1018,11 +1018,11 @@ section {
   line-height: 40px;
 }
 
-.des-impact{
+.des-impact {
   padding-bottom: 50px;
 }
 
-.deskripsi-impact{
+.deskripsi-impact {
   padding-top: 10px;
   font-weight: 700;
   color: black;
