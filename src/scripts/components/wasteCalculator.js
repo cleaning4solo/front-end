@@ -6,7 +6,7 @@ const token = localStorage.getItem('token');
 
 async function addActivity(aktivitas, totalJual, totalEmisiKarbon) {
   if (!token) {
-    showErrorAlert('You need to be logged in to join an event.');
+    showErrorAlert('Anda harus login untuk membuat aktivitas.');
     return;
   }
 
@@ -60,7 +60,7 @@ async function addActivity(aktivitas, totalJual, totalEmisiKarbon) {
 
 async function addWasteToActivity(activityId, jenis, berat, asalLimbah, harga, emisiKarbon) {
   if (!token) {
-    showErrorAlert('You need to be logged in to join an event.');
+    showErrorAlert('Anda harus login untuk menambahkan limbah.');
     return;
   }
 
@@ -325,7 +325,7 @@ async function loadActivities() {
     Swal.fire({
       icon: 'error',
       title: 'Kesalahan',
-      text: 'Terjadi kesalahan saat memuat aktivitas.',
+      text: 'Terjadi kesalahan dalam memuat aktivitas  Silakan login untuk melanjutkan.',
       confirmButtonText: 'OK',
     });
   }
@@ -560,29 +560,42 @@ function displayActivitiesInTable(activities) {
   activities.forEach((activity) => {
     const row = document.createElement('tr');
     row.innerHTML = `
-    <td class="text-center p-2">${activity.aktivitas}</td>
-    <td class="text-center p-2">${activity.totalJual || 'Rp0'}</td>
-    <td class="text-center p-2">${activity.totalEmisiKarbon || '0 kg CO₂'}</td>
-    <td class="text-center p-2">
-      <button class="btn btn-success btn-sm btn-open-modal" data-activity-id="${activity._id}">Selengkapnya</button>
-    </td>
+      <td class="text-center p-2">${activity.aktivitas}</td>
+      <td class="text-center p-2">${activity.totalJual || 'Rp0'}</td>
+      <td class="text-center p-2">${activity.totalEmisiKarbon || '0 kg CO₂'}</td>
+      <td class="text-center p-2">
+        <button class="btn btn-success btn-sm btn-open-modal" data-activity-id="${activity._id}">Selengkapnya</button>
+      </td>
     `;
     tableBody.appendChild(row);
   });
 }
+
 // Function to filter successful activities
-function filterSuccessfulActivities(activities) {
-  return activities.filter((activity) => activity.statusAktivitas === 'success');
+function filterSuccessfulActivities(activities, userId) {
+  return activities.filter((activity) => activity.statusAktivitas === 'success' && activity.userId === userId);
 }
 
-setTimeout(() => {
+// Main function to load and display activities
+function loadAndDisplayActivities() {
+  const userId = getUserIDFromToken(token); // Assuming you have this function to get the user ID from the token
+  if (!userId) {
+    console.error('Invalid user ID.');
+    return;
+  }
+
   fetchAllActivities()
     .then((activities) => {
-      const successfulActivities = filterSuccessfulActivities(activities);
+      const successfulActivities = filterSuccessfulActivities(activities, userId);
       console.log('Successful activities:', successfulActivities);
       displayActivitiesInTable(successfulActivities);
     })
     .catch((error) => {
       console.error('Error fetching activities:', error);
     });
-}, 100); // Adjust the timeout duration (in milliseconds) as needed
+}
+
+// Adjust the timeout duration (in milliseconds) as needed
+setTimeout(() => {
+  loadAndDisplayActivities();
+}, 100);
