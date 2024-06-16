@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-import Swal from "sweetalert2";
-import Cleaning4SoloAPI from "../../data/cleaning4soloAPI";
-import { createBlogTableDataItemTemplate } from "../templates/admin-template";
-import { showSuccessAlert } from "../../components/allertMessage";
+import Swal from 'sweetalert2';
+import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
+import { createBlogTableDataItemTemplate } from '../templates/admin-template';
+import { showSuccessAlert } from '../../components/allertMessage';
 
 const Trash = {
   async render() {
@@ -56,17 +56,17 @@ const Trash = {
 
   async afterRender() {
     tinymce.init({
-      selector: "textarea",
-      plugins: "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
       toolbar:
-        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+        'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     });
     const trashData = await Cleaning4SoloAPI.blogAPI();
     const { trash } = trashData;
-    const blogContainer = document.querySelector(".blog-list");
-    const buttonAddBlog = document.querySelector(".btn-add-blog");
-    const blogTitle = document.querySelector("#blogTitle");
-    const imageUrl = document.querySelector("#imageUrl");
+    const blogContainer = document.querySelector('.blog-list');
+    const buttonAddBlog = document.querySelector('.btn-add-blog');
+    const blogTitle = document.querySelector('#blogTitle');
+    const imageUrl = document.querySelector('#imageUrl');
 
     if (trash.length === 0) {
       blogContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada trash</p>';
@@ -76,39 +76,39 @@ const Trash = {
       });
     }
 
-    buttonAddBlog.addEventListener("click", async (event) => {
+    buttonAddBlog.addEventListener('click', async (event) => {
       event.preventDefault();
 
-      const blogContent = tinymce.get("blogContent").getContent();
+      const blogContent = tinymce.get('blogContent').getContent();
 
       try {
         const response = await Cleaning4SoloAPI.createBlog(blogTitle.value, imageUrl.value, blogContent);
         showSuccessAlert(response.message);
 
-        blogTitle.value = "";
-        imageUrl.value = "";
-        tinymce.get("blogContent").setContent("");
-        blogContainer.innerHTML = "";
+        blogTitle.value = '';
+        imageUrl.value = '';
+        tinymce.get('blogContent').setContent('');
+        blogContainer.innerHTML = '';
         const updatedTrash = await Cleaning4SoloAPI.blogAPI();
         updatedTrash.trash.forEach((blog) => {
           blogContainer.innerHTML += createBlogTableDataItemTemplate(blog);
         });
       } catch (error) {
-        console.error("Failed to create trash:", error.message);
+        console.error('Failed to create trash:', error.message);
       }
     });
 
-    document.addEventListener("click", async (event) => {
-      if (event.target.classList.contains("btnDeleteBlog")) {
-        const blogId = event.target.getAttribute("dataId");
+    document.addEventListener('click', async (event) => {
+      if (event.target.classList.contains('btnDeleteBlog')) {
+        const blogId = event.target.getAttribute('dataId');
 
         const result = await Swal.fire({
-          title: "Are you sure?",
+          title: 'Are you sure?',
           text: "You won't be able to revert this!",
-          icon: "warning",
+          icon: 'warning',
           showCancelButton: true,
-          confirmButtonText: "Yes, delete it!",
-          cancelButtonText: "No, cancel",
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel',
           reverseButtons: true,
         });
 
@@ -117,27 +117,27 @@ const Trash = {
             // Menghapus blog dari API
             await Cleaning4SoloAPI.deleteBlogId(blogId);
             Swal.fire({
-              title: "Deleted!",
-              text: "Trash post has been deleted.",
-              icon: "success",
+              title: 'Deleted!',
+              text: 'Trash post has been deleted.',
+              icon: 'success',
             });
-            blogContainer.innerHTML = "";
+            blogContainer.innerHTML = '';
             const updatedTrash = await Cleaning4SoloAPI.blogAPI();
             updatedTrash.trash.forEach((blog) => {
               blogContainer.innerHTML += createBlogTableDataItemTemplate(blog);
             });
           } catch (error) {
             Swal.fire({
-              title: "Failed",
+              title: 'Failed',
               text: `Failed to delete trash post: ${error.message}`,
-              icon: "error",
+              icon: 'error',
             });
           }
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           Swal.fire({
-            title: "Cancelled",
-            text: "Your trash post is safe :)",
-            icon: "info",
+            title: 'Cancelled',
+            text: 'Your trash post is safe :)',
+            icon: 'info',
           });
         }
       }

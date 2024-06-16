@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-import Swal from "sweetalert2";
-import Cleaning4SoloAPI from "../../data/cleaning4soloAPI";
-import { createBlogTableDataItemTemplate } from "../templates/admin-template";
-import { showSuccessAlert } from "../../components/allertMessage";
+import Swal from 'sweetalert2';
+import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
+import { createGalleryTableDataItemTemplate } from '../templates/admin-template';
+import { showSuccessAlert } from '../../components/allertMessage';
 
 const Gallery = {
   async render() {
@@ -14,7 +14,7 @@ const Gallery = {
             <li>
               <a href="#">Dashboard</a>
             </li>
-            <li><i class='bx bx-chevron-right' ></i></li>
+            <li><i class='bx bx-chevron-right'></i></li>
             <li>
               <a class="active" href="#">Gallery</a>
             </li>
@@ -23,25 +23,26 @@ const Gallery = {
       </div>
       <div class="form-container container color-text">
         <h2>Add New Gallery</h2>
-        <form id="addBlogForm">
-          <div class="form-group mb-2">
-            <label for="blogTitle">Title</label>
-            <input type="text" class="form-control" id="blogTitle" name="title" required>
-          </div>
+        <form id="addGalleryForm">
           <div class="form-group mb-2 row align-items-center">
-          <label for="imageUrl" class="col-sm-3 col-form-label">Image Url</label>
-          <div class="col-sm-9 input-group">
-            <input type="text" class="form-control" id="imageUrl" name="imageUrl" required>
-            <div class="input-group-append">
-              <span class="input-group-text h-100 "><i class='bx bx-link'></i></span>
+            <label for="imageUrl" class="col-sm-3 col-form-label">Image Url</label>
+            <div class="col-sm-9 input-group">
+              <input type="text" class="form-control" id="imageUrl" name="imageUrl" required>
+              <div class="input-group-append">
+                <span class="input-group-text h-100 "><i class='bx bx-link'></i></span>
+              </div>
             </div>
           </div>
-        </div>
           <div class="form-group mb-2">
-            <label for="blogContent">Content</label>
-            <textarea id="blogContent" class="form-control" name="content" required></textarea>
+            <label for="category">Kategori</label>
+            <select class="form-control" id="category" name="category" required>
+              <option value="" disabled selected>Pilih kategori</option>
+              <option value="bersih">Bersih-bersih</option>
+              <option value="kolaborasi">Kolaborasi</option>
+              <option value="foto-bersama">Foto bersama</option>
+            </select>
           </div>
-          <button type="submit" class="btn-add-blog btn btn-success rounded-pill my-3 px-5 py-2">Add Gallery</button>
+          <button type="submit" class="btn-add-gallery btn btn-success rounded-pill my-3 px-5 py-2">Add Image</button>
         </form>
       </div>
       <div class="table-data">
@@ -49,12 +50,12 @@ const Gallery = {
           <table>
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Date Published</th>
-                <th>Action</th>
-              </tr>
+                <th scope="col">Preview</th>
+                <th scope="col">Category</th>
+                <th scope="col">Action</th>
+              </tr> 
             </thead>
-            <tbody class="blog-list">
+            <tbody class="gallery-list">
             </tbody>
           </table>
         </div>
@@ -63,89 +64,80 @@ const Gallery = {
   },
 
   async afterRender() {
-    tinymce.init({
-      selector: "textarea",
-      plugins: "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
-      toolbar:
-        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
-    });
-    const galleryData = await Cleaning4SoloAPI.blogAPI();
-    const { gallery } = galleryData;
-    const blogContainer = document.querySelector(".blog-list");
-    const buttonAddBlog = document.querySelector(".btn-add-blog");
-    const blogTitle = document.querySelector("#blogTitle");
-    const imageUrl = document.querySelector("#imageUrl");
+    const galleryData = await Cleaning4SoloAPI.getAllGalleries();
+    const { galleries } = galleryData;
+    const galleryContainer = document.querySelector('.gallery-list');
+    const formAddGallery = document.querySelector('#addGalleryForm');
 
-    if (gallery.length === 0) {
-      blogContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada gallery</p>';
+    if (galleries.length === 0) {
+      galleryContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada galeri</p>';
     } else {
-      gallery.forEach((blog) => {
-        blogContainer.innerHTML += createBlogTableDataItemTemplate(blog);
+      galleries.forEach((picture) => {
+        galleryContainer.innerHTML += createGalleryTableDataItemTemplate(picture);
       });
     }
 
-    buttonAddBlog.addEventListener("click", async (event) => {
+    formAddGallery.addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      const blogContent = tinymce.get("blogContent").getContent();
+      const imageUrl = document.querySelector('#imageUrl').value;
+      const category = document.querySelector('#category').value;
 
       try {
-        const response = await Cleaning4SoloAPI.createBlog(blogTitle.value, imageUrl.value, blogContent);
+        const response = await Cleaning4SoloAPI.createGallery(imageUrl, category);
         showSuccessAlert(response.message);
 
-        blogTitle.value = "";
-        imageUrl.value = "";
-        tinymce.get("blogContent").setContent("");
-        blogContainer.innerHTML = "";
-        const updatedGallery = await Cleaning4SoloAPI.blogAPI();
-        updatedGallery.gallery.forEach((blog) => {
-          blogContainer.innerHTML += createBlogTableDataItemTemplate(blog);
+        document.querySelector('#imageUrl').value = '';
+        document.querySelector('#category').value = '';
+        galleryContainer.innerHTML = '';
+        const updatedGallery = await Cleaning4SoloAPI.getAllGalleries();
+        updatedGallery.galleries.forEach((picture) => {
+          galleryContainer.innerHTML += createGalleryTableDataItemTemplate(picture);
         });
       } catch (error) {
-        console.error("Failed to create gallery:", error.message);
+        console.error('Failed to create gallery:', error.message);
       }
     });
 
-    document.addEventListener("click", async (event) => {
-      if (event.target.classList.contains("btnDeleteBlog")) {
-        const blogId = event.target.getAttribute("dataId");
+    document.addEventListener('click', async (event) => {
+      if (event.target.classList.contains('btnDeleteGallery')) {
+        const galleryId = event.target.getAttribute('data-id');
 
         const result = await Swal.fire({
-          title: "Are you sure?",
+          title: 'Are you sure?',
           text: "You won't be able to revert this!",
-          icon: "warning",
+          icon: 'warning',
           showCancelButton: true,
-          confirmButtonText: "Yes, delete it!",
-          cancelButtonText: "No, cancel",
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel',
           reverseButtons: true,
         });
 
         if (result.isConfirmed) {
           try {
-            // Menghapus blog dari API
-            await Cleaning4SoloAPI.deleteBlogId(blogId);
+            await Cleaning4SoloAPI.deleteGalleryById(galleryId);
             Swal.fire({
-              title: "Deleted!",
-              text: "Gallery post has been deleted.",
-              icon: "success",
+              title: 'Deleted!',
+              text: 'Gallery post has been deleted.',
+              icon: 'success',
             });
-            blogContainer.innerHTML = "";
-            const updatedGallery = await Cleaning4SoloAPI.blogAPI();
-            updatedGallery.gallery.forEach((blog) => {
-              blogContainer.innerHTML += createBlogTableDataItemTemplate(blog);
+            galleryContainer.innerHTML = '';
+            const updatedGallery = await Cleaning4SoloAPI.getAllGalleries();
+            updatedGallery.galleries.forEach((picture) => {
+              galleryContainer.innerHTML += createGalleryTableDataItemTemplate(picture);
             });
           } catch (error) {
             Swal.fire({
-              title: "Failed",
+              title: 'Failed',
               text: `Failed to delete gallery post: ${error.message}`,
-              icon: "error",
+              icon: 'error',
             });
           }
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           Swal.fire({
-            title: "Cancelled",
-            text: "Your gallery post is safe :)",
-            icon: "info",
+            title: 'Cancelled',
+            text: 'Your gallery post is safe :)',
+            icon: 'info',
           });
         }
       }
