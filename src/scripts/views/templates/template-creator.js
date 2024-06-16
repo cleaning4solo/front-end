@@ -226,6 +226,30 @@ const createCalculatorPageComponent = () => `
     </div>
   </div>
 </div>
+
+<!-- Modal for submitting activity -->
+< <div class="modal fade" id="submitActivityModal" tabindex="-1" aria-labelledby="submitActivityModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="submitActivityModalLabel">Submit Activity</h5>
+            <span class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 1; right: 0; padding: 0.5rem; cursor: pointer;">
+            <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+            </span>
+        </div>
+        <div class="modal-body">
+            <form id="submitActivityForm">
+                  <div class="form-group p-2">
+                  <label for="activitySelect2">Aktivitas</label>
+                  <select class="form-control" id="activitySelect2" required></select>
+                </div>
+                <div id="submitActivityErrorMessage" class="text-danger"></div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
 `;
 
 const createEventComponent = (events) => `
