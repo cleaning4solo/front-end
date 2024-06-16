@@ -231,13 +231,13 @@ const createCalculatorPageComponent = () => `
 const createEventComponent = (events) => `
 <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
 
-<div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color">
+<div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color h-75">
 <div class="image-height-wrapper">
 <img src="${events.image}" alt="${events.name}" class="img-fluid image-height">
 </div>
 
 <div class="d-flex justify-content-between my-2 px-3">
-  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>${events.location.length > 12 ? `${events.location.slice(0, 12)}...` : events.location}</p>
+  <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-geo-alt-fill text-danger"></i>${events.location.length > 10 ? `${events.location.slice(0, 10)}...` : events.location}</p>
   <p class="d-flex flex-collumn gap-2 align-items-center fs-6"><i class="bi bi-calendar"></i>${formatShortDate(events.date)}</p>
 </div>
 <div class="px-3">
@@ -256,20 +256,19 @@ const createEventComponent = (events) => `
 
 const createLatestPostComponent = (blog) => `
 <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-  <div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-color d-flex flex-column">
+  <div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-color text-color d-flex flex-column h-75">
     <div class="image-height-wrapper">
-     <img src="${blog.image}" alt="" class="img-fluid image-height">
+      <img src="${blog.image}" alt="" class="img-fluid image-height">
     </div>
-    <div class="px-3 flex-grow-1">
+    <div class="px-3 flex-grow-1 d-flex flex-column">
       <h4 class="fw-bold fs-3 py-2 text-color">${blog.title}</h4>
       <p class="text-color fs-6">${blog.content.length > 100 ? `${blog.content.slice(0, 100)}...` : blog.content}</p>
     </div>
     <div class="mt-auto d-flex align-items-end justify-content-center p-3">
       <a href="#/detail/${blog._id}" class="m-2 fw-bold button-readmore rounded-pill">Read More</a>
     </div>
-  </div> 
+  </div>
 </div>
-
 `;
 
 const createLocationComponent = () => `

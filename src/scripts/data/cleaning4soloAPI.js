@@ -44,7 +44,7 @@ class Cleaning4SoloAPI {
   }
 
   static async updateBlog(id, blog) {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     if (!token) {
       throw new Error('Token is not available. Please log in again.');
     }
@@ -167,7 +167,7 @@ class Cleaning4SoloAPI {
 
   static async joinVolunteer(userId, eventId) {
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       if (!token) {
         throw new Error('Token is not available. Please log in again.');
       }
@@ -195,7 +195,8 @@ class Cleaning4SoloAPI {
 
   static async getDetaiVolunteer(id) {
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
+      console.log(token);
       if (!token) {
         throw new Error('Token is not available. Please log in again.');
       }
@@ -221,7 +222,7 @@ class Cleaning4SoloAPI {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`,
         },
       });
       if (!response.ok) {
@@ -236,7 +237,7 @@ class Cleaning4SoloAPI {
 
   static async getUser() {
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       if (!token) {
         throw new Error('Token is not available. Please log in again.');
       }
@@ -262,7 +263,7 @@ class Cleaning4SoloAPI {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`,
         },
       });
       if (!response.ok) {
@@ -281,7 +282,7 @@ class Cleaning4SoloAPI {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`,
         },
         body: JSON.stringify({ title, image, content }),
       });
@@ -303,7 +304,7 @@ class Cleaning4SoloAPI {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`,
         },
       });
 

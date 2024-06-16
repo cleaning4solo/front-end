@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import { getUserIDFromToken } from './decodeUserID';
 import { showSuccessAlert, showErrorAlert } from './allertMessage';
 
-const token = localStorage.getItem('token');
+const token = sessionStorage.getItem('token');
 
 async function addActivity(aktivitas, totalJual, totalEmisiKarbon) {
   if (!token) {

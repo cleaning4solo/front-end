@@ -4,20 +4,20 @@ const createAboutUsComponent = () => `
       <h2>Tentang Kami</h2>
       <p>Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya. Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya.</p>
       <div class="position-relative mt-4">
-        <img src="/img/cover-vid.svg" class="img-fluid rounded-4 custom-img-up" alt="" />
+        <img src="img/cover-vid.svg" class="img-fluid rounded-4 custom-img-up" alt="" />
         <a href="https://youtu.be/CW6lL4j-2Qo?si=v8tUTpxfVPY-x1Xx" class="glightbox play-btn"></a>
       </div>
     </div>
     <div class="row gy-4">
       <div class="col-lg-6">
         <h3>Sejarah</h3>
-        <img src="/img/about.svg" class="img-fluid rounded-4 mb-4 custom-img" alt="" />
+        <img src="img/about.svg" class="img-fluid rounded-4 mb-4 custom-img" alt="" />
         <p>Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya. Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya.</p>
       </div>
       <div class="col-lg-6">
         <div class="content ps-0 ps-lg-5">
           <p class="paragraph">Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya. Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya.</p>
-          <img src="/img/about.svg" class="img-fluid rounded-4 mb-4 custom-img" alt="" />
+          <img src="img/about.svg" class="img-fluid rounded-4 mb-4 custom-img" alt="" />
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@ const createStatsCounterComponent = () => `
   <div class="container" data-aos="fade-up">
     <div class="row gy-4 align-items-center">
       <div class="col-lg-6">
-        <img src="/img/stats-img.svg" alt="" class="img-fluid" />
+        <img src="img/stats-img.svg" alt="" class="img-fluid" />
       </div>
       <div class="col-lg-6">
         <div class="stats-item d-flex align-items-center">
@@ -58,9 +58,9 @@ const createTeamComponent = () => `
     <div class="row gy-4">
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
         <div class="member">
-          <img src="/img/team/team-1.jpg" class="img-fluid" alt="" />
-          <h4>Walter White</h4>
-          <span>Web Development</span>
+          <img src="img/team/team-1.png" class="img-fluid h-75" alt="" />
+          <h4>Muhammad Iqbal</h4>
+          <span>Ketua Komunitas</span>
           <div class="social">
             <a href=""><i class="bi bi-twitter"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
@@ -71,9 +71,9 @@ const createTeamComponent = () => `
       </div>
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
         <div class="member">
-          <img src="/img/team/team-2.jpg" class="img-fluid" alt="" />
-          <h4>Sarah Jhinson</h4>
-          <span>Marketing</span>
+          <img src="img/team/team-2.png" class="img-fluid h-75" alt="" />
+          <h4>Darren Oswaldo</h4>
+          <span>Wakil Ketua</span>
           <div class="social">
             <a href=""><i class="bi bi-twitter"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
@@ -84,9 +84,9 @@ const createTeamComponent = () => `
       </div>
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
         <div class="member">
-          <img src="/img/team/team-3.jpg" class="img-fluid" alt="" />
-          <h4>William Anderson</h4>
-          <span>Content</span>
+          <img src="img/team/team-3.png" class="img-fluid h-75" alt="" />
+          <h4>Miftahul Huda</h4>
+          <span>Sekertaris</span>
           <div class="social">
             <a href=""><i class="bi bi-twitter"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
@@ -97,9 +97,9 @@ const createTeamComponent = () => `
       </div>
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
         <div class="member">
-          <img src="/img/team/team-4.jpg" class="img-fluid" alt="" />
-          <h4>Amanda Jepson</h4>
-          <span>Accountant</span>
+          <img src="img/team/team-4.png" class="img-fluid h-75" alt="" />
+          <h4>Amanda</h4>
+          <span>Bendahara</span>
           <div class="social">
             <a href=""><i class="bi bi-twitter"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>

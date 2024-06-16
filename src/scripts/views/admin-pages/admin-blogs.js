@@ -41,7 +41,7 @@ const Blog = {
           </div>
           <div class="form-group mb-2">
             <label for="blogContent">Content</label>
-            <textarea id="blogContent" class="form-control" name="content" required></textarea>
+            <textarea id="blogContent" class="form-control" name="content"></textarea>
           </div>
           <button type="submit" class="btn-add-blog btn btn-success rounded-pill my-3 px-5 py-2">Add Blog</button>
         </form>

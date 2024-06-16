@@ -473,8 +473,8 @@ h6 {
 .hero1 {
   width: 100%;
   position: relative;
-  padding-top: 270px;
-  padding-bottom: 270px;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }
 
 .img-fluid {
@@ -920,7 +920,6 @@ h6 {
 # Sections & Section Header
 --------------------------------------------------------------*/
 section {
-  padding: 30px 0;
   overflow: hidden;
   scroll-margin-top: 70px;
   overflow: clip;
@@ -1073,11 +1072,6 @@ section {
   line-height: 30px;
   /* color: #6f6f6f; */
 }
-
-.paragraph {
-  margin-top: 50px;
-}
-
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
