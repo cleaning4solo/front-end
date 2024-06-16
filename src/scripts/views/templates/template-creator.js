@@ -1,4 +1,4 @@
-import { formatDate, formatShortDate } from '../../components/date-formater';
+import { formatDate, formatShortDate } from "../../components/date-formater";
 
 const createHomePageComponent = () => `
 
@@ -22,13 +22,13 @@ const createHomePageComponent = () => `
 const CreateCounterComponent = () => `
 <div class="section-header" data-aos="zoom-in">
   <h2 class="text-center fs-1 fw-bold">Kontribusi</h2>
-  <p class="des-impact">Ini adalah kontribusi yang pernah kami lakukan terhadap Kota Solo Raya.</p>
+  <p class="des-impact">Bersama, kita bisa membuat perubahan positif dan menjaga lingkungan kita tetap bersih dan hijau.</p>
 
   <div class="kategori-impact"> 
     <div class="row justify-content-center mb-5">
     <div class="col-12 col-md-6 col-lg-2 py-1 text-center d-flex flex-column">
       <div class="d-flex justify-content-center">
-        <span data-purecounter-start="0" data-purecounter-end="9983" data-purecounter-duration="1" class="purecounter "></span>
+        <span data-purecounter-start="0" data-purecounter-end="983" data-purecounter-duration="1" class="purecounter "></span>
         <p class="fs-4">KG</p>
       </div>
       <p class="deskripsi-impact">Sampah Plastik</p>
@@ -36,14 +36,14 @@ const CreateCounterComponent = () => `
 
     <div class="col-12 col-md-6 col-lg-2 py-1 text-center d-flex flex-column">
       <div class="d-flex justify-content-center">
-        <span data-purecounter-start="0" data-purecounter-end="9932" data-purecounter-duration="1" class="purecounter "></span>
+        <span data-purecounter-start="0" data-purecounter-end="532" data-purecounter-duration="1" class="purecounter "></span>
         <p class="fs-4">KG</p>
       </div>
       <p class="deskripsi-impact">Limbah</p>
     </div>
 
     <div class="col-12 col-md-6 col-lg-2 py-1 text-center d-flex flex-column">
-        <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter "></span>
+        <span data-purecounter-start="0" data-purecounter-end="45" data-purecounter-duration="1" class="purecounter "></span>
         <p class="deskripsi-impact">Desa Dibersihkan</p>
     </div>
 
@@ -69,16 +69,22 @@ const createVissionMissionComponent = () => `
   <div class="col-lg-6 px-5" data-aos="fade-left">
     <div class="section-visi"> 
       <h2 class="fw-bold mb-4">Visi</h2>
-      <p>Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya. Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya.</p>
+      <p>Menjadi wadah generasi muda yang memiliki wawasan dan kepedulian terhadap 
+kelestarian lingkungan di wilayah Karesidenan Surakarta.</p>
     </div>
   </div>
 </div>
 <div class="row align-items-center my-5 py-4">
   <div class="col-lg-6 px-5 order-2 order-lg-1" data-aos="fade-right">
-  <div class="section-visi"> 
-    <h2 class="fw-bold mb-4">Misi</h2>
-    <p>Setiap hari, 10 juta kg plastik berakhir di sungai dan alam lainnya. Hal ini membahayakan kehidupan laut, mengganggu ekosistem, dan mencemari siklus air global. Plastik terurai menjadi mikro dan nanoplastik yang berakhir di rantai makanan manusia, menyebabkan gangguan hormon, kemandulan, dan masalah kesehatan parah lainnya.</p>
-  </div> 
+    <div class="section-visi"> 
+      <h2 class="fw-bold mb-4">Misi</h2>
+      <ul>
+          <li>Menjalin kolaborasi dengan pemerintah dan seluruh bagian masyarakat dalam meningkatkan kepedulian lingkungan.</li>
+          <li>Berperan aktif dalam penanggulangan dan perbaikan kerusakan lingkungan.</li>
+          <li>Memberikan edukasi kepada masyarakat dalam penanggulangan dan perbaikan kerusakan lingkungan.</li>
+          <li>Berkomitmen dalam menjalankan tugas dan kewajiban sebagai anggota Komunitas Solo Bersih.</li>
+      </ul>
+    </div>
   </div>
   <div class="col-lg-6 mb-4 mb-lg-0 order-1 order-lg-2 d-flex justify-content-center align-items-center" data-aos="fade-left">
     <img src="img/mission.svg" alt="Mission Image" class="img-fluid">
@@ -275,7 +281,7 @@ const createLatestPostComponent = (blog) => `
 const createLocationComponent = () => `
 <div class="section-header">
   <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Lokasi</h2>
-  <p>Ini adalah tempat kami berkumpul saat ada pembahasan tertentu.</p>
+  <p>Kunjungi lokasi kami dan bergabunglah dalam pembahasan untuk masa depan yang lebih baik.</p>
   <div class="container"> 
     <div class="my-4 py-2" data-aos="fade-up">
       <iframe
