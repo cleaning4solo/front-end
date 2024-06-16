@@ -28,8 +28,8 @@ const Homepage = {
       <section id="latest-post" class="py-3late latest-post">
       <div class="section-header">
         <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Postingan</h2>
-        <p>Ini adalah postingan yang pernah baru kami unggah.</p>
-        <div class="row gy-4 latest-post-container justify-content-center pb-5 my-4"></div>
+        <p>Ini adalah postingan yang baru kami unggah.</p>
+        <div class="container m-auto row gy-4 latest-post-container justify-content-center pb-5 my-4"></div>
       </div>
     </section>
     <section id="our-location" class="py-3 our-location"></section>

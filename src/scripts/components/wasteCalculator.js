@@ -378,7 +378,7 @@ function checkIfTableIsEmpty() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('load', () => {
   setTimeout(() => {
     const form = document.getElementById('submitActivityForm');
     const showModalButton = document.getElementById('showModalButton');

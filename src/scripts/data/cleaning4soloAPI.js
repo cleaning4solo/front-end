@@ -5,10 +5,96 @@ class Cleaning4SoloAPI {
     return responseJson;
   }
 
+  static async createEvent(event) {
+    const response = await fetch(`${process.env.BASE_URL}/events`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(event),
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete image');
+    }
+    return response.json();
+  }
+
+  static async deleteEventById(id) {
+    const response = await fetch(`${process.env.BASE_URL}/events/${id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete image');
+    }
+    return response.json();
+  }
+
+  static async updateEvent(id, event) {
+    const response = await fetch(`${process.env.BASE_URL}/events/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(event),
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete image');
+    }
+    return response.json();
+  }
+
+  static async updateBlog(id, blog) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token is not available. Please log in again.');
+    }
+
+    const response = await fetch(`${process.env.BASE_URL}/blogs/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+
+      },
+      body: JSON.stringify(blog),
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete Blog');
+    }
+    return response.json();
+  }
+
   static async blogAPI() {
     const response = await fetch(`${process.env.BASE_URL}/blogs`);
     const responseJson = await response.json();
     return responseJson;
+  }
+
+  static async getAllGalleries() {
+    const response = await fetch(`${process.env.BASE_URL}/galleries`);
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
+  static async createGallery(imageUrl, category) {
+    const response = await fetch(`${process.env.BASE_URL}/galleries`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ imageUrl, category }),
+    });
+    return response.json();
+  }
+
+  static async deleteGalleryById(galleryId) {
+    const response = await fetch(`${process.env.BASE_URL}/galleries/${galleryId}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete image');
+    }
+    return response.json();
   }
 
   static async getDetailBlog(id) {

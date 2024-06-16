@@ -2,7 +2,7 @@
 import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
 import { createBreadCrumbComponent, createJumbotronComponent, createEventComponent } from '../templates/template-creator';
 import jumbotronData from '../../data/jumbotron.json';
-import { showSuccessAlert, showErrorAlert } from '../../components/allertMessage';
+import { showSuccessAlert, showErrorAlert, showWarningAlert } from '../../components/allertMessage';
 import { getUserIDFromToken } from '../../components/decodeUserID';
 
 const VolunteerInfoPage = {
@@ -30,8 +30,8 @@ const VolunteerInfoPage = {
       return;
     }
     const data = await Cleaning4SoloAPI.getDetaiVolunteer(userId);
-    if (!data || data.status === 404) { // Periksa jika data tidak ada atau statusnya 404
-      showErrorAlert('Gagal atau anda belum join volunteer');
+    if (!data || data.status === 404) {
+      showWarningAlert('Anda belum menjadi volunteer dari event apapun');
       const volunteerContainer = document.querySelector('.posts-list');
       volunteerContainer.innerHTML = '<p class="text-center fw-bold fs-2">Belum ada data Volunteer</p>';
       return;

@@ -4,7 +4,10 @@ import 'glightbox/dist/css/glightbox.min.css';
 import {
   createAboutUsComponent, createGalleryComponent, createStatsCounterComponent, createTeamComponent,
 } from '../templates/about-us';
-import { galleryIsotope } from '../../components/gallery';
+import { initializeGalleryIsotope } from '../../components/gallery';
+import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
+import 'lazysizes';
+// import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const About = {
   async render() {
@@ -13,11 +16,31 @@ const About = {
       <section id="stats-counter" class="stats-counter sections-bg"></section>
       <section id="team" class="team"></section>
       <section id="gallery" class="gallery sections-bg">
+        <div class="container py-5" data-aos="fade-up">
+          <div class="section-header">
+            <h2>Gallery</h2>
+            <p>Berikut ini merupakan dokumentasi Komunitas Solo Bersih</p>
+          </div>
+          <div class="gallery-isotope" data-gallery-filter="*" data-gallery-layout="masonry" data-gallery-sort="original-order" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <ul class="gallery-flters">
+                <li data-filter="*" class="filter-active">Semua</li>
+                <li data-filter=".bersih">Bersih-bersih</li>
+                <li data-filter=".kolaborasi">Kolaborasi</li>
+                <li data-filter=".foto-bersama">Foto bersama</li>
+              </ul>
+            </div>
+            <div class="row gy-4 gallery-container"></div>
+          </div>
+        </div>
+      </section>
     `;
   },
 
   // cek
   async afterRender() {
+    const data = await Cleaning4SoloAPI.getAllGalleries();
+    const { galleries } = data;
     const teamContainer = document.querySelector('.team');
     teamContainer.innerHTML = createTeamComponent();
 
@@ -27,10 +50,18 @@ const About = {
     const mainContainer = document.querySelector('.hero');
     mainContainer.innerHTML = createAboutUsComponent();
 
-    const galleryContainer = document.querySelector('.gallery');
-    galleryContainer.innerHTML = createGalleryComponent();
+    const galleryContainer = document.querySelector('.gallery-container');
+
+    if (galleries.length === 0) {
+      galleryContainer.innerHTML = '<p class="text-center fw-bold fs-2">Belum ada Foto</p>';
+    } else {
+      galleries.forEach((picture) => {
+        galleryContainer.innerHTML += createGalleryComponent(picture);
+      });
+    }
+
+    initializeGalleryIsotope();
     new PureCounter();
-    galleryIsotope();
     const glightbox = GLightbox({
       selector: '.glightbox',
     });
