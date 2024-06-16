@@ -2,7 +2,7 @@ import cleaning4soloAPI from '../data/cleaning4soloAPI';
 import { getUserIDFromToken } from './decodeUserID';
 import { showSuccessAlert, showErrorAlert } from './allertMessage';
 
-const token = localStorage.getItem('token');
+const token = sessionStorage.getItem('token');
 
 async function setupJoinEventListeners(eventID) {
   const eventId = eventID;

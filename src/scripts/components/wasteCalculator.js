@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import { getUserIDFromToken } from './decodeUserID';
 import { showSuccessAlert, showErrorAlert } from './allertMessage';
 
-const token = localStorage.getItem('token');
+const token = sessionStorage.getItem('token');
 
 async function addActivity(aktivitas, totalJual, totalEmisiKarbon) {
   if (!token) {
@@ -314,10 +314,14 @@ async function loadActivities() {
     // Concatenate user activities at the top
     const sortedActivities = [...userActivities, ...otherActivities];
 
-    // Populate activity select dropdown with an initial empty option
-    const activitySelect = document.querySelector('#activitySelect');
-    activitySelect.innerHTML = '<option value="" disabled selected>Pilih Aktivitas</option>';
-    activitySelect.innerHTML += sortedActivities.map((activity) => `<option value="${activity._id}">${activity.aktivitas}</option>`).join('');
+    // Create the options HTML
+    const optionsHTML = sortedActivities.map((activity) => `<option value="${activity._id}">${activity.aktivitas}</option>`).join('');
+
+    // Populate activity select dropdowns with an initial empty option and then the options HTML
+    const activitySelects = document.querySelectorAll('#activitySelect, #activitySelect2');
+    activitySelects.forEach((activitySelect) => {
+      activitySelect.innerHTML = `<option value="" disabled selected>Pilih Aktivitas</option>${optionsHTML}`;
+    });
   } catch (error) {
     console.error('Error loading activities:', error);
 
@@ -325,7 +329,7 @@ async function loadActivities() {
     Swal.fire({
       icon: 'error',
       title: 'Kesalahan',
-      text: 'Terjadi kesalahan dalam memuat aktivitas  Silakan login untuk melanjutkan.',
+      text: 'Terjadi kesalahan dalam memuat aktivitas. Silakan login untuk melanjutkan.',
       confirmButtonText: 'OK',
     });
   }
@@ -374,60 +378,73 @@ function checkIfTableIsEmpty() {
   }
 }
 
-document.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    const form = document.getElementById('addWasteForm');
+    const form = document.getElementById('submitActivityForm');
+    const showModalButton = document.getElementById('showModalButton');
     const submitSelesaiButton = document.getElementById('submitSelesai');
-    console.log(submitSelesaiButton);
+    const modal = $('#submitActivityModal');
+    const activitySelect2 = document.querySelector('#activitySelect2');
+    const errorMessage = document.querySelector('#submitActivityErrorMessage');
+
     if (submitSelesaiButton) {
       submitSelesaiButton.addEventListener('click', async () => {
-        const activitySelect = document.querySelector('#activitySelect');
-        const activityId = activitySelect.value;
+        modal.modal('show'); // Show the modal to input activity
 
-        if (!activityId) {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Peringatan',
-            text: 'Mohon pilih aktivitas terlebih dahulu.',
-            confirmButtonText: 'OK',
-          });
-          return;
-        }
+        modal.on('shown.bs.modal', () => {
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const activityId = activitySelect2.value;
 
-        Swal.fire({
-          title: 'Apakah Anda yakin?',
-          text: 'Jika Anda menekan "Selesai", Anda tidak dapat mengedit data ini lagi.',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Ya, selesai!',
-          cancelButtonText: 'Batal',
-        }).then(async (result) => {
-          if (result.isConfirmed) {
-            const isSuccess = await updateActivityStatus(activityId, 'success');
-            if (isSuccess) {
-              appendActivityToTable(activityId);
-              form.reset();
-              // Disable further editing
-              activitySelect.disabled = true;
-              document.querySelector('#addWasteForm').querySelectorAll('input, button, select').forEach((elem) => {
-                // eslint-disable-next-line no-param-reassign
-                elem.disabled = true;
-              });
-
-              Swal.fire(
-                'Selesai!',
-                'Data aktivitas telah disimpan.',
-                'success',
-              );
-            } else {
-              Swal.fire(
-                'Gagal',
-                'Terjadi kesalahan saat memperbarui status aktivitas.',
-                'error',
-              );
+            if (!activityId) {
+              errorMessage.textContent = 'Harap pilih aktivitas yang ingin diselesaikan.';
+              return;
             }
+
+            Swal.fire({
+              title: 'Apakah Anda yakin?',
+              text: 'Jika Anda menekan "Selesai", Anda tidak dapat mengedit data ini lagi.',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Ya, selesai!',
+              cancelButtonText: 'Batal',
+            }).then(async (result) => {
+              if (result.isConfirmed) {
+                try {
+                  const isSuccess = await updateActivityStatus(activityId, 'success');
+                  if (isSuccess) {
+                    appendActivityToTable(activityId); // Optional: Update UI to reflect the completed activity
+                    form.reset();
+                    loadActivities();
+                    activitySelect2.disabled = true;
+                    modal.modal('hide');
+                    Swal.fire(
+                      'Selesai!',
+                      'Data aktivitas telah disimpan.',
+                      'success',
+                    );
+                  } else {
+                    throw new Error('Gagal memperbarui status aktivitas.');
+                  }
+                } catch (error) {
+                  Swal.fire(
+                    'Gagal',
+                    error.message,
+                    'error',
+                  );
+                  console.error('Error submitting activity:', error);
+                }
+              }
+            });
+          });
+
+          // Clear error message on change of activity select
+          if (activitySelect2) {
+            activitySelect2.addEventListener('change', () => {
+              errorMessage.textContent = '';
+            });
           }
         });
       });
@@ -436,6 +453,7 @@ document.addEventListener('load', () => {
     }
   }, 100); // Adjust the delay time as needed
 });
+
 // Function to update activity status
 async function updateActivityStatus(activityId, statusAktivitas) {
   try {

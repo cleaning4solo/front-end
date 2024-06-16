@@ -4,7 +4,7 @@ const createAboutUsComponent = () => `
       <h2>Tentang Kami</h2>
       <p>KSB hadir sebagai wadah generasi muda yang memiliki wawasan dan kepedulian terhadap kelestarian lingkungan di wilayah Karesidenan Surakarta. Kami berkomitmen untuk menjalin kolaborasi dengan pemerintah dan seluruh bagian masyarakat dalam meningkatkan kepedulian lingkungan, berperan aktif dalam penanggulangan dan perbaikan kerusakan lingkungan, memberikan edukasi kepada masyarakat, serta menjalankan tugas dan kewajiban kami sebagai anggota komunitas dengan penuh tanggung jawab.</p>
       <div class="position-relative mt-4">
-        <img src="/img/cover-vid.svg" class="img-fluid rounded-4 custom-img-up" alt="" />
+        <img src="img/cover-vid.svg" class="img-fluid rounded-4 custom-img-up" alt="" />
         <a href="https://youtu.be/CW6lL4j-2Qo?si=v8tUTpxfVPY-x1Xx" class="glightbox play-btn"></a>
       </div>
     </div>
@@ -35,7 +35,7 @@ const createStatsCounterComponent = () => `
   <div class="container" data-aos="fade-up">
     <div class="row gy-4 align-items-center">
       <div class="col-lg-6">
-        <img src="/img/stats-img.svg" alt="" class="img-fluid" />
+        <img src="img/stats-img.svg" alt="" class="img-fluid" />
       </div>
       <div class="col-lg-6">
         <div class="stats-item d-flex align-items-center">

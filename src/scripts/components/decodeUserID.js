@@ -2,9 +2,9 @@ import { jwtDecode } from 'jwt-decode';
 
 // Fungsi untuk mendekode token dan mengambil userID
 function getUserIDFromToken() {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
   if (!token) {
-    console.log('No token found in localStorage.');
+    console.log('No token found in sessionStorage.');
     return null;
   }
 
@@ -18,9 +18,9 @@ function getUserIDFromToken() {
 }
 
 function getUserRoleFromToken() {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
   if (!token) {
-    console.log('No token found in localStorage.');
+    console.log('No token found in sessionStorage.');
     return null;
   }
 

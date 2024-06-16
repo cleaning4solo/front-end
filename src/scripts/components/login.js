@@ -3,7 +3,8 @@ import { getUserRoleFromToken } from './decodeUserID';
 
 function logout() {
   showSuccessAlert('berhasil logout');
-  localStorage.removeItem('token');
+  sessionStorage.removeItem('token');
+  window.location.href = '/';
   updateLoginSection();
 }
 
@@ -11,7 +12,7 @@ window.logout = logout;
 
 function updateLoginSection() {
   const userSection = document.querySelector('.login-page');
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   if (!token) {
     renderLoginButton(userSection);
