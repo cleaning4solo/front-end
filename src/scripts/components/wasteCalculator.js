@@ -378,7 +378,7 @@ function checkIfTableIsEmpty() {
   }
 }
 
-document.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     const form = document.getElementById('submitActivityForm');
     const showModalButton = document.getElementById('showModalButton');
@@ -418,6 +418,7 @@ document.addEventListener('load', () => {
                     appendActivityToTable(activityId); // Optional: Update UI to reflect the completed activity
                     form.reset();
                     loadActivities();
+                    activitySelect2.disabled = true;
                     modal.modal('hide');
                     Swal.fire(
                       'Selesai!',

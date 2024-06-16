@@ -232,7 +232,7 @@ const createCalculatorPageComponent = () => `
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="submitActivityModalLabel">Submit Activity</h5>
+            <h5 class="modal-title" id="submitActivityModalLabel">Selesaikan Aktivitas</h5>
             <span class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 1; right: 0; padding: 0.5rem; cursor: pointer;">
             <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
             </span>
@@ -244,7 +244,7 @@ const createCalculatorPageComponent = () => `
                   <select class="form-control" id="activitySelect2" required></select>
                 </div>
                 <div id="submitActivityErrorMessage" class="text-danger"></div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success mt-3 mx-2">Selesai</button>
             </form>
         </div>
     </div>
