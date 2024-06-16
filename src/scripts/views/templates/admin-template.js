@@ -42,7 +42,7 @@ const createBoxInfoItemTemplate = (countUser, countEvent, countBlog) => `
 const createTableDataItemTemplate = (users) => `
 <tr>
     <td>
-        <img src="img/profile.svg">
+        <img src="img/profile.svg" class="userPicture">
         <p class="my-auto">${users.username}</p>
     </td>
     <td>${formatShortDate(users.createdAt)}</td>
@@ -70,8 +70,33 @@ const createBlogTableDataItemTemplate = (blog) => `
   </tr>
 `;
 
+const createGalleryTableDataItemTemplate = (gallery) => `
+  <tr>
+    <td><img src="${gallery.imageUrl}" alt="${gallery.title}" class="img-fluid" style="width: 200px; height: auto;"></td>
+    <td>${gallery.category}</td>
+    <td>
+      <button class="btn btn-danger btnDeleteGallery" data-id="${gallery._id}">Delete</button>
+    </td>
+  </tr>
+`;
+
+const createEventTableDataItemTemplate = (event) => `
+  <tr>
+    <td><img src="${event.image}" alt="${event.name}" class="img-fluid" style="width: 100px; height: auto;"></td>
+    <td>${event.name}</td>
+    <td>${event.location}</td>
+    <td>${formatShortDate(event.date)}</td>
+    <td>
+      <button class="btn btn-danger btnDeleteEvent" data-id="${event._id}">Delete</button>
+      <button class="btn btn-warning btnEditEvent" data-id="${event._id}">Update</button>
+    </td>
+  </tr>
+`;
+
 export {
   createBlogTableDataItemTemplate,
+  createEventTableDataItemTemplate,
+  createGalleryTableDataItemTemplate,
   createHeaderDashboardTemplate,
   createBoxInfoItemTemplate,
   createTableDataItemTemplate,
