@@ -70,6 +70,7 @@ const Login = {
             window.location.href = '/admin.html';
           } else {
             window.location.hash = '#/homepage';
+            location.reload();
           }
         }, 2000);
       } catch (err) {

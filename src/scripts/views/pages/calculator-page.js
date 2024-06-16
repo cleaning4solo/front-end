@@ -9,9 +9,15 @@ const Calculator = {
   },
 
   async afterRender() {
+    if (!sessionStorage.getItem('reloaded')) {
+      sessionStorage.setItem('reloaded', 'true');
+      window.location.reload();
+    } else {
+      sessionStorage.removeItem('reloaded');
+    }
+
     const mainContainer = document.querySelector('.hero');
     mainContainer.innerHTML = createCalculatorPageComponent();
-
     initializeEventListeners();
   },
 };
