@@ -43,6 +43,27 @@ class Cleaning4SoloAPI {
     return response.json();
   }
 
+  static async updateBlog(id, blog) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token is not available. Please log in again.');
+    }
+
+    const response = await fetch(`${process.env.BASE_URL}/blogs/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+
+      },
+      body: JSON.stringify(blog),
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete Blog');
+    }
+    return response.json();
+  }
+
   static async blogAPI() {
     const response = await fetch(`${process.env.BASE_URL}/blogs`);
     const responseJson = await response.json();

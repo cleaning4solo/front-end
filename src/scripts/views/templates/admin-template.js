@@ -65,7 +65,8 @@ const createBlogTableDataItemTemplate = (blog) => `
     <td>${blog.title}</td>
     <td>${formatDate(blog.createdAt)}</td>
     <td>
-      <button class="btn btn-danger rounded-pill btnDeleteBlog" dataId="${blog._id}">Delete</button>
+      <button class="btn btn-danger rounded-pill btnDeleteBlog" data-id="${blog._id}">Delete</button>
+      <button class="btn btn-outline-warning rounded-pill btnEditBlog" data-id="${blog._id}">Update</button>
     </td>
   </tr>
 `;

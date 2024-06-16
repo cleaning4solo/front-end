@@ -374,10 +374,11 @@ function checkIfTableIsEmpty() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('load', () => {
   setTimeout(() => {
     const form = document.getElementById('addWasteForm');
     const submitSelesaiButton = document.getElementById('submitSelesai');
+    console.log(submitSelesaiButton);
     if (submitSelesaiButton) {
       submitSelesaiButton.addEventListener('click', async () => {
         const activitySelect = document.querySelector('#activitySelect');
