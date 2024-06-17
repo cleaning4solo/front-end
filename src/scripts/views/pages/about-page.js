@@ -7,7 +7,6 @@ import {
 import { initializeGalleryIsotope } from '../../components/gallery';
 import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
 import 'lazysizes';
-// import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const About = {
   async render() {
@@ -19,7 +18,7 @@ const About = {
         <div class="container py-5" data-aos="fade-up">
           <div class="section-header">
             <h2>Gallery</h2>
-            <p>Berikut ini merupakan dokumentasi Komunitas Solo Bersih</p>
+            <p>Berikut ini adalah dokumentasi dari berbagai kegiatan dan momen penting Komunitas Solo Bersih.</p>
           </div>
           <div class="gallery-isotope" data-gallery-filter="*" data-gallery-layout="masonry" data-gallery-sort="original-order" data-aos="fade-up" data-aos-delay="100">
             <div>
@@ -37,7 +36,6 @@ const About = {
     `;
   },
 
-  // cek
   async afterRender() {
     const data = await Cleaning4SoloAPI.getAllGalleries();
     const { galleries } = data;

@@ -47,7 +47,7 @@ const Login = {
       event.preventDefault();
       try {
         const data = await Cleaning4SoloAPI.signup(signInUsernameInput.value, signInEmailInput.value, signInPasswordInput.value);
-        localStorage.setItem('token', data.token);
+        sessionStorage.setItem('token', data.token);
         showSuccessAlert(data.message);
         setTimeout(() => {
           container.classList.remove('right-panel-active');
@@ -61,7 +61,7 @@ const Login = {
       event.preventDefault();
       try {
         const data = await Cleaning4SoloAPI.login(loginEmailInput.value, loginPasswordInput.value);
-        localStorage.setItem('token', data.token);
+        sessionStorage.setItem('token', data.token);
         updateLoginSection();
         showSuccessAlert(data.message);
         setTimeout(() => {

@@ -1,10 +1,14 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-undef */
 import PureCounter from '@srexi/purecounterjs';
 import initSwiper from '../../components/swiper';
 
 import {
-  CreateCounterComponent, createEventComponent, createHomePageComponent, createLatestPostComponent, createLocationComponent, createPartnerComponent, createVissionMissionComponent,
+  CreateCounterComponent,
+  createEventComponent,
+  createHomePageComponent,
+  createLatestPostComponent,
+  createLocationComponent,
+  createPartnerComponent,
+  createVissionMissionComponent,
 } from '../templates/template-creator';
 import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
 
@@ -17,7 +21,7 @@ const Homepage = {
         <div class="container">
           <div class="section-events"> 
             <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Event</h2>
-            <p class="section-header">Ini adalah events yang pernah kami adakan.</p>
+            <p class="section-header">Bergabunglah dengan kami untuk berkontribusi nyata dalam menjaga dan memperbaiki lingkungan kita!</p>
           </div>
           <div class="row gy-4 event-item justify-content-center pb-5 my-4">
           </div>
@@ -25,10 +29,10 @@ const Homepage = {
       </section>
       <section id="stats-counter" class="stats-counter"></section>
 
-      <section id="latest-post" class="py-3late latest-post">
+      <section id="latest-post" class="py-3late latest-post pt-5">
       <div class="section-header">
         <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Postingan</h2>
-        <p>Ini adalah postingan yang baru kami unggah.</p>
+        <p>IInilah postingan-postingan terbaru yang baru kami unggah, penuh dengan tips, berita, dan update terkini!</p>
         <div class="container m-auto row gy-4 latest-post-container justify-content-center pb-5 my-4"></div>
       </div>
     </section>

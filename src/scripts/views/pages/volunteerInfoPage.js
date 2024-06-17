@@ -19,7 +19,7 @@ const VolunteerInfoPage = {
   },
 
   async afterRender() {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     if (!token) {
       showErrorAlert('You need to be logged in to join an event.');
       return;
