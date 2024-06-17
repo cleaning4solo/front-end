@@ -638,10 +638,10 @@ h6 {
 }
 
 @media (min-width: 400px) {
-  .hero1{
+  /* .hero1{
     padding-top: 50px;
     padding-bottom: 20px;
-  }
+  } */
 
   .section-visi {
     padding: 0 0 0 0;
