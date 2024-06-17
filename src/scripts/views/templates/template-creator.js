@@ -1,4 +1,4 @@
-import { formatDate, formatShortDate } from "../../components/date-formater";
+import { formatDate, formatShortDate } from '../../components/date-formater';
 
 const createHomePageComponent = () => `
 
