@@ -2,8 +2,6 @@
 /* eslint-disable no-undef */
 import PureCounter from "@srexi/purecounterjs";
 import initSwiper from "../../components/swiper";
-import PureCounter from "@srexi/purecounterjs";
-import initSwiper from "../../components/swiper";
 
 import {
   CreateCounterComponent,
@@ -53,13 +51,6 @@ const Homepage = {
     const { events } = eventData;
     console.log(blogs);
     console.log(events);
-    const mainContainer = document.querySelector(".hero1");
-    const counterContainer = document.querySelector(".stats-counter");
-    const vissionContainer = document.querySelector(".vission");
-    const eventContainer = document.querySelector(".event-item");
-    const latestPostContainer = document.querySelector(".latest-post-container");
-    const locationContainer = document.querySelector(".our-location");
-    const partnersContainer = document.querySelector(".partners");
     const mainContainer = document.querySelector(".hero1");
     const counterContainer = document.querySelector(".stats-counter");
     const vissionContainer = document.querySelector(".vission");
