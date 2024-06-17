@@ -1,4 +1,4 @@
-import { formatDate, formatShortDate } from "../../components/date-formater";
+import { formatDate, formatShortDate } from '../../components/date-formater';
 
 const createHomePageComponent = () => `
 
@@ -261,7 +261,7 @@ const createCalculatorPageComponent = () => `
 const createEventComponent = (events) => `
 <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
 
-<div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color h-75">
+<div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color">
 <div class="image-height-wrapper">
 <img src="${events.image}" alt="${events.name}" class="img-fluid image-height">
 </div>
@@ -285,7 +285,7 @@ const createEventComponent = (events) => `
 `;
 
 const createLatestPostComponent = (blog) => `
-<div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+<div class="col-xl-4 col-md-6 d-flex overflow-hidden" data-aos="fade-up" data-aos-delay="100">
   <div class="position-relative card px-0 shadow rounded-4 overflow-hidden background-color text-color d-flex flex-column h-75">
     <div class="image-height-wrapper">
       <img src="${blog.image}" alt="" class="img-fluid image-height">
