@@ -23,7 +23,7 @@ const Homepage = {
       </section>
       <section id="stats-counter" class="stats-counter"></section>
 
-      <section id="latest-post" class="py-3late latest-post">
+      <section id="latest-post" class="py-3late latest-post pt-5">
       <div class="section-header">
         <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Postingan</h2>
         <p>Ini adalah postingan yang baru kami unggah.</p>
