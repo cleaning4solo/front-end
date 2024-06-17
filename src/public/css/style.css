@@ -1439,6 +1439,7 @@ section {
 # Our Team Section
 --------------------------------------------------------------*/
 .team .member {
+  margin: auto;
   text-align: center;
   background: #fff;
   border-radius: 10px;
@@ -1449,6 +1450,9 @@ section {
 
 .team .member img {
   border-radius: 10px;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
   overflow: hidden;
 }
 
@@ -1458,6 +1462,7 @@ section {
 
 .team .member h4 {
   font-weight: 700;
+  color: black;
   margin-top: 16px;
   margin-bottom: 2px;
   font-size: 20px;

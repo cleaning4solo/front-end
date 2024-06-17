@@ -64,7 +64,7 @@ const createTeamComponent = () => `
     <div class="row gy-4">
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
         <div class="member">
-          <img src="img/team/team-1.png" class="img-fluid h-75" alt="" />
+          <img src="img/team/team-1.png" class="img-fluid" alt="Muhammad Ikhsan" />
           <h4>Muhammad Ikhsan</h4>
           <span>Ketua</span>
           <div class="social">
@@ -77,9 +77,9 @@ const createTeamComponent = () => `
       </div>
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
         <div class="member">
-          <img src="img/team/team-2.png" class="img-fluid h-75" alt="" />
+          <img src="img/team/team-2.png" class="img-fluid" alt="Nawang Wulan" />
           <h4>Nawang Wulan</h4>
-          <span>Sekertaris</span>
+          <span>Sekretaris</span>
           <div class="social">
             <a href=""><i class="bi bi-twitter"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
@@ -90,7 +90,7 @@ const createTeamComponent = () => `
       </div>
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
         <div class="member">
-          <img src="img/team/team-3.png" class="img-fluid h-75" alt="" />
+          <img src="img/team/team-3.png" class="img-fluid" alt="Ade Firdaus" />
           <h4>Ade Firdaus</h4>
           <span>Tim IT</span>
           <div class="social">
@@ -103,7 +103,7 @@ const createTeamComponent = () => `
       </div>
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
         <div class="member">
-          <img src="img/team/team-4.png" class="img-fluid h-75" alt="" />
+          <img src="img/team/team-4.png" class="img-fluid" alt="Dea Adira" />
           <h4>Dea Adira</h4>
           <span>Bendahara</span>
           <div class="social">
