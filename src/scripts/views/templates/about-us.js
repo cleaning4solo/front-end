@@ -4,14 +4,14 @@ const createAboutUsComponent = () => `
       <h2>Tentang Kami</h2>
       <p>KSB hadir sebagai wadah generasi muda yang memiliki wawasan dan kepedulian terhadap kelestarian lingkungan di wilayah Karesidenan Surakarta. Kami berkomitmen untuk menjalin kolaborasi dengan pemerintah dan seluruh bagian masyarakat dalam meningkatkan kepedulian lingkungan, berperan aktif dalam penanggulangan dan perbaikan kerusakan lingkungan, memberikan edukasi kepada masyarakat, serta menjalankan tugas dan kewajiban kami sebagai anggota komunitas dengan penuh tanggung jawab.</p>
       <div class="position-relative mt-4">
-        <img src="/img/cover-vid.svg" class="img-fluid rounded-4 custom-img-up" alt="" />
+        <img src="https://i.ibb.co.com/bJWhrks/image.png" class="img-fluid rounded-4 custom-img-up" alt="" />
         <a href="https://youtu.be/CW6lL4j-2Qo?si=v8tUTpxfVPY-x1Xx" class="glightbox play-btn"></a>
       </div>
     </div>
     <div class="row gy-4">
       <div class="col-lg-6">
         <h3>Sejarah</h3>
-        <img src="/img/about.svg" class="img-fluid rounded-4 mb-4 custom-img" alt="" />
+        <img src="https://i.ibb.co.com/Lpws3sp/IMG-20220918-WA0090.jpg" class="img-fluid rounded-4 mb-4 custom-img" alt="" />
         <p>
           Komunitas Solo Bersih (KSB) didirikan pada tanggal 21 September 2019 di kota Surakarta. Pendirian ini bertujuan untuk menjawab kebutuhan akan sebuah wadah yang dapat menggerakkan dan menyatukan generasi muda serta masyarakat umum dalam upaya pelestarian lingkungan. Sekretariat KSB bertempat di Papan Kawruh Tirta, Gilingan, Banjarsari, Surakarta, Jawa Tengah.
           Berdasarkan asas kekeluargaan dan kebersamaan yang ditopang oleh nilai-nilai Pancasila dan Undang-Undang Dasar 1945, KSB memiliki visi untuk menjadi wadah generasi muda yang berwawasan dan peduli terhadap lingkungan. Untuk mencapai visi tersebut, KSB mengemban misi menjalin kolaborasi dengan pemerintah dan masyarakat, berperan aktif dalam penanggulangan dan perbaikan kerusakan lingkungan, memberikan edukasi kepada masyarakat, serta berkomitmen dalam tugas dan kewajiban sebagai anggota komunitas.
@@ -23,7 +23,7 @@ const createAboutUsComponent = () => `
             KSB didirikan untuk waktu yang tidak terbatas dengan tujuan menjadikan lingkungan di Karesidenan Surakarta tetap lestari dan berseri. Selain itu, KSB juga berupaya meningkatkan kesadaran bahwa lingkungan yang kita tempati bukan hanya warisan nenek moyang, namun juga pinjaman dari generasi anak cucu kita, sehingga kita berkewajiban untuk menjaga dan merawatnya. Sebagai bagian dari masyarakat Karesidenan Surakarta, KSB turut berperan aktif membantu program pemerintah dalam permasalahan lingkungan dan sosial kemasyarakatan.
             Untuk mencapai tujuan tersebut, KSB yang terdiri dari pemuda dan masyarakat umum yang peduli terhadap lingkungan, menyelenggarakan berbagai usaha dan kegiatan yang bertujuan meningkatkan kepedulian masyarakat tentang keberlanjutan alam sekitar.
           </p>
-          <img src="/img/about.svg" class="img-fluid rounded-4 mb-4 custom-img" alt="" />
+          <img src="https://i.ibb.co.com/sg7ZB1Y/IMG-20220918-WA0073.jpg" class="img-fluid rounded-4 mb-4 custom-img" alt="" />
         </div>
       </div>
     </div>
@@ -128,6 +128,4 @@ const createGalleryComponent = (picture) => `
   </div>
 `;
 
-export {
-  createAboutUsComponent, createStatsCounterComponent, createTeamComponent, createGalleryComponent,
-};
+export { createAboutUsComponent, createStatsCounterComponent, createTeamComponent, createGalleryComponent };
