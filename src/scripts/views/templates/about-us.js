@@ -128,4 +128,6 @@ const createGalleryComponent = (picture) => `
   </div>
 `;
 
-export { createAboutUsComponent, createStatsCounterComponent, createTeamComponent, createGalleryComponent };
+export {
+  createAboutUsComponent, createStatsCounterComponent, createTeamComponent, createGalleryComponent,
+};
