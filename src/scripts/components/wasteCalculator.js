@@ -269,7 +269,7 @@ function appendWastesToTable(wasteIds) {
           if (isSuccess) {
             // Remove the row from the table
             event.target.closest('tr').remove();
-            checkIfTableIsEmpty(); // Optional: function to check if table is empty and display a message
+            checkIfTableIsEmpty();
 
             Swal.fire(
               'Dihapus!',
