@@ -1,10 +1,20 @@
-import PureCounter from '@srexi/purecounterjs';
-import initSwiper from '../../components/swiper';
+/* eslint-disable no-plusplus */
+/* eslint-disable no-undef */
+import PureCounter from "@srexi/purecounterjs";
+import initSwiper from "../../components/swiper";
+import PureCounter from "@srexi/purecounterjs";
+import initSwiper from "../../components/swiper";
 
 import {
-  CreateCounterComponent, createEventComponent, createHomePageComponent, createLatestPostComponent, createLocationComponent, createPartnerComponent, createVissionMissionComponent,
-} from '../templates/template-creator';
-import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
+  CreateCounterComponent,
+  createEventComponent,
+  createHomePageComponent,
+  createLatestPostComponent,
+  createLocationComponent,
+  createPartnerComponent,
+  createVissionMissionComponent,
+} from "../templates/template-creator";
+import Cleaning4SoloAPI from "../../data/cleaning4soloAPI";
 
 const Homepage = {
   async render() {
@@ -15,7 +25,7 @@ const Homepage = {
         <div class="container">
           <div class="section-events"> 
             <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Event</h2>
-            <p class="section-header">Ini adalah events yang pernah kami adakan.</p>
+            <p class="section-header">Bergabunglah dengan kami untuk berkontribusi nyata dalam menjaga dan memperbaiki lingkungan kita!</p>
           </div>
           <div class="row gy-4 event-item justify-content-center pb-5 my-4">
           </div>
@@ -26,7 +36,7 @@ const Homepage = {
       <section id="latest-post" class="py-3late latest-post pt-5">
       <div class="section-header">
         <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Postingan</h2>
-        <p>Ini adalah postingan yang baru kami unggah.</p>
+        <p>IInilah postingan-postingan terbaru yang baru kami unggah, penuh dengan tips, berita, dan update terkini!</p>
         <div class="container m-auto row gy-4 latest-post-container justify-content-center pb-5 my-4"></div>
       </div>
     </section>
@@ -41,13 +51,22 @@ const Homepage = {
     const eventData = await Cleaning4SoloAPI.eventAPI();
     const { blogs } = blogData;
     const { events } = eventData;
-    const mainContainer = document.querySelector('.hero1');
-    const counterContainer = document.querySelector('.stats-counter');
-    const vissionContainer = document.querySelector('.vission');
-    const eventContainer = document.querySelector('.event-item');
-    const latestPostContainer = document.querySelector('.latest-post-container');
-    const locationContainer = document.querySelector('.our-location');
-    const partnersContainer = document.querySelector('.partners');
+    console.log(blogs);
+    console.log(events);
+    const mainContainer = document.querySelector(".hero1");
+    const counterContainer = document.querySelector(".stats-counter");
+    const vissionContainer = document.querySelector(".vission");
+    const eventContainer = document.querySelector(".event-item");
+    const latestPostContainer = document.querySelector(".latest-post-container");
+    const locationContainer = document.querySelector(".our-location");
+    const partnersContainer = document.querySelector(".partners");
+    const mainContainer = document.querySelector(".hero1");
+    const counterContainer = document.querySelector(".stats-counter");
+    const vissionContainer = document.querySelector(".vission");
+    const eventContainer = document.querySelector(".event-item");
+    const latestPostContainer = document.querySelector(".latest-post-container");
+    const locationContainer = document.querySelector(".our-location");
+    const partnersContainer = document.querySelector(".partners");
 
     mainContainer.innerHTML = createHomePageComponent();
     counterContainer.innerHTML = CreateCounterComponent();
@@ -55,8 +74,8 @@ const Homepage = {
     locationContainer.innerHTML = createLocationComponent();
     partnersContainer.innerHTML = createPartnerComponent();
 
-    latestPostContainer.innerHTML = '';
-    eventContainer.innerHTML = '';
+    latestPostContainer.innerHTML = "";
+    eventContainer.innerHTML = "";
 
     if (blogs.length === 0) {
       latestPostContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada postingan</p>';
