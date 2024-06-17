@@ -196,7 +196,6 @@ class Cleaning4SoloAPI {
   static async getDetaiVolunteer(id) {
     try {
       const token = sessionStorage.getItem('token');
-      console.log(token);
       if (!token) {
         throw new Error('Token is not available. Please log in again.');
       }

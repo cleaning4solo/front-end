@@ -23,7 +23,7 @@ const Homepage = {
             <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Event</h2>
             <p class="section-header">Bergabunglah dengan kami untuk berkontribusi nyata dalam menjaga dan memperbaiki lingkungan kita!</p>
           </div>
-          <div class="row gy-4 event-item justify-content-center pb-5 my-4">
+          <div class="row gy-4 h-75 event-item justify-content-center">
           </div>
         </div>
       </section>

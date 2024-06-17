@@ -11,7 +11,7 @@ const VolunteerInfoPage = {
     <section class="header-container"></section>
     <div class="container breadcrumb"></div>
     <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
         <div class="row gy-4 my-5 posts-list"></div>
       </div>
     </section>
@@ -48,7 +48,7 @@ const VolunteerInfoPage = {
 
     jumbotronContainer.innerHTML = createJumbotronComponent(jumbotronData.volunteerJumbotron);
     breadcrumbContainer.innerHTML = createBreadCrumbComponent(url);
-
+    console.log(volunteer);
     volunteer.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     volunteer.forEach((events) => {
       volunteerContainer.innerHTML += createEventComponent(events);

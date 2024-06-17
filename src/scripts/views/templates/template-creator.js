@@ -261,7 +261,7 @@ const createCalculatorPageComponent = () => `
 const createEventComponent = (events) => `
 <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
 
-<div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color h-75">
+<div class="position-relative card px-0 shadow rounded-4 overflow-hidden bg-color text-color">
 <div class="image-height-wrapper">
 <img src="${events.image}" alt="${events.name}" class="img-fluid image-height">
 </div>
