@@ -1,5 +1,7 @@
-import PureCounter from '@srexi/purecounterjs';
-import initSwiper from '../../components/swiper';
+/* eslint-disable no-plusplus */
+/* eslint-disable no-undef */
+import PureCounter from "@srexi/purecounterjs";
+import initSwiper from "../../components/swiper";
 
 import {
   CreateCounterComponent,
@@ -9,8 +11,8 @@ import {
   createLocationComponent,
   createPartnerComponent,
   createVissionMissionComponent,
-} from '../templates/template-creator';
-import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
+} from "../templates/template-creator";
+import Cleaning4SoloAPI from "../../data/cleaning4soloAPI";
 
 const Homepage = {
   async render() {
@@ -49,13 +51,13 @@ const Homepage = {
     const { events } = eventData;
     console.log(blogs);
     console.log(events);
-    const mainContainer = document.querySelector('.hero1');
-    const counterContainer = document.querySelector('.stats-counter');
-    const vissionContainer = document.querySelector('.vission');
-    const eventContainer = document.querySelector('.event-item');
-    const latestPostContainer = document.querySelector('.latest-post-container');
-    const locationContainer = document.querySelector('.our-location');
-    const partnersContainer = document.querySelector('.partners');
+    const mainContainer = document.querySelector(".hero1");
+    const counterContainer = document.querySelector(".stats-counter");
+    const vissionContainer = document.querySelector(".vission");
+    const eventContainer = document.querySelector(".event-item");
+    const latestPostContainer = document.querySelector(".latest-post-container");
+    const locationContainer = document.querySelector(".our-location");
+    const partnersContainer = document.querySelector(".partners");
 
     mainContainer.innerHTML = createHomePageComponent();
     counterContainer.innerHTML = CreateCounterComponent();
@@ -63,8 +65,8 @@ const Homepage = {
     locationContainer.innerHTML = createLocationComponent();
     partnersContainer.innerHTML = createPartnerComponent();
 
-    latestPostContainer.innerHTML = '';
-    eventContainer.innerHTML = '';
+    latestPostContainer.innerHTML = "";
+    eventContainer.innerHTML = "";
 
     if (blogs.length === 0) {
       latestPostContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada postingan</p>';
