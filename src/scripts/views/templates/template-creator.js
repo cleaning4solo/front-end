@@ -142,13 +142,11 @@ const createCalculatorPageComponent = () => `
             <thead>
               <tr>
                 <th class="text-center">Aktivitas</th>
-                <th class="text-center">Total Jual</th>
-                <th class="text-center">Total Emisi Karbon</th>
                 <th class="text-center">Rincian Aktivitas</th>
               </tr>
             </thead>
             <tbody id="activity-table">
-              <td colspan="4" class="text-center no-data-message p-3">
+              <td colspan="2" class="text-center no-data-message p-3">
                 <h5>Tidak ada data</h5>
               </td>
             </tbody>
@@ -196,38 +194,42 @@ const createCalculatorPageComponent = () => `
           </span>
         </div>
         <div class="modal-body">
-          <form id="addWasteForm">
-            <div class="form-group p-2">
-              <label for="activitySelect">Aktivitas</label>
-              <select class="form-control" id="activitySelect" required></select>
-            </div>
-            <div class="form-group p-2">
-              <label for="wasteType">Jenis</label>
-              <input type="text" class="form-control" id="wasteType" required>
-            </div>
-            <div class="form-group p-2">
-              <label for="wasteWeight">Berat</label>
-              <input type="text" class="form-control" id="wasteWeight" required>
-            </div>
-            <div class="form-group p-2">
-              <label for="wasteSource">Asal Limbah</label>
-              <input type="text" class="form-control" id="wasteSource" required>
-            </div>
-            <div class="form-group p-2">
-              <label for="wastePrice">Harga</label>
-              <input type="text" class="form-control" id="wastePrice" required>
-            </div>
-            <div class="form-group p-2">
-              <label for="wasteEmissions">Emisi Karbon</label>
-              <input type="text" class="form-control" id="wasteEmissions" required>
-            </div>
-            <div id="wasteErrorMessage" class="text-danger"></div>
-            <br>
-            <div>
-              <button type="submit" class="btn btn-primary">Add</button>
-            </div>
-          </form>
-        </div>
+  <form id="addWasteForm">
+    <div class="form-group p-2">
+      <label for="activitySelect">Aktivitas</label>
+      <select class="form-control" id="activitySelect" required></select>
+    </div>
+    <div class="form-group p-2">
+      <label for="wasteType">Jenis</label>
+      <select class="form-control" id="wasteType" required></select>
+    </div>
+    <div class="form-group p-2">
+      <label for="wasteWeight">Berat</label>
+      <input type="text" class="form-control" id="wasteWeight" required>
+    </div>
+    <div class="form-group p-2">
+      <label for="wasteSource">Asal Limbah</label>
+      <select class="form-control" id="wasteSource" required>
+        <option value="Industri">Industri</option>
+        <option value="Rumah Tangga">Rumah Tangga</option>
+        <option value="Medis">Medis</option>
+      </select>
+    </div>
+    <div class="form-group p-2">
+      <label for="wastePrice">Harga</label>
+      <input type="text" class="form-control" id="wastePrice" required disabled> 
+    </div>
+    <div class="form-group p-2">
+      <label for="wasteEmissions">Emisi Karbon</label>
+      <input type="text" class="form-control" id="wasteEmissions" required disabled>
+    </div>
+    <div id="wasteErrorMessage" class="text-danger"></div>
+    <br>
+    <div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+  </form>
+</div>
       </div>
     </div>
   </div>
@@ -255,6 +257,44 @@ const createCalculatorPageComponent = () => `
         </div>
     </div>
 </div>
+</div>
+
+<div class="modal fade" id="activityDetailsModal" tabindex="-1" aria-labelledby="activityDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="activityDetailsModalLabel">Rincian Aktivitas</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5><b>Data Limbah:</b></h5>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th class="text-center">Jenis Limbah</th>
+              <th class="text-center">Berat (kg)</th>
+              <th class="text-center">Asal Limbah</th>
+              <th class="text-center">Harga (Rp)</th>
+              <th class="text-center">Emisi Karbon (kg CO₂)</th>
+              <th class="text-center">Total Harga (Rp)</th>
+              <th class="text-center">Total Emisi Karbon (kg CO₂)</th>
+            </tr>
+          </thead>
+          <tbody id="waste-table-body">
+            <!-- Waste details will be appended here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="text-end">Total:</th>
+              <th colspan="4" class="text-end"></th>
+              <th class="text-center" id="totalHarga"></th>
+              <th class="text-center" id="totalEmisiKarbon"></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -342,7 +382,7 @@ const createJumbotronComponent = (jumbotron) => `
     <div class="row d-flex justify-content-center">
       <div class="col-lg-6 text-center text-white">
         <h2 class="fs-2 fw-bold text-uppercase my-3 tracking-wider">${jumbotron.title}</h2>
-        <p>${jumbotron.description}</p>
+        <p class="fw-bold">${jumbotron.description}</p>
       </div>
     </div>
   </div>

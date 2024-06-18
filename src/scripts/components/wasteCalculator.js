@@ -21,7 +21,7 @@ async function addActivity(aktivitas, totalJual, totalEmisiKarbon) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`, // Include the token here
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         aktivitas, totalJual, totalEmisiKarbon, userId,
@@ -195,6 +195,7 @@ function setupWasteFormSubmission() {
     if (activityId) {
       fetchAndDisplayWastes(activityId);
     }
+    loadWasteValue();
   });
 }
 
@@ -233,21 +234,26 @@ async function getWastesByActivityId(activityId) {
 // Function to append wastes to the table
 function appendWastesToTable(wasteIds) {
   const tableBody = document.getElementById('waste-table');
-  tableBody.innerHTML = ''; // Clear existing table rows
+  tableBody.innerHTML = '';
   wasteIds.forEach((waste) => {
     const row = document.createElement('tr');
+    const formattedBerat = `${parseFloat(waste.berat).toLocaleString('id-ID')} Kg`;
+    const formattedHarga = `Rp ${parseFloat(waste.harga).toLocaleString('id-ID')}`;
+    const formattedEmisiKarbon = `${waste.emisiKarbon} kg CO₂`;
+
     row.innerHTML = `
       <td class="text-center p-2">${waste.jenis}</td>
-      <td class="text-center p-2">${waste.berat}</td>
+      <td class="text-center p-2">${formattedBerat}</td>
       <td class="text-center p-2">${waste.asalLimbah}</td>
-      <td class="text-center p-2">${waste.harga}</td>
-      <td class="text-center p-2">${waste.emisiKarbon}</td>
+      <td class="text-center p-2">${formattedHarga}</td>
+      <td class="text-center p-2">${formattedEmisiKarbon}</td>
       <td class="text-center p-2">
         <button class="btn btn-danger btn-sm" data-id="${waste._id}">Remove</button>
       </td>
     `;
     tableBody.appendChild(row);
   });
+  checkIfTableIsEmpty();
 
   // Add event listeners to the delete buttons with SweetAlert confirmation
   document.querySelectorAll('.btn-danger').forEach((button) => {
@@ -381,6 +387,7 @@ function checkIfTableIsEmpty() {
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     const form = document.getElementById('submitActivityForm');
+    const form2 = document.getElementById('addWasteForm');
     const showModalButton = document.getElementById('showModalButton');
     const submitSelesaiButton = document.getElementById('submitSelesai');
     const modal = $('#submitActivityModal');
@@ -389,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (submitSelesaiButton) {
       submitSelesaiButton.addEventListener('click', async () => {
-        modal.modal('show'); // Show the modal to input activity
+        modal.modal('show');
 
         modal.on('shown.bs.modal', () => {
           form.addEventListener('submit', async (event) => {
@@ -415,8 +422,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                   const isSuccess = await updateActivityStatus(activityId, 'success');
                   if (isSuccess) {
-                    appendActivityToTable(activityId); // Optional: Update UI to reflect the completed activity
+                    appendActivityToTable(activityId);
                     form.reset();
+                    window.location.reload();
                     loadActivities();
                     activitySelect2.disabled = true;
                     modal.modal('hide');
@@ -486,6 +494,7 @@ async function fetchActivityDetails(activityId) {
       throw new Error('Failed to fetch activity details');
     }
     return await response.json();
+
   } catch (error) {
     console.error('Error fetching activity details:', error);
     return null;
@@ -500,12 +509,18 @@ async function appendActivityToTable(activityId) {
   const activityTableBody = document.getElementById('activity-table');
   const newRow = document.createElement('tr');
 
+  const formattedTotalJual = activity.totalJual
+    ? `Rp ${parseFloat(activity.totalJual).toLocaleString('id-ID')}`
+    : 'Rp0';
+
+  const formattedTotalEmisiKarbon = activity.totalEmisiKarbon
+    ? `${parseFloat(activity.totalEmisiKarbon).toLocaleString('id-ID')} kg CO₂`
+    : '0 kg CO₂';
+
   newRow.innerHTML = `
     <td class="text-center p-2">${activity.aktivitas}</td>
-    <td class="text-center p-2">${activity.totalJual || 'Rp0'}</td>
-    <td class="text-center p-2">${activity.totalEmisiKarbon || '0 kg CO₂'}</td>
     <td class="text-center p-2">
-      <button class="btn btn-success btn-sm btn-open-modal" data-activity-id="${activity._id}">Selengkapnya</button>
+      <button class="btn btn-success" data-activity-id="${activity._id}">Selengkapnya</button>
     </td>
   `;
 
@@ -523,28 +538,6 @@ async function appendActivityToTable(activityId) {
   });
 }
 
-// Function to show activity details in a modal
-function showActivityDetailsModal(activity) {
-  const modal = document.getElementById('bigModal');
-  const modalTitle = modal.querySelector('.modal-title');
-  const modalBody = modal.querySelector('.modal-body');
-
-  modalTitle.textContent = 'Rincian Aktivitas';
-  modalBody.innerHTML = `
-    <p><strong>Aktivitas:</strong> ${activity.aktivitas}</p>
-    <p><strong>Total Jual:</strong> ${activity.totalJual || 'Rp0'}</p>
-    <p><strong>Total Emisi Karbon:</strong> ${activity.totalEmisiKarbon || '0 kg CO₂'}</p>
-    <p><strong>Rincian Limbah:</strong></p>
-    <ul>
-      ${activity.wastes.map((waste) => `
-        <li>${waste.jenis} - ${waste.berat} kg (${waste.asalLimbah}) - ${waste.harga} - ${waste.emisiKarbon} kg CO₂</li>
-      `).join('')}
-    </ul>
-  `;
-
-  // Show the modal
-  $('#bigModal').modal('show');
-}
 
 // Function to fetch all activities
 function fetchAllActivities() {
@@ -566,7 +559,6 @@ function fetchAllActivities() {
   });
 }
 
-// Function to display activities in the table
 function displayActivitiesInTable(activities) {
   const tableBody = document.getElementById('activity-table');
   if (!tableBody) {
@@ -578,16 +570,133 @@ function displayActivitiesInTable(activities) {
 
   activities.forEach((activity) => {
     const row = document.createElement('tr');
+
     row.innerHTML = `
       <td class="text-center p-2">${activity.aktivitas}</td>
-      <td class="text-center p-2">${activity.totalJual || 'Rp0'}</td>
-      <td class="text-center p-2">${activity.totalEmisiKarbon || '0 kg CO₂'}</td>
       <td class="text-center p-2">
-        <button class="btn btn-success btn-sm btn-open-modal" data-activity-id="${activity._id}">Selengkapnya</button>
+        <button class="btn btn-success btn-open-modal" data-activity-id="${activity._id}">Selengkapnya</button>
       </td>
     `;
     tableBody.appendChild(row);
   });
+
+  // Add event listener to buttons to show activity details in modal
+  document.querySelectorAll('.btn-open-modal').forEach((button) => {
+    button.addEventListener('click', async (event) => {
+      const activityId = event.target.getAttribute('data-activity-id');
+
+      try {
+        // Fetch and display wastes for the given activity
+        await fetchandShowWastes(activityId);
+        $('#activityDetailsModal').modal('show'); // Show the specific modal
+      } catch (error) {
+        console.error('Error displaying activity details:', error);
+        Swal.fire('Kesalahan', 'Gagal memuat data aktivitas.', 'error');
+      }
+    });
+  });
+}
+
+// Function to fetch and display wastes for a given activity
+async function fetchandShowWastes(activityId) {
+  try {
+    const wastes = await getWastesByActivityId(activityId);
+    updateModalContent(wastes);
+  } catch (error) {
+    console.error('Error fetching and displaying wastes:', error);
+  }
+}
+
+function updateModalContent(wasteIds) {
+  const tableBody = document.getElementById('waste-table-body');
+  let totalHarga = 0;
+  let totalEmisiKarbon = 0;
+
+  tableBody.innerHTML = '';
+  wasteIds.forEach((waste) => {
+    const berat = parseFloat(waste.berat);
+    const harga = parseFloat(waste.harga);
+    const emisiKarbon = parseFloat(waste.emisiKarbon);
+
+    const totalHargaPerWaste = berat * harga;
+    const totalEmisiKarbonPerWaste = berat * emisiKarbon;
+
+    totalHarga += totalHargaPerWaste;
+    totalEmisiKarbon += totalEmisiKarbonPerWaste;
+
+    const row = document.createElement('tr');
+    const formattedBerat = `${berat.toLocaleString('id-ID')} Kg`;
+    const formattedHarga = `Rp ${harga.toLocaleString('id-ID')}`;
+    const formattedEmisiKarbon = `${emisiKarbon.toLocaleString('id-ID')} kg CO₂`;
+    const formattedTotalHargaPerWaste = `Rp ${totalHargaPerWaste.toLocaleString('id-ID')}`;
+    const formattedTotalEmisiKarbonPerWaste = `${totalEmisiKarbonPerWaste.toLocaleString('id-ID')} kg CO₂`;
+
+    row.innerHTML = `
+      <td class="text-center">${waste.jenis}</td>
+      <td class="text-center">${formattedBerat}</td>
+      <td class="text-center">${waste.asalLimbah}</td>
+      <td class="text-center">${formattedHarga}</td>
+      <td class="text-center">${formattedEmisiKarbon}</td>
+      <td class="text-center">${formattedTotalHargaPerWaste}</td>
+      <td class="text-center">${formattedTotalEmisiKarbonPerWaste}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+
+  // Update the totals in the footer
+  document.getElementById('totalHarga').innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+  document.getElementById('totalEmisiKarbon').innerText = `${totalEmisiKarbon.toLocaleString('id-ID')} kg CO₂`;
+
+  checkIfTableIsEmpty();
+}
+
+
+async function loadWasteValue() {
+  try {
+    const response = await fetch(`${process.env.BASE_URL}/value`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+
+    // Check if data is an array
+    if (!Array.isArray(data.wasteValues)) {
+      throw new Error('Expected an array for waste values');
+    }
+
+    // Create the options HTML
+    const optionsHTML = data.wasteValues.map((value) => `<option value="${value.jenisSampah}" data-id="${value._id}" data-harga="${value.harga}" data-emisi="${value.emisi}">${value.jenisSampah}</option>`).join('');
+
+    const valueSelects = document.querySelectorAll('#wasteType');
+    valueSelects.forEach((valueSelect) => {
+      valueSelect.innerHTML = `<option value="" disabled selected>Pilih Jenis Limbah</option>${optionsHTML}`;
+    });
+
+    // Event listener for when a waste type is selected
+    document.querySelector('#wasteType').addEventListener('change', (event) => {
+      const selectedOption = event.target.options[event.target.selectedIndex];
+      const harga = selectedOption.getAttribute('data-harga');
+      const emisi = selectedOption.getAttribute('data-emisi');
+
+      document.querySelector('#wastePrice').value = harga;
+      document.querySelector('#wasteEmissions').value = emisi;
+    });
+  } catch (error) {
+    console.error('Error loading values:', error);
+
+    // Show error notification
+    Swal.fire({
+      icon: 'error',
+      title: 'Kesalahan',
+      text: 'Terjadi kesalahan dalam memuat jenis limbah.',
+      confirmButtonText: 'OK',
+    });
+  }
 }
 
 // Function to filter successful activities
