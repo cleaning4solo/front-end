@@ -572,7 +572,7 @@ function displayActivitiesInTable(activities) {
     const row = document.createElement('tr');
 
     row.innerHTML = `
-      <td class="text-center p-2">${activity.aktivitas}</td>
+      <td class="text-center p-2"><b>${activity.aktivitas}</b></td>
       <td class="text-center p-2">
         <button class="btn btn-success btn-open-modal" data-activity-id="${activity._id}">Selengkapnya</button>
       </td>
@@ -704,6 +704,11 @@ function filterSuccessfulActivities(activities, userId) {
   return activities.filter((activity) => activity.statusAktivitas === 'success' && activity.userId === userId);
 }
 
+// Function to sort activities in descending order
+function sortActivitiesDescending(activities) {
+  return activities.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Ensure the correct date field is used
+}
+
 // Main function to load and display activities
 function loadAndDisplayActivities() {
   const userId = getUserIDFromToken(token); // Assuming you have this function to get the user ID from the token
@@ -714,9 +719,15 @@ function loadAndDisplayActivities() {
 
   fetchAllActivities()
     .then((activities) => {
+      console.log('Fetched activities:', activities); // Debugging line to check the structure of fetched activities
       const successfulActivities = filterSuccessfulActivities(activities, userId);
-      console.log('Successful activities:', successfulActivities);
-      displayActivitiesInTable(successfulActivities);
+      console.log('Filtered successful activities:', successfulActivities); // Debugging line to check the filtered activities
+
+      // Sort activities in descending order
+      const sortedActivities = sortActivitiesDescending(successfulActivities);
+      console.log('Sorted activities:', sortedActivities); // Debugging line to check the sorted activities
+
+      displayActivitiesInTable(sortedActivities);
     })
     .catch((error) => {
       console.error('Error fetching activities:', error);

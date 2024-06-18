@@ -141,8 +141,8 @@ const createCalculatorPageComponent = () => `
           <table class="table-calculator">
             <thead>
               <tr>
-                <th class="text-center">Aktivitas</th>
-                <th class="text-center">Rincian Aktivitas</th>
+                <th class="text-center"><h5><b>Aktivitas</b></h5></th>
+                <th class="text-center"><h5><b>incian Aktivitas</b></h5></th>
               </tr>
             </thead>
             <tbody id="activity-table">
@@ -264,7 +264,9 @@ const createCalculatorPageComponent = () => `
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="activityDetailsModalLabel">Rincian Aktivitas</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <span class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 1; right: 0; padding: 0.5rem; cursor: pointer;">
+        <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+      </span>
       </div>
       <div class="modal-body">
         <h5><b>Data Limbah:</b></h5>
