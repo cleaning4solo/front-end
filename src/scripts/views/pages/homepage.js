@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-undef */
 import PureCounter from '@srexi/purecounterjs';
 import initSwiper from '../../components/swiper';
 
@@ -19,26 +21,25 @@ const Homepage = {
       <section id="vission" class="vission my-lg-5 pt-lg-4"></section>
       <section id="future-events" class="py-3 future-events">
         <div class="container">
-          <div class="section-events"> 
+          <div class="section-events h-50"> 
             <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Event</h2>
             <p class="section-header">Bergabunglah dengan kami untuk berkontribusi nyata dalam menjaga dan memperbaiki lingkungan kita!</p>
           </div>
-          <div class="row gy-4 h-75 event-item justify-content-center">
+          <div class="row gy-4 event-item justify-content-center">
           </div>
         </div>
       </section>
-      <section id="stats-counter" class="stats-counter"></section>
+      <section id="stats-counter" class="stats-counter my-4"></section>
 
       <section id="latest-post" class="py-3late latest-post pt-5">
       <div class="section-header">
         <h2 class="fs-1 fw-bold text-center my-4" data-aos="fade-up">Postingan</h2>
-        <p>IInilah postingan-postingan terbaru yang baru kami unggah, penuh dengan tips, berita, dan update terkini!</p>
-        <div class="container m-auto row gy-4 latest-post-container justify-content-center pb-5 my-4"></div>
+        <p>Inilah postingan-postingan terbaru yang baru kami unggah, penuh dengan tips, berita, dan update terkini!</p>
+        <div class="container m-auto row gy-4 latest-post-container justify-content-center pb-5 my-4 h-75"></div>
       </div>
     </section>
     <section id="our-location" class="py-3 our-location"></section>
     <section id="partners" class="partners section bg-color-transparent my-4"></section>
-
       `;
   },
 

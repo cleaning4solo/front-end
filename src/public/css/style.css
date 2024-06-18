@@ -97,16 +97,24 @@ body.dark-mode {
   color: var(--text-pure-white);
   border: 2px solid var(--color-primary);
 }
-.image-height-wrapper {
-  min-height: 45% !important;
-  max-height: 45% !important;
+.image-event-wrapper img{
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+.image-event-wrapper{
   overflow: hidden;
 }
-.image-height {
-  min-height: 100% !important;
+
+.image-blog-wrapper img{
+  height: 300px;
+  width: 100%;
   object-fit: cover;
-  transition: 0.3s;
 }
+.image-blog-wrapper{
+  overflow: hidden;
+}
+
 .image-height:hover {
   transform: scale(1.1);
 }
@@ -629,11 +637,11 @@ h6 {
   color: #fff;
 }
 
-/* @media (min-width: 400px) {
-  .hero1{
+@media (min-width: 400px) {
+  /* .hero1{
     padding-top: 50px;
     padding-bottom: 20px;
-  }
+  } */
 
   .section-visi {
     padding: 0 0 0 0;
@@ -642,7 +650,7 @@ h6 {
   .section-header p {
       padding-bottom: 20px;
   }
-} */
+}
 /*--------------------------------------------------------------
   # Footer
   --------------------------------------------------------------*/
@@ -1439,6 +1447,7 @@ section {
 # Our Team Section
 --------------------------------------------------------------*/
 .team .member {
+  margin: auto;
   text-align: center;
   background: #fff;
   border-radius: 10px;
@@ -1449,6 +1458,9 @@ section {
 
 .team .member img {
   border-radius: 10px;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
   overflow: hidden;
 }
 
@@ -1458,6 +1470,7 @@ section {
 
 .team .member h4 {
   font-weight: 700;
+  color: black;
   margin-top: 16px;
   margin-bottom: 2px;
   font-size: 20px;

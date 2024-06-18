@@ -24,7 +24,7 @@ const Gallery = {
       <div class="form-container container color-text">
         <h2>Add New Gallery</h2>
         <form id="addGalleryForm">
-          <div class="form-group mb-2 row align-items-center">
+          <div class="form-group  row align-items-center">
             <label for="imageUrl" class="col-sm-3 col-form-label">Image Url</label>
             <div class="col-sm-9 input-group">
               <input type="text" class="form-control" id="imageUrl" name="imageUrl" required>
@@ -33,7 +33,7 @@ const Gallery = {
               </div>
             </div>
           </div>
-          <div class="form-group mb-2">
+          <div class="form-group ">
             <label for="category">Kategori</label>
             <select class="form-control" id="category" name="category" required>
               <option value="" disabled selected>Pilih kategori</option>
