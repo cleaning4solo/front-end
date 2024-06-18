@@ -101,21 +101,34 @@ const createCalculatorPageComponent = () => `
     Alat ini mendukung upaya pengelolaan sampah yang lebih berkelanjutan.</p>
   </div>
 </div>
-<div class="container card custom-card1 shadow p-5 mb-5">
+<div class="container">
+  <div class="row">
+    <div class="col-4 text-center">
+      <button class="btn btn1 btn-lg btn-block" data-toggle="modal" data-target="#addActivityModal">Tambah Aktivitas</button>
+    </div>
+    <div class="col-4 text-center">
+      <button class="btn btn1 btn-lg btn-block" data-toggle="modal" data-target="#addWasteModal">Tambah Data Limbah</button>
+    </div>
+    <div class="col-4 text-center">
+      <button id="submitSelesai" class="btn btn1 btn-lg btn-block">Selesaikan Aktivitas</button>
+    </div>
+  </div>    
+</div>
+<div class="container px-5 mb-5">
   <div class="row">
     <div class="col-sm-12">
-      <h2 class="aktivitas-terbaru mb-3">Hitung</h2>
+      <h2 class="aktivitas-terbaru mb-3">Data Limbah</h2>
       <div class="col-sm-12 card custom-card2 p-3">
         <table class="table-calculator table-responsive">
           <thead>
-            <tr>
-              <th class="text-center">Jenis</th>
-              <th class="text-center">Berat</th>
-              <th class="text-center">Asal Limbah</th>
-              <th class="text-center">Harga</th>
-              <th class="text-center">Emisi Karbon</th>
-              <th class="text-center">Aksi</th>
-            </tr>
+          <tr>
+            <th class="text-center"><i class='bx bx-recycle icon-th' style="color: var(--icon-color-1);"></i> Jenis</th>
+            <th class="text-center"><i class='bx bxs-calculator icon-th' style="color: var(--icon-color-2);"></i> Berat</th>
+            <th class="text-center"><i class='bx bxs-home icon-th' style="color: var(--icon-color-3);"></i> Asal Limbah</th>
+            <th class="text-center"><i class='bx bxs-wallet icon-th' style="color: var(--icon-color-4);"></i> Harga</th>
+            <th class="text-center"><i class='bx bxs-cloud-upload icon-th' style="color: var(--icon-color-5);"></i> Emisi Karbon</th>
+            <th class="text-center"><i class='bx bxs-wrench icon-th' style="color: var(--icon-color-6);"></i> Aksi</th>
+        </tr>
           </thead>
           <tbody class="waste-table" id="waste-table">
             <td colspan="6" class="text-center no-data-message p-3">
@@ -123,26 +136,15 @@ const createCalculatorPageComponent = () => `
             </td>
           </tbody>
         </table>
-        <div class="row">
-        <div class="col-6 text-center">
-          <button class="btn btn1 btn-large" data-toggle="modal" data-target="#addActivityModal">Tambah Aktivitas</button>
-        </div>
-        <div class="col-6 text-center">
-          <button class="btn btn1 btn-large" data-toggle="modal" data-target="#addWasteModal">Tambah Data Limbah</button>
-        </div>
-        <div class="col-12 text-center mt-3">
-          <button id="submitSelesai" class="btn btn1 btn-xxl">Selesaikan Aktivitas</button>
-        </div>
-      </div>    
       </div>  
       <div class="mt-5">
         <h2 class="aktivitas-terbaru">Aktivitas Terbaru</h2>
-        <div class="col-sm-12 card custom-card2 mt-3 p-3">
+        <div class="col-sm-12 card custom-card3 mt-3 p-3">
           <table class="table-calculator">
             <thead>
               <tr>
-                <th class="text-center"><h5><b>Aktivitas</b></h5></th>
-                <th class="text-center"><h5><b>incian Aktivitas</b></h5></th>
+                <th class="text-center"><h5><b><i style="color: var(--icon-color-1);" class='bx bx-clipboard'></i> Aktivitas</b></h5></th>
+                <th class="text-center"><h5><b><i style="color: var(--icon-color-2);" class='bx bxs-detail'></i> Rincian Aktivitas</b></h5></th>
               </tr>
             </thead>
             <tbody id="activity-table">

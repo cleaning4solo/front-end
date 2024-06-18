@@ -520,7 +520,7 @@ async function appendActivityToTable(activityId) {
   newRow.innerHTML = `
     <td class="text-center p-2">${activity.aktivitas}</td>
     <td class="text-center p-2">
-      <button class="btn btn-success" data-activity-id="${activity._id}">Selengkapnya</button>
+      <button class="btn btn-success btn-greep" data-activity-id="${activity._id}">Selengkapnya</button>
     </td>
   `;
 
@@ -574,7 +574,7 @@ function displayActivitiesInTable(activities) {
     row.innerHTML = `
       <td class="text-center p-2"><b>${activity.aktivitas}</b></td>
       <td class="text-center p-2">
-        <button class="btn btn-success btn-open-modal" data-activity-id="${activity._id}">Selengkapnya</button>
+        <button class="btn btn-success btn-open-modal btn-greep" data-activity-id="${activity._id}">Selengkapnya</button>
       </td>
     `;
     tableBody.appendChild(row);

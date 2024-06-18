@@ -24,6 +24,13 @@
   --footer-bg-color: #5cc180;
   --custom-card1: #a6dbb7;
   --custom-card2: #5cc180;
+  --custom-card3: #5bc17f4f;
+  --icon-color-1: #f44336; /* Red */
+  --icon-color-2: #9c27b0; /* Purple */
+  --icon-color-3: #3f51b5; /* Indigo */
+  --icon-color-4: #4caf50; /* Green */
+  --icon-color-5: #ff9800; /* Orange */
+  --icon-color-6: #795548; /* Brown */
 }
 
 /* Dark Mode */
@@ -42,6 +49,13 @@ body.dark-mode {
   --footer-bg-color: #1f2937;
   --custom-card1: #1f2937;
   --custom-card2: #111827;
+  --custom-card3: transparent;
+  --icon-color-1: #f44336; /* Red */
+  --icon-color-2: #9c27b0; /* Purple */
+  --icon-color-3: #3f51b5; /* Indigo */
+  --icon-color-4: #4caf50; /* Green */
+  --icon-color-5: #ff9800; /* Orange */
+  --icon-color-6: #795548; /* Brown */
 }
 
 /* Smooth scroll behavior */
@@ -900,13 +914,22 @@ h6 {
   border-radius: 1rem;
 }
 .custom-card2 {
-  background-color: var(--custom-card2);
-  border: none;
+  background-color: transparent;
+  border: 2px solid #5cc180;;
+}
+.custom-card3 {
+  background-color: var(--custom-card3);
+  border: 2px solid #5cc180;;
 }
 
 .modal-header {
   background-color: var(--navbar-bg-color);
   color: var(--text-color);
+}
+
+.icon-th {
+  font-size: 1.2rem; /* Adjust the icon size */
+  margin-right: 5px; /* Adds spacing between the icon and text */
 }
 
 .modal-body {
@@ -924,8 +947,9 @@ h6 {
 }
 
 .btn1 {
-  background-color: #a6dab7;
-  color: black;
+  border: 2px solid #a6dab7;
+  color: var(--text-color);
+  border-radius: 1.5rem;
 }
 .btn1:hover {
   background-color: #6aea95;
