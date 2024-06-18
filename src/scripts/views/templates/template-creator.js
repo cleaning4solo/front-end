@@ -357,7 +357,7 @@ const createLocationComponent = () => `
         loading="lazy"
         allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.828534020206!2d107.61540147756932!3d-6.895730942706618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a55a715555%3A0xb8bb411d2516aad6!2sDicoding%20Academy!5e0!3m2!1sid!2sid!4v1716968750724!5m2!1sid!2sid">
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63282.32625738585!2d110.77783340951925!3d-7.5591219806805245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a16855db09efb%3A0xa6c2dbfdf275a4f9!2sKota%20Surakarta%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1718560512304!5m2!1sid!2sid">
       </iframe>
     </div>
   </div>
