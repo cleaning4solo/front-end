@@ -23,7 +23,7 @@ const Blog = {
           </ul>
         </div>
       </div>
-      <div class="form-container container color-text">
+      <div class="form-container color-text">
         <h2 id="formTitle">Add New Blog</h2>
         <form id="addBlogForm">
           <div class="form-group mb-2">
@@ -52,7 +52,7 @@ const Blog = {
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Date Published</th>
+                <th class="text-center">Date Published</th>
                 <th>Action</th>
               </tr>
             </thead>

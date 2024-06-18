@@ -21,7 +21,7 @@ const Gallery = {
           </ul>
         </div>
       </div>
-      <div class="form-container container color-text">
+      <div class="form-container color-text">
         <h2>Add New Gallery</h2>
         <form id="addGalleryForm">
           <div class="form-group  row align-items-center">
@@ -51,8 +51,8 @@ const Gallery = {
             <thead>
               <tr>
                 <th scope="col">Preview</th>
-                <th scope="col">Category</th>
-                <th scope="col">Action</th>
+                <th class="text-center" scope="col">Category</th>
+                <th class="text-center" scope="col">Action</th>
               </tr> 
             </thead>
             <tbody class="gallery-list">

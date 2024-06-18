@@ -62,8 +62,8 @@ const createNewEventListTemplate = (events) => `
 
 const createBlogTableDataItemTemplate = (blog) => `
   <tr>
-    <td>${blog.title}</td>
-    <td>${formatDate(blog.createdAt)}</td>
+    <td class="text-center">${blog.title}</td>
+    <td class="text-center">${formatDate(blog.createdAt)}</td>
     <td>
       <button class="btn btn-danger rounded-pill btnDeleteBlog" data-id="${blog._id}">Delete</button>
       <button class="btn btn-outline-warning rounded-pill btnEditBlog" data-id="${blog._id}">Update</button>
@@ -71,11 +71,24 @@ const createBlogTableDataItemTemplate = (blog) => `
   </tr>
 `;
 
+
+const createValueTableDataTemplate = (value) => `
+  <tr>
+    <td class="text-center">${value.jenisSampah}</td>
+    <td class="text-center">Rp${value.harga}</td>
+    <td class="text-center">${value.emisi}Kg/Co2</td>
+    <td class="text-center">
+      <button class="btn btn-danger rounded-pill btnDeleteValue" data-id="${value._id}">Delete</button>
+      <button class="btn btn-outline-warning rounded-pill btnEditValue" data-id="${value._id}">Update</button>
+    </td>
+  </tr>
+`;
+
 const createGalleryTableDataItemTemplate = (gallery) => `
   <tr>
     <td><img src="${gallery.imageUrl}" alt="${gallery.title}" class="img-fluid" style="width: 200px; height: auto;"></td>
-    <td>${gallery.category}</td>
-    <td>
+    <td class="text-center">${gallery.category}</td>
+    <td class="text-center">
       <button class="btn btn-danger btnDeleteGallery" data-id="${gallery._id}">Delete</button>
     </td>
   </tr>
@@ -83,10 +96,10 @@ const createGalleryTableDataItemTemplate = (gallery) => `
 
 const createEventTableDataItemTemplate = (event) => `
   <tr>
-    <td><img src="${event.image}" alt="${event.name}" class="img-fluid" style="width: 100px; height: auto;"></td>
-    <td>${event.name}</td>
-    <td>${event.location}</td>
-    <td>${formatShortDate(event.date)}</td>
+    <td class="text-center"><img src="${event.image}" alt="${event.name}" class="img-fluid" style="width: 100px; height: auto;"></td>
+    <td class="text-center">${event.name}</td>
+    <td class="text-center">${event.location}</td>
+    <td class="text-center">${formatShortDate(event.date)}</td>
     <td>
       <button class="btn btn-danger btnDeleteEvent" data-id="${event._id}">Delete</button>
       <button class="btn btn-warning btnEditEvent" data-id="${event._id}">Update</button>
@@ -102,4 +115,5 @@ export {
   createBoxInfoItemTemplate,
   createTableDataItemTemplate,
   createNewEventListTemplate,
+  createValueTableDataTemplate,
 };

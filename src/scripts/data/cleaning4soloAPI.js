@@ -317,6 +317,83 @@ class Cleaning4SoloAPI {
       throw error;
     }
   }
+
+
+  static async getAllValues() {
+    const response = await fetch(`${process.env.BASE_URL}/value`);
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
+  static async createWasteValue(jenisSampah, harga, emisi) {
+    try {
+      const response = await fetch(`${process.env.BASE_URL}/value`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ jenisSampah, harga, emisi }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create waste');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error during waste creation:', error.message);
+      throw error;
+    }
+  }
+
+  static async deleteWasteValue(wasteValueId) {
+    try {
+      const response = await fetch(`${process.env.BASE_URL}/value/${wasteValueId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete waste');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error deleting blog:', error.message);
+      throw error;
+    }
+  }
+
+  static async updateWasteValue(id, value) {
+    const response = await fetch(`${process.env.BASE_URL}/value/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+
+      },
+      body: JSON.stringify(value),
+    });
+    if (!response.ok) {
+      throw new Error('Failed to update Waste');
+    }
+    return response.json();
+  }
+
+  static async getDetailValue(id) {
+    try {
+      const response = await fetch(`${process.env.BASE_URL}/value/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const responseJson = await response.json();
+      return responseJson;
+    } catch (error) {
+      return undefined;
+    }
+  }
+
 }
 
 export default Cleaning4SoloAPI;

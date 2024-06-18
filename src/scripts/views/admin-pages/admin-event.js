@@ -21,7 +21,7 @@ const Event = {
           </ul>
         </div>
       </div>
-      <div class="form-container container color-text">
+      <div class="form-container color-text">
         <h2 id="formTitle">Add New Event</h2>
         <form id="addEventForm">
           <div class="form-group mb-2 row align-items-center">
@@ -62,13 +62,13 @@ const Event = {
             <thead>
               <tr>
                 <th scope="col">Preview</th>
-                <th scope="col">Name</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date</th>
-                <th scope="col">Action</th>
+                <th class="text-center" scope="col">Name</th>
+                <th class="text-center" scope="col">Location</th>
+                <th class="text-center" scope="col">Date</th>
+                <th class="text-center" scope="col">Action</th>
               </tr> 
             </thead>
-            <tbody class="event-list">
+            <tbody class="event-list text-center">
             </tbody>
           </table>
         </div>

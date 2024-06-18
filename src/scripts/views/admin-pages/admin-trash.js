@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import Swal from 'sweetalert2';
 import Cleaning4SoloAPI from '../../data/cleaning4soloAPI';
-import { createBlogTableDataItemTemplate } from '../templates/admin-template';
+import { createValueTableDataTemplate } from '../templates/admin-template';
 import { showSuccessAlert } from '../../components/allertMessage';
 
 const Trash = {
@@ -21,19 +21,23 @@ const Trash = {
           </ul>
         </div>
       </div>
-      <div class="form-container container color-text">
-        <h2>Add New Trash</h2>
-        <form id="addBlogForm">
+      <div class="form-container color-text">
+        <h2 id="form-title">Tambah Limbah Baru</h2>
+        <form id="addValueForm">
           <div class="form-group mb-2">
-            <label for="blogTitle">Kategori A</label>
-            <input type="text" class="form-control" id="blogTitle" name="title" required>
+            <label for="valueType">Jenis Limbah</label>
+            <input type="text" class="form-control" id="valueType" name="type" required>
           </div>
           <div class="form-group mb-2">
-            <label for="blogTitle">Kategori B</label>
-            <input type="text" class="form-control" id="blogTitle" name="title" required>
+            <label for="valuePrice">Harga/Kg</label>
+            <input type="text" class="form-control" id="valuePrice" name="price" required>
+          </div>
+          <div class="form-group mb-2">
+            <label for="valueCarbon">Emisi Karbon/Kg</label>
+            <input type="text" class="form-control" id="valueCarbon" name="carbon" required>
           </div>
           
-          <button type="submit" class="btn-add-blog btn btn-success rounded-pill my-3 px-5 py-2">Add trash</button>
+          <button type="submit" class="btn-add-value btn btn-success rounded-pill my-3 px-5 py-2">Add Trash</button>
         </form>
       </div>
       <div class="table-data">
@@ -41,12 +45,13 @@ const Trash = {
           <table>
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Date Published</th>
-                <th>Action</th>
+                <th>Jenis Sampah</th>
+                <th class="text-center">Harga</th>
+                <th class="text-center">Emisi Karbon</th>
+                <th class="text-center">Action</th>
               </tr>
             </thead>
-            <tbody class="blog-list">
+            <tbody class="value-list">
             </tbody>
           </table>
         </div>
@@ -55,93 +60,133 @@ const Trash = {
   },
 
   async afterRender() {
-    tinymce.init({
-      selector: 'textarea',
-      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-      toolbar:
-        'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-    });
-    const trashData = await Cleaning4SoloAPI.blogAPI();
-    const { trash } = trashData;
-    const blogContainer = document.querySelector('.blog-list');
-    const buttonAddBlog = document.querySelector('.btn-add-blog');
-    const blogTitle = document.querySelector('#blogTitle');
-    const imageUrl = document.querySelector('#imageUrl');
+    this._renderValueList();
 
-    if (trash.length === 0) {
-      blogContainer.innerHTML = '<p class="text-center" data-aos="fade-up">Belum ada trash</p>';
-    } else {
-      trash.forEach((blog) => {
-        blogContainer.innerHTML += createBlogTableDataItemTemplate(blog);
-      });
-    }
-
-    buttonAddBlog.addEventListener('click', async (event) => {
-      event.preventDefault();
-
-      const blogContent = tinymce.get('blogContent').getContent();
-
-      try {
-        const response = await Cleaning4SoloAPI.createBlog(blogTitle.value, imageUrl.value, blogContent);
-        showSuccessAlert(response.message);
-
-        blogTitle.value = '';
-        imageUrl.value = '';
-        tinymce.get('blogContent').setContent('');
-        blogContainer.innerHTML = '';
-        const updatedTrash = await Cleaning4SoloAPI.blogAPI();
-        updatedTrash.trash.forEach((blog) => {
-          blogContainer.innerHTML += createBlogTableDataItemTemplate(blog);
-        });
-      } catch (error) {
-        console.error('Failed to create trash:', error.message);
-      }
-    });
+    const formAddValue = document.querySelector('#addValueForm');
+    formAddValue.addEventListener('submit', (event) => this._handleFormSubmit(event));
 
     document.addEventListener('click', async (event) => {
-      if (event.target.classList.contains('btnDeleteBlog')) {
-        const blogId = event.target.getAttribute('dataId');
-
-        const result = await Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Yes, delete it!',
-          cancelButtonText: 'No, cancel',
-          reverseButtons: true,
-        });
-
-        if (result.isConfirmed) {
-          try {
-            // Menghapus blog dari API
-            await Cleaning4SoloAPI.deleteBlogId(blogId);
-            Swal.fire({
-              title: 'Deleted!',
-              text: 'Trash post has been deleted.',
-              icon: 'success',
-            });
-            blogContainer.innerHTML = '';
-            const updatedTrash = await Cleaning4SoloAPI.blogAPI();
-            updatedTrash.trash.forEach((blog) => {
-              blogContainer.innerHTML += createBlogTableDataItemTemplate(blog);
-            });
-          } catch (error) {
-            Swal.fire({
-              title: 'Failed',
-              text: `Failed to delete trash post: ${error.message}`,
-              icon: 'error',
-            });
-          }
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire({
-            title: 'Cancelled',
-            text: 'Your trash post is safe :)',
-            icon: 'info',
-          });
-        }
+      if (event.target.classList.contains('btnDeleteValue')) {
+        await this._deleteWasteValue(event);
+      } else if (event.target.classList.contains('btnEditValue')) {
+        await this._handleEditValue(event);
+      } else if (event.target.classList.contains('btnUpdateValue')) {
+        await this._handleUpdateValue(event);
       }
     });
+  },
+
+     async _renderValueList() {
+    try {
+      const valuesData = await Cleaning4SoloAPI.getAllValues();
+      const { wasteValues } = valuesData;
+      const valueContainer = document.querySelector('.value-list');
+      valueContainer.innerHTML = '';
+
+      if (wasteValues.length === 0) {
+        valueContainer.innerHTML = '<p class="text-center">Belum ada data</p>';
+      } else {
+        wasteValues.forEach((value) => {
+          valueContainer.innerHTML += createValueTableDataTemplate(value);
+        });
+      }
+    } catch (error) {
+      console.error('Failed to fetch values:', error.message);
+    }
+  },
+
+  async _handleFormSubmit(event) {
+    event.preventDefault();
+
+    const valueType = document.querySelector('#valueType').value;
+    const valuePrice = document.querySelector('#valuePrice').value;
+    const valueCarbon = document.querySelector('#valueCarbon').value;
+
+    try {
+      const response = await Cleaning4SoloAPI.createWasteValue(valueType, valuePrice, valueCarbon);
+      showSuccessAlert("Data Berhasil Diposting");
+
+      document.querySelector('#addValueForm').reset();
+      this._renderValueList();
+    } catch (error) {
+      console.error('Failed to create blog:', error.message);
+    }
+  },
+
+  async _deleteWasteValue(event) {
+    const valueId = event.target.getAttribute('data-id');
+
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel',
+      reverseButtons: true,
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await Cleaning4SoloAPI.deleteWasteValue(valueId);
+        Swal.fire('Deleted!', 'Limbah Berhasil Dihapus.', 'success');
+        this._renderValueList();
+      } catch (error) {
+        Swal.fire('Failed', `Gagal menghapus data: ${error.message}`, 'error');
+      }
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire('Cancelled', 'Data anda tidak terhapus!)', 'info');
+    }
+  },
+
+  async _handleEditValue(event) {
+    const valueId = event.target.getAttribute('data-id');
+    try {
+      const valueData = await Cleaning4SoloAPI.getDetailValue(valueId);
+      console.log(valueData)
+      const { jenisSampah, harga, emisi } = valueData;
+      document.querySelector('#valueType').value = jenisSampah;
+      document.querySelector('#valuePrice').value = harga;
+      document.querySelector('#valueCarbon').value = emisi;
+
+      const submitButton = document.querySelector('.btn-add-value');
+      submitButton.innerHTML = 'Update Data Limbah';
+      submitButton.classList.add('btnUpdateValue');
+      submitButton.classList.remove('btn-add-value');
+      submitButton.setAttribute('data-id', valueId);
+
+      document.querySelector('#form-title').innerText = 'Edit Data Limbah';
+    } catch (error) {
+      console.error('Failed to fetch Waste:', error.message);
+    }
+  },
+
+  async _handleUpdateValue(event) {
+    event.preventDefault();
+    const valueId = event.target.getAttribute('data-id');
+
+    const valueType = document.querySelector('#valueType').value;
+    const valuePrice = document.querySelector('#valuePrice').value;
+    const valueCarbon = document.querySelector('#valueCarbon').value;
+
+    try {
+      const response = await Cleaning4SoloAPI.updateWasteValue(valueId, { jenisSampah: valueType, harga: valuePrice, emisi: valueCarbon });
+      showSuccessAlert("Berhasil Diupdate!");
+
+      document.querySelector('#addValueForm').reset();
+      this._renderValueList();
+
+      const submitButton = document.querySelector('.btnUpdateValue');
+      submitButton.innerHTML = 'Tambah Limbah Baru';
+      submitButton.classList.add('btn-add-value');
+      submitButton.classList.remove('btnUpdateValue');
+      submitButton.removeAttribute('data-id');
+
+      document.querySelector('#form-title').innerText = 'Tambah Limbah Baru';
+    } catch (error) {
+      console.error('Failed to update blog:', error.message);
+      Swal.fire('Error', `Failed to update blog: ${error.message}`, 'error');
+    }
   },
 };
 
