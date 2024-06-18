@@ -77,8 +77,8 @@ const createTeamComponent = () => `
       </div>
       <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
         <div class="member">
-          <img src="img/team/team-2.png" class="img-fluid" alt="Nawang Wulan" />
-          <h4>Nawang Wulan</h4>
+          <img src="img/team/team-2.png" class="img-fluid" alt="Martin Imanuel" />
+          <h4>Martin Imanuel</h4>
           <span>Sekretaris</span>
           <div class="social">
             <a href=""><i class="bi bi-twitter"></i></a>
@@ -128,6 +128,4 @@ const createGalleryComponent = (picture) => `
   </div>
 `;
 
-export {
-  createAboutUsComponent, createStatsCounterComponent, createTeamComponent, createGalleryComponent,
-};
+export { createAboutUsComponent, createStatsCounterComponent, createTeamComponent, createGalleryComponent };
